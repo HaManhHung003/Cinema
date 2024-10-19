@@ -44,7 +44,7 @@ public class Main_v1 extends JFrame {
 	private JPanel[] panels;
 	private JSVGCanvas iconTrangChu;
 	private JSVGCanvas iconDatVe;
-	private ChonGhe chonGhePanel;
+//	private ChonGhe chonGhePanel;
 	public static JPanel panel_right;
 	public static CardLayout cardLayout;
 //	JPanel[] panels = {pnTrangChu, pnDatVe, pnKhuyenMai, pnNhanVien, pnKhachHang, pnThongKe, pnTroGiup, pnDangXuat};
@@ -324,12 +324,12 @@ public class Main_v1 extends JFrame {
 		cardLayout = (CardLayout) panel_right.getLayout();
 		TrangChu trangChuPanel = new TrangChu();
 		panel_right.add(trangChuPanel, "TrangChu");
-		DatVe datVePanel = new DatVe();
-		ChonGhe chonGhePanel = new ChonGhe();
-		chonGhePanel = new ChonGhe();
-		HoaDon hoaDon = new HoaDon();
-		panel_right.add(datVePanel, "DatVe");
-		panel_right.add(chonGhePanel,"ChonGhe");
+//		DatVe datVePanel = new DatVe();
+//		ChonGhe chonGhePanel = new ChonGhe();
+//		chonGhePanel = new ChonGhe();
+//		HoaDon hoaDon = new HoaDon();
+//		panel_right.add(datVePanel, "DatVe");
+//		panel_right.add(chonGhePanel,"ChonGhe");
         panels = new JPanel[]{pnTrangChu, pnDatVe, pnKhuyenMai, pnNhanVien, pnKhachHang, pnThongKe, pnTroGiup, pnDangXuat};
 		defaultColor = new Color(35, 33, 33);
         pnTrangChu.setBackground(new Color(171, 27, 27));
