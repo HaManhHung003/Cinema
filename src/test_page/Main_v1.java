@@ -1,4 +1,4 @@
-package page;
+package test_page;
 
 import java.awt.EventQueue;
 
