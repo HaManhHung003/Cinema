@@ -16,6 +16,8 @@ import javax.swing.border.*;
 import javax.swing.Icon;
 import org.apache.batik.swing.JSVGCanvas;
 
+import model.KhachHang;
+
 import java.awt.Font;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
@@ -345,11 +347,11 @@ public class Main_v1 extends JFrame {
 		cardLayout = (CardLayout) panel_right.getLayout();
 		TrangChu trangChuPanel = new TrangChu();
 		panel_right.add(trangChuPanel, "TrangChu");
-//		DatVe datVePanel = new DatVe();
+		DatVe datVePanel = new DatVe();
+		panel_right.add(datVePanel, "DatVe");
 //		ChonGhe chonGhePanel = new ChonGhe();
 //		chonGhePanel = new ChonGhe();
 //		HoaDon hoaDon = new HoaDon();
-//		panel_right.add(datVePanel, "DatVe");
 //		panel_right.add(chonGhePanel,"ChonGhe");
         panels = new JPanel[]{pnTrangChu, pnDatVe, pnKhuyenMai, pnNhanVien, pnKhachHang, pnThongKe, pnTroGiup, pnDangXuat};
 		defaultColor = new Color(35, 33, 33);
@@ -373,6 +375,24 @@ public class Main_v1 extends JFrame {
                 cardLayout.show(panel_right, "DatVe");
                 pnDatVe.setBackground(new Color(171, 27, 27));
                 iconDatVe.setBackground(new Color(171, 27, 27));
+            }
+        });
+		pnKhachHang.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+            	resetPanelColors();
+                cardLayout.show(panel_right, "KhachHang");
+                pnKhachHang.setBackground(new Color(171, 27, 27));
+                iconKhachHang.setBackground(new Color(171, 27, 27));
+            }
+        });
+		pnNhanVien.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+            	resetPanelColors();
+                cardLayout.show(panel_right, "NhanVien");
+                pnNhanVien.setBackground(new Color(171, 27, 27));
+                iconNhanVien.setBackground(new Color(171, 27, 27));
             }
         });
 	}
