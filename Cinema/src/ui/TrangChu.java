@@ -7,6 +7,7 @@ import javax.swing.JPanel;
 import javax.swing.ImageIcon;
 import java.awt.FlowLayout;
 import java.awt.Font;
+import java.awt.Toolkit;
 
 public class TrangChu extends JPanel{
 	private JLabel lbptmodomdom;
@@ -17,7 +18,8 @@ public class TrangChu extends JPanel{
 		setBackground(new Color(35,33,33));
 		lbptmodomdom = new JLabel();
 		lbptmodomdom.setLocation(160, 0);
-		lbptmodomdom.setIcon(new ImageIcon("C:\\Users\\fptshop\\Desktop\\N4_K1\\HSK\\Project\\Cinema\\src\\img\\ptmodomdom.png"));
+		lbptmodomdom.setIcon(new ImageIcon("src/img/ptmodomdom.png"));
+//		lbptmodomdom.setIcon(new ImageIcon("C:\\Users\\fptshop\\Desktop\\N4_K1\\HSK\\Project\\Cinema\\src\\img\\ptmodomdom.png"));
 		lbptmodomdom.setSize(800, 300);
 		add(lbptmodomdom);
 		
@@ -29,7 +31,8 @@ public class TrangChu extends JPanel{
 		panel1.setLayout(null);
 		
 		JLabel lblNewLabel = new JLabel("");
-		lblNewLabel.setIcon(new ImageIcon("C:\\Users\\fptshop\\Desktop\\N4_K1\\HSK\\Project\\Cinema\\src\\img\\quyantang2.png"));
+//		lblNewLabel.setIcon(new ImageIcon("C:\\Users\\fptshop\\Desktop\\N4_K1\\HSK\\Project\\Cinema\\src\\img\\quyantang2.png"));
+		lblNewLabel.setIcon(new ImageIcon("src/img/quyantang2.png"));
 		lblNewLabel.setBounds(0, 0, 200, 200);
 		panel1.add(lblNewLabel);
 		
@@ -59,7 +62,8 @@ public class TrangChu extends JPanel{
 		panel2.setLayout(null);
 		
 		JLabel lblNewLabe2 = new JLabel("");
-		lblNewLabe2.setIcon(new ImageIcon("C:\\Users\\fptshop\\Desktop\\N4_K1\\HSK\\Project\\Cinema\\src\\img\\joker.png"));
+//		lblNewLabe2.setIcon(new ImageIcon("C:\\Users\\fptshop\\Desktop\\N4_K1\\HSK\\Project\\Cinema\\src\\img\\joker.png"));
+		lblNewLabe2.setIcon(new ImageIcon("src/img/joker.png"));
 		lblNewLabe2.setBounds(0, 0, 200, 200);
 		panel2.add(lblNewLabe2);
 		
@@ -89,7 +93,8 @@ public class TrangChu extends JPanel{
 		panel3.setLayout(null);
 		
 		JLabel lblNewLabe3 = new JLabel("");
-		lblNewLabe3.setIcon(new ImageIcon("C:\\Users\\fptshop\\Desktop\\N4_K1\\HSK\\Project\\Cinema\\src\\img\\cam.png"));
+//		lblNewLabe3.setIcon(new ImageIcon("C:\\Users\\fptshop\\Desktop\\N4_K1\\HSK\\Project\\Cinema\\src\\img\\cam.png"));
+		lblNewLabe3.setIcon(new ImageIcon("src/img/cam.png"));
 		lblNewLabe3.setBounds(0, 0, 200, 200);
 		panel3.add(lblNewLabe3);
 				
