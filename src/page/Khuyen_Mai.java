@@ -20,14 +20,10 @@ import javax.swing.border.MatteBorder;
 import javax.swing.border.LineBorder;
 import javax.swing.JTextArea;
 
-public class promotion extends JPanel{
-	private JLabel sale_img1;
-	private JLabel sale_img2;
-	private JLabel sale_title1;
-	private JLabel sale_title2;
-	private JTextArea sale_inform2;
-	private JTextArea sale_inform1;
-	public promotion() throws FontFormatException, IOException{
+public class Khuyen_Mai extends JPanel{
+	private JLabel sale_img1,sale_img2,sale_title1,sale_title2;
+	private JTextArea sale_inform2,sale_inform1;
+	public Khuyen_Mai() throws FontFormatException, IOException{
 		setSize(1128,920);
 		setLayout(null);
 		setBackground(new Color(36,34,34));

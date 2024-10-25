@@ -16,17 +16,13 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
-public class Login extends JFrame{
+public class DangNhap extends JFrame{
 	private JFrame frame;
-	private JPanel panel;
-	private JLabel logo;
-	private JPanel pass_pnl;
-	private JLabel hiddenPass;
-	private JLabel background;
+	private JPanel panel,pass_pnl;
+	private JLabel logo,hiddenPass,background;
 	private JButton logIn;
-	private JTextField account;
-	private JTextField pass_txtf;
-	public Login() throws FontFormatException, IOException{
+	private JTextField account,pass_txtf;
+	public DangNhap() throws FontFormatException, IOException{
 		frame = new JFrame();
 		frame.setSize(1457,1063);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -93,7 +89,7 @@ public class Login extends JFrame{
 	}
 	
 	public static void main(String[] args) throws FontFormatException, IOException {
-		Login lg = new Login();
+		DangNhap lg = new DangNhap();
 		lg.frame.setVisible(true);
 		lg.frame.setResizable(false);
 	}

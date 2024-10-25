@@ -1,4 +1,4 @@
-package com.raven.datechooser;
+package component.com.raven.datechooser;
 
 import java.awt.Color;
 import java.awt.Component;
@@ -227,13 +227,13 @@ public final class DateChooser extends javax.swing.JPanel {
             }
         };
         header = new javax.swing.JPanel();
-        cmdForward = new com.raven.datechooser.Button();
+        cmdForward = new component.com.raven.datechooser.Button();
         MY = new javax.swing.JLayeredPane();
-        cmdMonth = new com.raven.datechooser.Button();
+        cmdMonth = new component.com.raven.datechooser.Button();
         lb = new javax.swing.JLabel();
-        cmdYear = new com.raven.datechooser.Button();
-        cmdPrevious = new com.raven.datechooser.Button();
-        slide = new com.raven.datechooser.Slider();
+        cmdYear = new component.com.raven.datechooser.Button();
+        cmdPrevious = new component.com.raven.datechooser.Button();
+        slide = new component.com.raven.datechooser.Slider();
 
         setBackground(new java.awt.Color(255, 255, 255));
 
@@ -241,7 +241,7 @@ public final class DateChooser extends javax.swing.JPanel {
         header.setMaximumSize(new java.awt.Dimension(262, 40));
 
         cmdForward.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        cmdForward.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/raven/datechooser/forward.png"))); // NOI18N
+        cmdForward.setIcon(new javax.swing.ImageIcon(getClass().getResource("forward.png"))); // NOI18N
         cmdForward.setFocusable(true);
         cmdForward.setPaintBackground(false);
         cmdForward.addActionListener(new java.awt.event.ActionListener() {
@@ -286,7 +286,7 @@ public final class DateChooser extends javax.swing.JPanel {
         MY.add(cmdYear);
 
         cmdPrevious.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        cmdPrevious.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/raven/datechooser/previous.png"))); // NOI18N
+        cmdPrevious.setIcon(new javax.swing.ImageIcon(getClass().getResource("previous.png"))); // NOI18N
         cmdPrevious.setFocusable(true);
         cmdPrevious.setPaintBackground(false);
         cmdPrevious.addActionListener(new java.awt.event.ActionListener() {
@@ -482,14 +482,14 @@ public final class DateChooser extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLayeredPane MY;
-    private com.raven.datechooser.Button cmdForward;
-    private com.raven.datechooser.Button cmdMonth;
-    private com.raven.datechooser.Button cmdPrevious;
-    private com.raven.datechooser.Button cmdYear;
+    private component.com.raven.datechooser.Button cmdForward;
+    private component.com.raven.datechooser.Button cmdMonth;
+    private component.com.raven.datechooser.Button cmdPrevious;
+    private component.com.raven.datechooser.Button cmdYear;
     private javax.swing.JPanel header;
     private javax.swing.JLabel lb;
     private javax.swing.JPopupMenu popup;
-    private com.raven.datechooser.Slider slide;
+    private component.com.raven.datechooser.Slider slide;
     // End of variables declaration//GEN-END:variables
 
     public SelectedDate getSelectedDate() {

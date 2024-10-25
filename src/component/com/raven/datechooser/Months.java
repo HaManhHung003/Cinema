@@ -1,4 +1,4 @@
-package com.raven.datechooser;
+package component.com.raven.datechooser;
 
 public final class Months extends javax.swing.JPanel {
 
@@ -19,18 +19,18 @@ public final class Months extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        cmd1 = new com.raven.datechooser.Button();
-        cmd2 = new com.raven.datechooser.Button();
-        cmd3 = new com.raven.datechooser.Button();
-        cmd4 = new com.raven.datechooser.Button();
-        cmd5 = new com.raven.datechooser.Button();
-        cmd6 = new com.raven.datechooser.Button();
-        cmd7 = new com.raven.datechooser.Button();
-        cmd8 = new com.raven.datechooser.Button();
-        cmd9 = new com.raven.datechooser.Button();
-        cmd10 = new com.raven.datechooser.Button();
-        cmd11 = new com.raven.datechooser.Button();
-        cmd12 = new com.raven.datechooser.Button();
+        cmd1 = new component.com.raven.datechooser.Button();
+        cmd2 = new component.com.raven.datechooser.Button();
+        cmd3 = new component.com.raven.datechooser.Button();
+        cmd4 = new component.com.raven.datechooser.Button();
+        cmd5 = new component.com.raven.datechooser.Button();
+        cmd6 = new component.com.raven.datechooser.Button();
+        cmd7 = new component.com.raven.datechooser.Button();
+        cmd8 = new component.com.raven.datechooser.Button();
+        cmd9 = new component.com.raven.datechooser.Button();
+        cmd10 = new component.com.raven.datechooser.Button();
+        cmd11 = new component.com.raven.datechooser.Button();
+        cmd12 = new component.com.raven.datechooser.Button();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setLayout(new java.awt.GridLayout(4, 4));
@@ -130,18 +130,18 @@ public final class Months extends javax.swing.JPanel {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private com.raven.datechooser.Button cmd1;
-    private com.raven.datechooser.Button cmd10;
-    private com.raven.datechooser.Button cmd11;
-    private com.raven.datechooser.Button cmd12;
-    private com.raven.datechooser.Button cmd2;
-    private com.raven.datechooser.Button cmd3;
-    private com.raven.datechooser.Button cmd4;
-    private com.raven.datechooser.Button cmd5;
-    private com.raven.datechooser.Button cmd6;
-    private com.raven.datechooser.Button cmd7;
-    private com.raven.datechooser.Button cmd8;
-    private com.raven.datechooser.Button cmd9;
+    private component.com.raven.datechooser.Button cmd1;
+    private component.com.raven.datechooser.Button cmd10;
+    private component.com.raven.datechooser.Button cmd11;
+    private component.com.raven.datechooser.Button cmd12;
+    private component.com.raven.datechooser.Button cmd2;
+    private component.com.raven.datechooser.Button cmd3;
+    private component.com.raven.datechooser.Button cmd4;
+    private component.com.raven.datechooser.Button cmd5;
+    private component.com.raven.datechooser.Button cmd6;
+    private component.com.raven.datechooser.Button cmd7;
+    private component.com.raven.datechooser.Button cmd8;
+    private component.com.raven.datechooser.Button cmd9;
     // End of variables declaration//GEN-END:variables
 
 }

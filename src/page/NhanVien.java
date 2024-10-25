@@ -28,32 +28,19 @@ import javax.swing.border.MatteBorder;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 
-import com.raven.datechooser.DateChooser;
+import component.com.raven.datechooser.DateChooser;
 
-public class staff extends JPanel{
+public class NhanVien extends JPanel{
 	
-	private JTextField name_txtf;
-	private JTextField phone_txtf;
-	private JTextField email_txtf;
-	private JTextField cccd_txtf;
+	private JTextField name_txtf,phone_txtf,email_txtf,cccd_txtf,birth_txtf;
 	private JScrollPane scrollPane;
 	private JButton add_btn;
-	private JLabel email_label;
-	private JLabel phone_label;
-	private JLabel name_label;
-	private JLabel cccd_lable;
-	private JLabel sex_label;
-	private JLabel position_label;
-	private JLabel birth_label;
-	private JLabel shift_label;
-	private JComboBox shift_cmbbox;
-	private JComboBox position_cmbbox;
-	private JComboBox sex_cmbbox;
+	private JLabel email_label,phone_label,name_label,cccd_lable,sex_label,position_label,birth_label,shift_label;
+	private JComboBox shift_cmbbox,position_cmbbox,sex_cmbbox;
 	private DateChooser dateChooser;
 	private JTable table;
 	private TableModel tablemodel;
-	private JTextField birth_txtf;
-	public staff() throws FontFormatException, IOException{
+	public NhanVien() throws FontFormatException, IOException{
 		setSize(1128,920);
 		setLayout(null);
 		setBackground(new Color(36,34,34));
@@ -193,7 +180,7 @@ public class staff extends JPanel{
 		birth_txtf.setBounds(846, 112, 216, 52);
 		add(birth_txtf);
 		birth_txtf.setColumns(10);
-		dateChooser = new com.raven.datechooser.DateChooser();
+		dateChooser = new component.com.raven.datechooser.DateChooser();
 		dateChooser.setTextRefernce(birth_txtf);
 		
 		List<String> sex = new ArrayList<>();

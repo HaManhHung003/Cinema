@@ -20,43 +20,15 @@ import javax.swing.SwingConstants;
 import javax.swing.border.LineBorder;
 import javax.swing.border.MatteBorder;
 
-public class Main_Screen extends JFrame{
-	private JPanel menu_pnl;
-	private JLabel logo;
-	private JLabel menu_title;
-	private JPanel home_pnl;
-	private JLabel home_icon;
-	private JLabel home_label;
-	private JPanel bookTicket_pnl;
-	private JLabel bookTicket_icon;
-	private JLabel bookTicket_label;
-	private JPanel sale_pnl;
-	private JLabel sale_icon;
-	private JLabel sale_label;
-	private JPanel staff_pnl;
-	private JLabel staff_icon;
-	private JLabel staff_label;
-	private JPanel customer_pnl;
-	private JLabel customer_icon;
-	private JLabel customer_label;
-	private JPanel statistic_pnl;
-	private JLabel statistic_icon;
-	private JLabel statistic_label;
-	private JPanel help_pnl;
-	private JLabel help_icon;
-	private JLabel help_label;
-	private JPanel logOut_pnl;
-	private JLabel logOut_icon;
-	private JLabel logOut_label;
-	private JPanel main_pnl;
-	private JPanel inform_pnl;
-	private JPanel header_pnl;
+public class Man_hinh_chinh extends JFrame{
+	private JPanel menu_pnl,home_pnl,bookTicket_pnl,sale_pnl,staff_pnl,customer_pnl,statistic_pnl,help_pnl,logOut_pnl,main_pnl,inform_pnl,header_pnl;
+	private JLabel logo,menu_title,home_icon,home_label,bookTicket_icon,bookTicket_label,sale_icon,sale_label,staff_icon,staff_label,customer_icon,customer_label,statistic_icon,statistic_label,help_icon,help_label,logOut_icon,logOut_label;
 	private JTextField find_container; 
 	private Color black;
 	public static CardLayout cardLayout;
 	public static final long serialVersionUID = 1L;
 	private JPanel[] panels;
-	public Main_Screen() throws FontFormatException, IOException {
+	public Man_hinh_chinh() throws FontFormatException, IOException {
 		setSize(1457,1063);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		getContentPane().setLayout(null);
@@ -276,7 +248,7 @@ public class Main_Screen extends JFrame{
 		find_container.setBounds(645, 26, 354, 54);
 		header_pnl.add(find_container);
 		find_container.setHorizontalAlignment(SwingConstants.CENTER);
-		find_container.setFont(Dosis_Bold);
+		find_container.setFont(Dosis_Bold_20);
 		find_container.setForeground(new Color(178, 176, 176));
 		find_container.setText("Tìm kiếm nhân viên");
 		find_container.setBorder(new LineBorder(new Color(110, 110, 110), 1, true));
@@ -289,10 +261,19 @@ public class Main_Screen extends JFrame{
 		inform_pnl.setLayout(new CardLayout());
 		cardLayout = (CardLayout) inform_pnl.getLayout();
 		
-		promotion promotionPanel = new promotion();
+		//khuyen_mai
+		Khuyen_Mai promotionPanel = new Khuyen_Mai();
 		inform_pnl.add(promotionPanel, "promotionPanel");
-		staff staffPanel = new staff();
+		//nhan_vien
+		NhanVien staffPanel = new NhanVien();
 		inform_pnl.add(staffPanel, "staffPanel");
+		//dat_ve
+		DatVe bookTicketPanel = new DatVe(this);
+		inform_pnl.add(bookTicketPanel, "bookTicketPanel");
+		//chon_gio
+		ChonGio chonGioPanel = new ChonGio();
+		inform_pnl.add(chonGioPanel, "chonGioPanel");
+		//dang_nhap
 		panels = new JPanel[]{home_pnl, bookTicket_pnl, sale_pnl, staff_pnl, customer_pnl, statistic_pnl, help_pnl, logOut_pnl};
 		black = new Color(36,34,34);
 		
@@ -326,11 +307,31 @@ public class Main_Screen extends JFrame{
                 logOut_pnl.setBackground(black);
             }
         });
+		
+		bookTicket_pnl.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                cardLayout.show(inform_pnl, "bookTicketPanel");
+                bookTicket_pnl.setBackground(new Color(171, 27, 27));
+                home_pnl.setBackground(black);
+                staff_pnl.setBackground(black);
+                sale_pnl.setBackground(black);
+                customer_pnl.setBackground(black);
+                statistic_pnl.setBackground(black);
+                help_pnl.setBackground(black);
+                logOut_pnl.setBackground(black);
+            }
+        });
+		
 	}
+	
+	public void showChonGioPanel() {
+        cardLayout.show(inform_pnl, "chonGioPanel");
+    }
 
 	
 	public static void main(String[] args) throws FontFormatException, IOException {
-		Main_Screen lg = new Main_Screen();
+		Man_hinh_chinh lg = new Man_hinh_chinh();
 		lg.setVisible(true);
 		lg.setResizable(false);
 	}
