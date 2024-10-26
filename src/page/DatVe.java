@@ -87,7 +87,7 @@ public class DatVe extends JPanel{
 		
 		phim2 = new JPanel();
 		phim2.setOpaque(false);
-		phim2.setBounds(418, 11, 262, 311);
+		phim2.setBounds(418, 11, 262, 322);
 		add(phim2);
 		phim2.setLayout(null);
 		
@@ -97,7 +97,7 @@ public class DatVe extends JPanel{
 		phim2.add(hinh_phim2);
 		
 		book_phim2 = new nut_gradient("Mua vé", mau_gradient);
-		book_phim2.setBounds(0, 283, 262, 27);
+		book_phim2.setBounds(0, 295, 262, 27);
 		phim2.add(book_phim2);
 		
 		theloai_phim2 = new JTextArea();
@@ -108,7 +108,7 @@ public class DatVe extends JPanel{
 		theloai_phim2.setEditable(false);
 		theloai_phim2.setDisabledTextColor(new Color(255, 238, 231));
 		theloai_phim2.setBackground(new Color(112, 128, 144));
-		theloai_phim2.setBounds(0, 203, 262, 39);
+		theloai_phim2.setBounds(0, 207, 262, 39);
 		theloai_phim2.setFont(Dosis_Bold_20);
 		phim2.add(theloai_phim2);
 		
@@ -119,13 +119,13 @@ public class DatVe extends JPanel{
 		tieude_phim2.setEnabled(false);
 		tieude_phim2.setEditable(false);
 		tieude_phim2.setDisabledTextColor(new Color(255, 238, 231));
-		tieude_phim2.setBounds(0, 232, 262, 64);
+		tieude_phim2.setBounds(0, 236, 262, 64);
 		tieude_phim2.setFont(Dosis_Bold_14);
 		phim2.add(tieude_phim2);
 		
 		phim3 = new JPanel();
 		phim3.setOpaque(false);
-		phim3.setBounds(784, 11, 262, 311);
+		phim3.setBounds(784, 11, 262, 322);
 		add(phim3);
 		phim3.setLayout(null);
 		
@@ -135,7 +135,7 @@ public class DatVe extends JPanel{
 		phim3.add(hinh_phim3);
 		
 		book_phim3 = new nut_gradient("Mua vé", mau_gradient);
-		book_phim3.setBounds(0, 283, 262, 27);
+		book_phim3.setBounds(0, 295, 262, 27);
 		phim3.add(book_phim3);
 		
 		theloai_phim3 = new JTextArea();
@@ -146,7 +146,7 @@ public class DatVe extends JPanel{
 		theloai_phim3.setEditable(false);
 		theloai_phim3.setDisabledTextColor(new Color(255, 238, 231));
 		theloai_phim3.setBackground(new Color(112, 128, 144));
-		theloai_phim3.setBounds(0, 203, 262, 39);
+		theloai_phim3.setBounds(0, 207, 262, 39);
 		theloai_phim3.setFont(Dosis_Bold_20);
 		phim3.add(theloai_phim3);
 		
@@ -157,13 +157,13 @@ public class DatVe extends JPanel{
 		tieude_phim3.setEnabled(false);
 		tieude_phim3.setEditable(false);
 		tieude_phim3.setDisabledTextColor(new Color(255, 238, 231));
-		tieude_phim3.setBounds(0, 232, 262, 64);
+		tieude_phim3.setBounds(0, 236, 262, 64);
 		tieude_phim3.setFont(Dosis_Bold_14);
 		phim3.add(tieude_phim3);
 		
 		phim4 = new JPanel();
 		phim4.setOpaque(false);
-		phim4.setBounds(52, 371, 262, 311);
+		phim4.setBounds(52, 368, 262, 322);
 		add(phim4);
 		phim4.setLayout(null);
 		
@@ -173,7 +173,7 @@ public class DatVe extends JPanel{
 		phim4.add(hinh_phim4);
 		
 		book_phim4 = new nut_gradient("Mua vé", mau_gradient);
-		book_phim4.setBounds(0, 283, 262, 27);
+		book_phim4.setBounds(0, 295, 262, 27);
 		phim4.add(book_phim4);
 		
 		theloai_phim4 = new JTextArea();
@@ -184,7 +184,7 @@ public class DatVe extends JPanel{
 		theloai_phim4.setEditable(false);
 		theloai_phim4.setDisabledTextColor(new Color(255, 238, 231));
 		theloai_phim4.setBackground(new Color(112, 128, 144));
-		theloai_phim4.setBounds(0, 203, 262, 39);
+		theloai_phim4.setBounds(0, 206, 262, 39);
 		theloai_phim4.setFont(Dosis_Bold_20);
 		phim4.add(theloai_phim4);
 		
@@ -195,13 +195,13 @@ public class DatVe extends JPanel{
 		tieude_phim4.setEnabled(false);
 		tieude_phim4.setEditable(false);
 		tieude_phim4.setDisabledTextColor(new Color(255, 238, 231));
-		tieude_phim4.setBounds(0, 232, 262, 64);
+		tieude_phim4.setBounds(0, 237, 262, 64);
 		tieude_phim4.setFont(Dosis_Bold_14);
 		phim4.add(tieude_phim4);
 		
 		phim5 = new JPanel();
 		phim5.setOpaque(false);
-		phim5.setBounds(418, 371, 262, 311);
+		phim5.setBounds(418, 368, 262, 322);
 		add(phim5);
 		phim5.setLayout(null);
 		
@@ -211,7 +211,7 @@ public class DatVe extends JPanel{
 		phim5.add(hinh_phim5);
 		
 		book_phim5 = new nut_gradient("Mua vé", mau_gradient);
-		book_phim5.setBounds(0, 283, 262, 27);
+		book_phim5.setBounds(0, 295, 262, 27);
 		phim5.add(book_phim5);
 		
 		theloai_phim5 = new JTextArea();
@@ -221,7 +221,7 @@ public class DatVe extends JPanel{
 		theloai_phim5.setEnabled(false);
 		theloai_phim5.setEditable(false);
 		theloai_phim5.setDisabledTextColor(new Color(255, 238, 231));
-		theloai_phim5.setBounds(0, 232, 262, 64);
+		theloai_phim5.setBounds(0, 236, 262, 64);
 		theloai_phim5.setFont(Dosis_Bold_14);
 		phim5.add(theloai_phim5);
 		
@@ -233,13 +233,13 @@ public class DatVe extends JPanel{
 		tieude_phim5.setEditable(false);
 		tieude_phim5.setDisabledTextColor(new Color(255, 238, 231));
 		tieude_phim5.setBackground(new Color(112, 128, 144));
-		tieude_phim5.setBounds(0, 203, 262, 39);
+		tieude_phim5.setBounds(0, 207, 262, 39);
 		tieude_phim5.setFont(Dosis_Bold_20);
 		phim5.add(tieude_phim5);
 		
 		phim6 = new JPanel();
 		phim6.setOpaque(false);
-		phim6.setBounds(784, 371, 262, 311);
+		phim6.setBounds(784, 368, 262, 322);
 		add(phim6);
 		phim6.setLayout(null);
 		
@@ -249,7 +249,7 @@ public class DatVe extends JPanel{
 		phim6.add(hinh_phim6);
 		
 		book_phim6 = new nut_gradient("Mua vé", mau_gradient);
-		book_phim6.setBounds(0, 283, 262, 27);
+		book_phim6.setBounds(0, 295, 262, 27);
 		phim6.add(book_phim6);
 		
 		theloai_phim6 = new JTextArea();
@@ -259,19 +259,19 @@ public class DatVe extends JPanel{
 		theloai_phim6.setEnabled(false);
 		theloai_phim6.setEditable(false);
 		theloai_phim6.setDisabledTextColor(new Color(255, 238, 231));
-		theloai_phim6.setBounds(0, 232, 262, 64);
+		theloai_phim6.setBounds(0, 236, 262, 64);
 		theloai_phim6.setFont(Dosis_Bold_14);
 		phim6.add(theloai_phim6);
 		
 		tieude_phim6 = new JTextArea();
-		tieude_phim6.setText("CÁM");
+		tieude_phim6.setText("CÁM - CHUYỆN CHƯA KỂ");
 		tieude_phim6.setOpaque(false);
 		tieude_phim6.setFont(null);
 		tieude_phim6.setEnabled(false);
 		tieude_phim6.setEditable(false);
 		tieude_phim6.setDisabledTextColor(new Color(255, 238, 231));
 		tieude_phim6.setBackground(new Color(112, 128, 144));
-		tieude_phim6.setBounds(0, 203, 262, 39);
+		tieude_phim6.setBounds(0, 207, 262, 39);
 		tieude_phim6.setFont(Dosis_Bold_20);
 		phim6.add(tieude_phim6);
 		
