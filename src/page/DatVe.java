@@ -48,7 +48,7 @@ public class DatVe extends JPanel{
 		
 		phim1 = new JPanel();
 		phim1.setOpaque(false);
-		phim1.setBounds(52, 11, 262, 311);
+		phim1.setBounds(52, 11, 262, 322);
 		add(phim1);
 		phim1.setLayout(null);
 		
@@ -60,7 +60,7 @@ public class DatVe extends JPanel{
 		phim1.add(hinh_phim1);
 		
 		book_phim1 = new nut_gradient("Mua vé", mau_gradient);
-		book_phim1.setBounds(0, 283, 262, 27);
+		book_phim1.setBounds(0, 295, 262, 27);
 		phim1.add(book_phim1);
 		theloai_phim1 = new JTextArea();
 		theloai_phim1.setTabSize(2);
@@ -71,7 +71,7 @@ public class DatVe extends JPanel{
 		theloai_phim1.setOpaque(false);
 		theloai_phim1.setEnabled(false);
 		theloai_phim1.setEditable(false);
-		theloai_phim1.setBounds(0, 232, 262, 64);
+		theloai_phim1.setBounds(0, 236, 262, 64);
 		phim1.add(theloai_phim1);
 		
 		tieude_phim1 = new JTextArea();
@@ -82,7 +82,7 @@ public class DatVe extends JPanel{
 		tieude_phim1.setFont(Dosis_Bold_20);
 		tieude_phim1.setEnabled(false);
 		tieude_phim1.setEditable(false);
-		tieude_phim1.setBounds(0, 203, 262, 39);
+		tieude_phim1.setBounds(0, 207, 262, 39);
 		phim1.add(tieude_phim1);
 		
 		phim2 = new JPanel();
