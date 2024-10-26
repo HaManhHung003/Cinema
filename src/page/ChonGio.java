@@ -45,7 +45,7 @@ public class ChonGio extends JPanel{
 		mau_gradient2 = new GradientPaint(p1,new Color(217,217,217),p2,new Color(217,217,217));
 		
 		hinh_phim = new JLabel("New label");
-		hinh_phim.setIcon(new ImageIcon("src\\Image\\modomdom.jpg"));
+		hinh_phim.setIcon(new ImageIcon("src\\resources\\Image\\modomdom.jpg"));
 		hinh_phim.setBounds(40, 21, 287, 470);
 		add(hinh_phim);
 		

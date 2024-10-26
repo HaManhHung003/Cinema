@@ -54,7 +54,7 @@ public class DatVe extends JPanel{
 		
 		hinh_phim1 = new JLabel("New label");
 		hinh_phim1.setBorder(null);
-		hinh_phim1.setIcon(new ImageIcon("src\\Image\\banner\\modomdom.jpg"));
+		hinh_phim1.setIcon(new ImageIcon("src\\resources\\Image\\banner\\modomdom.jpg"));
 		hinh_phim1.setBackground(new Color(0, 0, 0));
 		hinh_phim1.setBounds(0, 0, 262, 238);
 		phim1.add(hinh_phim1);
@@ -91,7 +91,7 @@ public class DatVe extends JPanel{
 		phim2.setLayout(null);
 		
 		hinh_phim2 = new JLabel("New label");
-		hinh_phim2.setIcon(new ImageIcon("src\\Image\\banner\\kumathong.png"));
+		hinh_phim2.setIcon(new ImageIcon("src\\resources\\Image\\banner\\kumathong.png"));
 		hinh_phim2.setBounds(0, 0, 262, 238);
 		phim2.add(hinh_phim2);
 		
@@ -130,7 +130,7 @@ public class DatVe extends JPanel{
 		
 		hinh_phim3 = new JLabel("New label");
 		hinh_phim3.setBounds(0, 0, 262, 238);
-		hinh_phim3.setIcon(new ImageIcon("src\\Image\\banner\\transformer.jpg"));
+		hinh_phim3.setIcon(new ImageIcon("src\\resources\\Image\\banner\\transformer.jpg"));
 		phim3.add(hinh_phim3);
 		
 		book_phim3 = new nut_gradient("Mua vé", mau_gradient);
@@ -168,7 +168,7 @@ public class DatVe extends JPanel{
 		
 		hinh_phim4 = new JLabel("New label");
 		hinh_phim4.setBounds(0, 0, 262, 238);
-		hinh_phim4.setIcon(new ImageIcon("src\\Image\\banner\\quyantang2.jpg"));
+		hinh_phim4.setIcon(new ImageIcon("src\\resources\\Image\\banner\\quyantang2.jpg"));
 		phim4.add(hinh_phim4);
 		
 		book_phim4 = new nut_gradient("Mua vé", mau_gradient);
@@ -206,7 +206,7 @@ public class DatVe extends JPanel{
 		
 		hinh_phim5 = new JLabel("New label");
 		hinh_phim5.setBounds(0, 0, 262, 238);
-		hinh_phim5.setIcon(new ImageIcon("src\\Image\\banner\\joker.jpg"));
+		hinh_phim5.setIcon(new ImageIcon("src\\resources\\Image\\banner\\joker.jpg"));
 		phim5.add(hinh_phim5);
 		
 		book_phim5 = new nut_gradient("Mua vé", mau_gradient);
@@ -244,7 +244,7 @@ public class DatVe extends JPanel{
 		
 		hinh_phim6 = new JLabel("New label");
 		hinh_phim6.setBounds(0, 0, 262, 238);
-		hinh_phim6.setIcon(new ImageIcon("src\\Image\\banner\\cam.jpg"));
+		hinh_phim6.setIcon(new ImageIcon("src\\resources\\Image\\banner\\cam.jpg"));
 		phim6.add(hinh_phim6);
 		
 		book_phim6 = new nut_gradient("Mua vé", mau_gradient);

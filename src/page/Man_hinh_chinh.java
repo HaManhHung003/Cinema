@@ -29,7 +29,7 @@ public class Man_hinh_chinh extends JFrame{
 	public static final long serialVersionUID = 1L;
 	private JPanel[] panels;
 	public Man_hinh_chinh() throws FontFormatException, IOException {
-		setSize(1457,1063);
+		setSize(1457,1024);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		getContentPane().setLayout(null);
 		
@@ -49,7 +49,7 @@ public class Man_hinh_chinh extends JFrame{
 		logo = new JLabel("");
 		logo.setIconTextGap(0);
 		logo.setHorizontalAlignment(SwingConstants.CENTER);
-		logo.setIcon(new ImageIcon("src\\Image\\smallLogo.png"));
+		logo.setIcon(new ImageIcon("src\\resources\\Image\\smallLogo.png"));
 		logo.setBounds(22, 11, 177, 59);
 		menu_pnl.add(logo);
 		
@@ -66,7 +66,7 @@ public class Man_hinh_chinh extends JFrame{
 		home_pnl.setLayout(null);
 		
 		home_icon = new JLabel("");
-		home_icon.setIcon(new ImageIcon("src\\Icon\\home.png"));
+		home_icon.setIcon(new ImageIcon("src\\resources\\Icon\\home.png"));
 		home_icon.setIconTextGap(0);
 		home_icon.setHorizontalAlignment(SwingConstants.CENTER);
 		home_icon.setBounds(22, 11, 32, 32);
@@ -88,7 +88,7 @@ public class Man_hinh_chinh extends JFrame{
 		bookTicket_icon = new JLabel("");
 		bookTicket_icon.setBounds(23, 11, 32, 32);
 		bookTicket_pnl.add(bookTicket_icon);
-		bookTicket_icon.setIcon(new ImageIcon("src\\Icon\\bookTicket.png"));
+		bookTicket_icon.setIcon(new ImageIcon("src\\resources\\Icon\\bookTicket.png"));
 		bookTicket_icon.setIconTextGap(0);
 		bookTicket_icon.setHorizontalAlignment(SwingConstants.CENTER);
 		
@@ -106,7 +106,7 @@ public class Man_hinh_chinh extends JFrame{
 		menu_pnl.add(sale_pnl);
 		
 		sale_icon = new JLabel("");
-		sale_icon.setIcon(new ImageIcon("src\\Icon\\sale.png"));
+		sale_icon.setIcon(new ImageIcon("src\\resources\\Icon\\sale.png"));
 		sale_icon.setForeground(new Color(64, 0, 128));
 		sale_icon.setBounds(22, 11, 38, 32);
 		sale_pnl.add(sale_icon);
@@ -126,7 +126,7 @@ public class Man_hinh_chinh extends JFrame{
 		menu_pnl.add(staff_pnl);
 		
 		staff_icon = new JLabel("");
-		staff_icon.setIcon(new ImageIcon("src\\Icon\\staff.png"));
+		staff_icon.setIcon(new ImageIcon("src\\resources\\Icon\\staff.png"));
 		staff_icon.setForeground(new Color(64, 0, 128));
 		staff_icon.setBounds(22, 11, 32, 32);
 		staff_pnl.add(staff_icon);
@@ -145,7 +145,7 @@ public class Man_hinh_chinh extends JFrame{
 		menu_pnl.add(customer_pnl);
 		
 		customer_icon = new JLabel("");
-		customer_icon.setIcon(new ImageIcon("src\\Icon\\customer.png"));
+		customer_icon.setIcon(new ImageIcon("src\\resources\\Icon\\customer.png"));
 		customer_icon.setForeground(new Color(64, 0, 128));
 		customer_icon.setBounds(22, 11, 32, 32);
 		customer_pnl.add(customer_icon);
@@ -164,7 +164,7 @@ public class Man_hinh_chinh extends JFrame{
 		menu_pnl.add(statistic_pnl);
 		
 		statistic_icon = new JLabel("");
-		statistic_icon.setIcon(new ImageIcon("src\\Icon\\statistic.png"));
+		statistic_icon.setIcon(new ImageIcon("src\\resources\\Icon\\statistic.png"));
 		statistic_icon.setForeground(new Color(64, 0, 128));
 		statistic_icon.setBounds(22, 11, 32, 32);
 		statistic_pnl.add(statistic_icon);
@@ -183,7 +183,7 @@ public class Man_hinh_chinh extends JFrame{
 		menu_pnl.add(help_pnl);
 		
 		help_icon = new JLabel("");
-		help_icon.setIcon(new ImageIcon("src\\Icon\\help.png"));
+		help_icon.setIcon(new ImageIcon("src\\resources\\Icon\\help.png"));
 		help_icon.setForeground(new Color(64, 0, 128));
 		help_icon.setBounds(22, 11, 32, 32);
 		help_pnl.add(help_icon);
@@ -203,7 +203,7 @@ public class Man_hinh_chinh extends JFrame{
 		menu_pnl.add(logOut_pnl);
 		
 		logOut_icon = new JLabel("");
-		logOut_icon.setIcon(new ImageIcon("src\\Icon\\logOut.png"));
+		logOut_icon.setIcon(new ImageIcon("src\\resources\\Icon\\logOut.png"));
 		logOut_icon.setForeground(new Color(64, 0, 128));
 		logOut_icon.setBounds(22, 11, 32, 32);
 		logOut_pnl.add(logOut_icon);
@@ -229,7 +229,7 @@ public class Man_hinh_chinh extends JFrame{
 		header_pnl.setLayout(null);
 		
 		JLabel avatar = new JLabel("");
-		avatar.setIcon(new ImageIcon("src\\Image\\subLogo.jpg"));
+		avatar.setIcon(new ImageIcon("src\\resources\\Image\\subLogo.jpg"));
 		avatar.setIconTextGap(0);
 		avatar.setHorizontalAlignment(SwingConstants.CENTER);
 		avatar.setBounds(1034, 15, 70, 70);

@@ -36,12 +36,12 @@ public class Khuyen_Mai extends JPanel{
 
 		
 		sale_img1 = new JLabel("New label");
-		sale_img1.setIcon(new ImageIcon("src\\Image\\promotion1.png"));
+		sale_img1.setIcon(new ImageIcon("src\\resources\\Image\\promotion1.png"));
 		sale_img1.setBounds(42, 42, 487, 302);
 		add(sale_img1);
 		
 		sale_img2 = new JLabel("New label");
-		sale_img2.setIcon(new ImageIcon("src\\Image\\promotion2.jpg"));
+		sale_img2.setIcon(new ImageIcon("src\\resources\\Image\\promotion2.jpg"));
 		sale_img2.setBounds(633, 429, 430, 430);
 		add(sale_img2);
 		

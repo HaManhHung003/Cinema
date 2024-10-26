@@ -42,7 +42,7 @@ public class DangNhap extends JFrame{
 		panel.setLayout(null);
 		
 		logo = new JLabel("New label");
-		logo.setIcon(new ImageIcon("src\\Image\\logo.png"));
+		logo.setIcon(new ImageIcon("src\\resources\\Image\\logo.png"));
 		logo.setBounds(105, 23, 213, 103);
 		panel.add(logo);
 		
@@ -69,7 +69,7 @@ public class DangNhap extends JFrame{
 		pass_pnl.setLayout(null);
 		
 		hiddenPass = new JLabel("New label");
-		hiddenPass.setIcon(new ImageIcon("src\\Icon\\hidePass.png"));
+		hiddenPass.setIcon(new ImageIcon("src\\resources\\Icon\\hidePass.png"));
 		hiddenPass.setBounds(303, 23, 24, 24);
 		pass_pnl.add(hiddenPass);
 		
@@ -84,7 +84,7 @@ public class DangNhap extends JFrame{
 		
 		background = new JLabel("");
 		background.setBounds(0, 0, 1820, 1024);
-		background.setIcon(new ImageIcon("src\\Image\\logInBackground.png"));
+		background.setIcon(new ImageIcon("src\\resources\\Image\\logInBackground.png"));
 		frame.getContentPane().add(background);
 	}
 	
