@@ -32,7 +32,7 @@ public class Man_hinh_chinh extends JFrame{
 //		setSize(1550,860);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		getContentPane().setLayout(null);
-		setBounds(-6,0,1550,870);
+		setBounds(-6,0,1550,820);
 		
 		File DosisB = new File("src\\resources\\fonts\\Dosis-Bold.ttf");
 		File Dosis = new File("src\\resources\\fonts\\Dosis-Regular.ttf");
