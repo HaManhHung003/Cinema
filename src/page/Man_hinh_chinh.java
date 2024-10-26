@@ -29,9 +29,10 @@ public class Man_hinh_chinh extends JFrame{
 	public static final long serialVersionUID = 1L;
 	private JPanel[] panels;
 	public Man_hinh_chinh() throws FontFormatException, IOException {
-		setSize(1457,1024);
+//		setSize(1550,860);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		getContentPane().setLayout(null);
+		setBounds(-6,0,1550,870);
 		
 		File DosisB = new File("src\\resources\\fonts\\Dosis-Bold.ttf");
 		File Dosis = new File("src\\resources\\fonts\\Dosis-Regular.ttf");
@@ -42,7 +43,7 @@ public class Man_hinh_chinh extends JFrame{
 		menu_pnl = new JPanel();
 		menu_pnl.setBorder(new MatteBorder(0, 0, 0, 1, (Color) new Color(45, 45, 45)));
 		menu_pnl.setBackground(new Color(36, 34, 34));
-		menu_pnl.setBounds(0, 0, 312, 1024);
+		menu_pnl.setBounds(0, 0, 312, 850);
 		getContentPane().add(menu_pnl);
 		menu_pnl.setLayout(null);
 		
@@ -218,7 +219,7 @@ public class Man_hinh_chinh extends JFrame{
 		
 		main_pnl = new JPanel();
 		main_pnl.setBackground(new Color(36, 34, 34));
-		main_pnl.setBounds(312, 0, 1129, 1024);
+		main_pnl.setBounds(312, 0, 1129, 950);
 		getContentPane().add(main_pnl);
 		main_pnl.setLayout(null);
 		
@@ -256,7 +257,7 @@ public class Man_hinh_chinh extends JFrame{
 		
 		inform_pnl = new JPanel();
 		inform_pnl.setBackground(new Color(36, 34, 34));
-		inform_pnl.setBounds(0, 102, 1128, 920);
+		inform_pnl.setBounds(0, 102, 1128, 846);
 		main_pnl.add(inform_pnl);
 		inform_pnl.setLayout(new CardLayout());
 		cardLayout = (CardLayout) inform_pnl.getLayout();

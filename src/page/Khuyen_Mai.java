@@ -24,7 +24,7 @@ public class Khuyen_Mai extends JPanel{
 	private JLabel sale_img1,sale_img2,sale_title1,sale_title2;
 	private JTextArea sale_inform2,sale_inform1;
 	public Khuyen_Mai() throws FontFormatException, IOException{
-		setSize(1128,920);
+		setSize(1128,846);
 		setLayout(null);
 		setBackground(new Color(36,34,34));
 		
