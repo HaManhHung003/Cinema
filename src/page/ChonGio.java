@@ -47,14 +47,14 @@ public class ChonGio extends JPanel{
 		
 		hinh_phim = new JLabel("New label");
 		hinh_phim.setIcon(new ImageIcon("src\\resources\\Image\\modomdom.jpg"));
-		hinh_phim.setBounds(40, 21, 251, 412);
+		hinh_phim.setBounds(40, 21, 308, 412);
 		add(hinh_phim);
 		
 		ten_phim = new JLabel();
 		ten_phim.setText("MỘ ĐOM ĐÓM");
 		ten_phim.setForeground(new Color(255, 142, 60));
 		ten_phim.setFont(Dosis_Bold_20);
-		ten_phim.setBounds(358, 11, 664, 63);
+		ten_phim.setBounds(368, 11, 664, 63);
 		add(ten_phim);
 		
 		mo_ta = new JTextArea();
@@ -64,7 +64,7 @@ public class ChonGio extends JPanel{
 		mo_ta.setEditable(false);
 		mo_ta.setDisabledTextColor(new Color(255, 255, 255));
 		mo_ta.setFont(Dosis_Bold_15);
-		mo_ta.setBounds(358, 85, 760, 347);
+		mo_ta.setBounds(368, 85, 760, 347);
 		add(mo_ta);
 		
 		lich_chieu = new JLabel("Lịch chiếu");
