@@ -51,13 +51,13 @@ public class Man_hinh_chinh extends JFrame{
 		logo.setIconTextGap(0);
 		logo.setHorizontalAlignment(SwingConstants.CENTER);
 		logo.setIcon(new ImageIcon("src\\resources\\Image\\smallLogo.png"));
-		logo.setBounds(41, 11, 177, 59);
+		logo.setBounds(28, 11, 177, 59);
 		menu_pnl.add(logo);
 		
 		menu_title = new JLabel("Menu");
 		menu_title.setForeground(new Color(255, 238, 231));
 		menu_title.setFont(Dosis_Bold);
-		menu_title.setBounds(28, 81, 82, 32);
+		menu_title.setBounds(44, 81, 82, 32);
 		menu_pnl.add(menu_title);
 		
 		home_pnl = new JPanel();
