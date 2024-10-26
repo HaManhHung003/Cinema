@@ -26,15 +26,16 @@ public class ChonGio extends JPanel{
 	nut_gradient ngay_1,ngay_2,ngay_3,ngay_4,ngay_5,gio_1,gio_2,gio_3,gio_4,gio_5,gio_6,gio_7,gio_8,gio_9,gio_10,nut;
 	private GradientPaint mau_gradient1,mau_gradient2;
 	public ChonGio() throws FontFormatException, IOException {
-		setSize(1128,920);
+		setSize(1128,705);
 		setLayout(null);
 		setBackground(new Color(36,34,34));
 		
 		File DosisB = new File("src\\resources\\fonts\\Dosis-Bold.ttf");
 		File Dosis = new File("src\\resources\\fonts\\Dosis-Regular.ttf");
 		Font Dosis_Bold = Font.createFont(Font.TRUETYPE_FONT, DosisB).deriveFont(25f);
-		Font Dosis_Bold_20 = Font.createFont(Font.TRUETYPE_FONT, DosisB).deriveFont(20f);
-		Font Dosis_Bold_18 = Font.createFont(Font.TRUETYPE_FONT, DosisB).deriveFont(18f);
+		Font Dosis_Bold_20 = Font.createFont(Font.TRUETYPE_FONT, DosisB).deriveFont(25f);
+		Font Dosis_Bold_15 = Font.createFont(Font.TRUETYPE_FONT, DosisB).deriveFont(20f);
+		Font Dosis_Bold_18 = Font.createFont(Font.TRUETYPE_FONT, DosisB).deriveFont(15f);
 		Font Dosis_Bold_40 = Font.createFont(Font.TRUETYPE_FONT, DosisB).deriveFont(40f);
 		Font Dosis_Bold_35 = Font.createFont(Font.TRUETYPE_FONT, DosisB).deriveFont(35f);
 		Font Dosis_Regular = Font.createFont(Font.TRUETYPE_FONT, Dosis).deriveFont(21f);
@@ -45,15 +46,15 @@ public class ChonGio extends JPanel{
 		mau_gradient2 = new GradientPaint(p1,new Color(217,217,217),p2,new Color(217,217,217));
 		
 		hinh_phim = new JLabel("New label");
-		hinh_phim.setIcon(new ImageIcon("src\\Image\\modomdom.jpg"));
-		hinh_phim.setBounds(40, 21, 287, 470);
+		hinh_phim.setIcon(new ImageIcon("src\\resources\\Image\\modomdom.jpg"));
+		hinh_phim.setBounds(40, 21, 251, 412);
 		add(hinh_phim);
 		
 		ten_phim = new JLabel();
 		ten_phim.setText("MỘ ĐOM ĐÓM");
 		ten_phim.setForeground(new Color(255, 142, 60));
-		ten_phim.setFont(Dosis_Bold_40);
-		ten_phim.setBounds(358, 21, 664, 63);
+		ten_phim.setFont(Dosis_Bold_20);
+		ten_phim.setBounds(358, 11, 664, 63);
 		add(ten_phim);
 		
 		mo_ta = new JTextArea();
@@ -62,88 +63,88 @@ public class ChonGio extends JPanel{
 		mo_ta.setEnabled(false);
 		mo_ta.setEditable(false);
 		mo_ta.setDisabledTextColor(new Color(255, 255, 255));
-		mo_ta.setFont(Dosis_Bold);
-		mo_ta.setBounds(358, 95, 760, 439);
+		mo_ta.setFont(Dosis_Bold_15);
+		mo_ta.setBounds(358, 85, 760, 347);
 		add(mo_ta);
 		
 		lich_chieu = new JLabel("Lịch chiếu");
 		lich_chieu.setForeground(new Color(255, 255, 255));
-		lich_chieu.setFont(Dosis_Bold_35);
-		lich_chieu.setBounds(40, 542, 287, 48);
+		lich_chieu.setFont(Dosis_Bold_20);
+		lich_chieu.setBounds(39, 444, 287, 48);
 		add(lich_chieu);
 		
 		ngay_1 = new nut_gradient("7/10",mau_gradient2);
-		ngay_1.setBounds(198, 635, 114, 50);
+		ngay_1.setBounds(198, 486, 100, 44);
 		ngay_1.setFont(Dosis_Bold_18);
 		add(ngay_1);
 		
 		ngay_2 = new nut_gradient("8/10",mau_gradient2);
-		ngay_2.setBounds(354, 635, 114, 50);
+		ngay_2.setBounds(354, 486, 100, 44);
 		ngay_2.setFont(Dosis_Bold_18);
 		add(ngay_2);
 		
 		ngay_3 = new nut_gradient("9/10",mau_gradient2);
-		ngay_3.setBounds(510, 635, 114, 50);
+		ngay_3.setBounds(510, 486, 100, 44);
 		ngay_3.setFont(Dosis_Bold_18);
 		add(ngay_3);
 		
 		ngay_4 = new nut_gradient("10/10",mau_gradient2);
-		ngay_4.setBounds(666, 635, 114, 50);
+		ngay_4.setBounds(666, 486, 100, 44);
 		ngay_4.setFont(Dosis_Bold_18);
 		add(ngay_4);
 		
 		ngay_5 = new nut_gradient("11/10",mau_gradient2);
-		ngay_5.setBounds(822, 635, 114, 50);
+		ngay_5.setBounds(822, 486, 100, 44);
 		ngay_5.setFont(Dosis_Bold_18);
 		add(ngay_5);
 		
 		gio_1 = new nut_gradient("10:30",mau_gradient2);
-		gio_1.setBounds(120, 732, 110, 43);
+		gio_1.setBounds(120, 564, 96, 38);
 		gio_1.setFont(Dosis_Bold_18);
 		add(gio_1);
 		
 		gio_2 = new nut_gradient("12:10",mau_gradient2);
-		gio_2.setBounds(318, 732, 110, 43);
+		gio_2.setBounds(318, 564, 96, 38);
 		gio_2.setFont(Dosis_Bold_18);
 		add(gio_2);
 		
 		gio_3 = new nut_gradient("13:50",mau_gradient2);
-		gio_3.setBounds(516, 732, 110, 43);
+		gio_3.setBounds(516, 564, 96, 38);
 		gio_3.setFont(Dosis_Bold_18);
 		add(gio_3);
 		
 		gio_4 = new nut_gradient("15:30",mau_gradient2);
-		gio_4.setBounds(714, 732, 110, 43);
+		gio_4.setBounds(714, 564, 96, 38);
 		gio_4.setFont(Dosis_Bold_18);
 		add(gio_4);
 		
 		gio_5 = new nut_gradient("17:10",mau_gradient2);
-		gio_5.setBounds(912, 732, 110, 43);
+		gio_5.setBounds(912, 564, 96, 38);
 		gio_5.setFont(Dosis_Bold_18);
 		add(gio_5);
 		
 		gio_6 = new nut_gradient("18:50",mau_gradient2);
-		gio_6.setBounds(120, 822, 110, 43);
+		gio_6.setBounds(120, 640, 96, 38);
 		gio_6.setFont(Dosis_Bold_18);
 		add(gio_6);
 		
 		gio_7 = new nut_gradient("20:30",mau_gradient2);
-		gio_7.setBounds(318, 822, 110, 43);
+		gio_7.setBounds(318, 640, 96, 38);
 		gio_7.setFont(Dosis_Bold_18);
 		add(gio_7);
 		
 		gio_8 = new nut_gradient("22:10",mau_gradient2);
-		gio_8.setBounds(516, 822, 110, 43);
+		gio_8.setBounds(516, 640, 96, 38);
 		gio_8.setFont(Dosis_Bold_18);
 		add(gio_8);
 		
 		gio_9 = new nut_gradient("23:00",mau_gradient2);
-		gio_9.setBounds(714, 822, 110, 43);
+		gio_9.setBounds(714, 640, 96, 38);
 		gio_9.setFont(Dosis_Bold_18);
 		add(gio_9);
 		
 		gio_10 = new nut_gradient("23:50",mau_gradient2);
-		gio_10.setBounds(912, 822, 110, 43);
+		gio_10.setBounds(912, 640, 96, 38);
 		gio_10.setFont(Dosis_Bold_18);
 		add(gio_10);
 		
