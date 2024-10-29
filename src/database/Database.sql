@@ -33,6 +33,7 @@ CREATE TABLE KhachHang (
 CREATE TABLE Phim (
     maPhim NVARCHAR(50) PRIMARY KEY,
     tenPhim NVARCHAR(255),
+	thoiLuongPhim TIME,
 	moTa NVARCHAR(max)
 );
 
@@ -63,10 +64,14 @@ CREATE TABLE MaGiamGia (
 );
 
 CREATE TABLE Ghe (
-    maGhe NVARCHAR(50) PRIMARY KEY,
+	maGhe NVARCHAR(50) PRIMARY KEY,
     tenGhe NVARCHAR(50),
     loaiGhe NVARCHAR(50),
-    viTri NVARCHAR(50)
+    viTri NVARCHAR(50),
+	giaGhe NVARCHAR(50),
+	maPhong NVARCHAR(50),
+	trangThai BIT,
+	FOREIGN KEY (maPhong) REFERENCES Phong(maPhong)
 );
 
 
@@ -78,12 +83,16 @@ CREATE TABLE HoaDon (
     tongTien FLOAT,
 	maPhong NVARCHAR(50),
 	maPhim NVARCHAR(50),
+	maGhe NVARCHAR (50),
     maKhachHang NVARCHAR(50), 
     maNhanVien NVARCHAR(50), 
+	maGiamGia NVARCHAR(50),
     FOREIGN KEY (maKhachHang) REFERENCES KhachHang(maKhachHang),
     FOREIGN KEY (maNhanVien) REFERENCES NhanVien(maNhanVien),
 	FOREIGN KEY (maPhong) REFERENCES Phong(maPhong),
 	FOREIGN KEY (maPhim) REFERENCES Phim(maPhim),
+	FOREIGN KEY (maGiamGia) REFERENCES MaGiamGia(maGiamGia),
+	FOREIGN KEY (maGhe) REFERENCES Ghe(maGhe)
 );
 
 
@@ -138,49 +147,49 @@ INSERT INTO LichChieuPhim (maLichChieu, maPhim, ngayChieu,gioChieu,giaVe,trangTh
 INSERT INTO LichChieuPhim (maLichChieu, maPhim, ngayChieu,gioChieu,giaVe,trangThai) VALUES (N'LC004',N'P001',N'2024-10-07', N'19:25:00',N'78000','1');
 INSERT INTO LichChieuPhim (maLichChieu, maPhim, ngayChieu,gioChieu,giaVe,trangThai) VALUES (N'LC005',N'P001',N'2024-10-07', N'22:10:00',N'78000','1');
 
-INSERT INTO LichChieuPhim (maLichChieu, maPhim, ngayChieu,gioChieu,giaVe,trangThai) VALUES (N'LC006',N'P002',N'2024-10-07', N'10:45:00',N'78000','0');
+INSERT INTO LichChieuPhim (maLichChieu, maPhim, ngayChieu,gioChieu,giaVe,trangThai) VALUES (N'LC006',N'P002',N'2024-10-07', N'10:45:00',N'78000','1');
 INSERT INTO LichChieuPhim (maLichChieu, maPhim, ngayChieu,gioChieu,giaVe,trangThai) VALUES (N'LC007',N'P002',N'2024-10-07', N'13:15:00',N'78000','1');
 INSERT INTO LichChieuPhim (maLichChieu, maPhim, ngayChieu,gioChieu,giaVe,trangThai) VALUES (N'LC008',N'P002',N'2024-10-07', N'17:20:00',N'78000','1');
 INSERT INTO LichChieuPhim (maLichChieu, maPhim, ngayChieu,gioChieu,giaVe,trangThai) VALUES (N'LC009',N'P002',N'2024-10-07', N'19:25:00',N'78000','1');
 INSERT INTO LichChieuPhim (maLichChieu, maPhim, ngayChieu,gioChieu,giaVe,trangThai) VALUES (N'LC0010',N'P002',N'2024-10-07', N'22:10:00',N'78000','1');
 
-INSERT INTO LichChieuPhim (maLichChieu, maPhim, ngayChieu,gioChieu,giaVe,trangThai) VALUES (N'LC0011',N'P003',N'2024-10-07', N'10:45:00',N'78000','0');
+INSERT INTO LichChieuPhim (maLichChieu, maPhim, ngayChieu,gioChieu,giaVe,trangThai) VALUES (N'LC0011',N'P003',N'2024-10-07', N'10:45:00',N'78000','1');
 INSERT INTO LichChieuPhim (maLichChieu, maPhim, ngayChieu,gioChieu,giaVe,trangThai) VALUES (N'LC0012',N'P003',N'2024-10-07', N'13:15:00',N'78000','1');
 INSERT INTO LichChieuPhim (maLichChieu, maPhim, ngayChieu,gioChieu,giaVe,trangThai) VALUES (N'LC0013',N'P003',N'2024-10-07', N'17:20:00',N'78000','1');
 INSERT INTO LichChieuPhim (maLichChieu, maPhim, ngayChieu,gioChieu,giaVe,trangThai) VALUES (N'LC0014',N'P003',N'2024-10-07', N'19:25:00',N'78000','1');
 INSERT INTO LichChieuPhim (maLichChieu, maPhim, ngayChieu,gioChieu,giaVe,trangThai) VALUES (N'LC0015',N'P003',N'2024-10-07', N'22:10:00',N'78000','1');
 
-INSERT INTO LichChieuPhim (maLichChieu, maPhim, ngayChieu,gioChieu,giaVe,trangThai) VALUES (N'LC0016',N'P004',N'2024-10-07', N'10:45:00',N'78000','0');
+INSERT INTO LichChieuPhim (maLichChieu, maPhim, ngayChieu,gioChieu,giaVe,trangThai) VALUES (N'LC0016',N'P004',N'2024-10-07', N'10:45:00',N'78000','1');
 INSERT INTO LichChieuPhim (maLichChieu, maPhim, ngayChieu,gioChieu,giaVe,trangThai) VALUES (N'LC0017',N'P004',N'2024-10-07', N'13:15:00',N'78000','1');
 INSERT INTO LichChieuPhim (maLichChieu, maPhim, ngayChieu,gioChieu,giaVe,trangThai) VALUES (N'LC0018',N'P004',N'2024-10-07', N'17:20:00',N'78000','1');
 INSERT INTO LichChieuPhim (maLichChieu, maPhim, ngayChieu,gioChieu,giaVe,trangThai) VALUES (N'LC0019',N'P004',N'2024-10-07', N'19:25:00',N'78000','1');
 INSERT INTO LichChieuPhim (maLichChieu, maPhim, ngayChieu,gioChieu,giaVe,trangThai) VALUES (N'LC0020',N'P004',N'2024-10-07', N'22:10:00',N'78000','1');
 
-INSERT INTO LichChieuPhim (maLichChieu, maPhim, ngayChieu,gioChieu,giaVe,trangThai) VALUES (N'LC0021',N'P005',N'2024-10-07', N'10:45:00',N'78000','0');
+INSERT INTO LichChieuPhim (maLichChieu, maPhim, ngayChieu,gioChieu,giaVe,trangThai) VALUES (N'LC0021',N'P005',N'2024-10-07', N'10:45:00',N'78000','1');
 INSERT INTO LichChieuPhim (maLichChieu, maPhim, ngayChieu,gioChieu,giaVe,trangThai) VALUES (N'LC0022',N'P005',N'2024-10-07', N'13:15:00',N'78000','1');
 INSERT INTO LichChieuPhim (maLichChieu, maPhim, ngayChieu,gioChieu,giaVe,trangThai) VALUES (N'LC0023',N'P005',N'2024-10-07', N'17:20:00',N'78000','1');
 INSERT INTO LichChieuPhim (maLichChieu, maPhim, ngayChieu,gioChieu,giaVe,trangThai) VALUES (N'LC0024',N'P005',N'2024-10-07', N'19:25:00',N'78000','1');
 INSERT INTO LichChieuPhim (maLichChieu, maPhim, ngayChieu,gioChieu,giaVe,trangThai) VALUES (N'LC0025',N'P005',N'2024-10-07', N'22:10:00',N'78000','1');
 
-INSERT INTO LichChieuPhim (maLichChieu, maPhim, ngayChieu,gioChieu,giaVe,trangThai) VALUES (N'LC0026',N'P006',N'2024-10-07', N'10:45:00',N'78000','0');
+INSERT INTO LichChieuPhim (maLichChieu, maPhim, ngayChieu,gioChieu,giaVe,trangThai) VALUES (N'LC0026',N'P006',N'2024-10-07', N'10:45:00',N'78000','1');
 INSERT INTO LichChieuPhim (maLichChieu, maPhim, ngayChieu,gioChieu,giaVe,trangThai) VALUES (N'LC0027',N'P006',N'2024-10-07', N'13:15:00',N'78000','1');
 INSERT INTO LichChieuPhim (maLichChieu, maPhim, ngayChieu,gioChieu,giaVe,trangThai) VALUES (N'LC0028',N'P006',N'2024-10-07', N'17:20:00',N'78000','1');
 INSERT INTO LichChieuPhim (maLichChieu, maPhim, ngayChieu,gioChieu,giaVe,trangThai) VALUES (N'LC0029',N'P006',N'2024-10-07', N'19:25:00',N'78000','1');
 INSERT INTO LichChieuPhim (maLichChieu, maPhim, ngayChieu,gioChieu,giaVe,trangThai) VALUES (N'LC0030',N'P006',N'2024-10-07', N'22:10:00',N'78000','1');
 
-INSERT INTO LichChieuPhim (maLichChieu, maPhim, ngayChieu,gioChieu,giaVe,trangThai) VALUES (N'LC0031',N'P007',N'2024-10-07', N'10:45:00',N'78000','0');
+INSERT INTO LichChieuPhim (maLichChieu, maPhim, ngayChieu,gioChieu,giaVe,trangThai) VALUES (N'LC0031',N'P007',N'2024-10-07', N'10:45:00',N'78000','1');
 INSERT INTO LichChieuPhim (maLichChieu, maPhim, ngayChieu,gioChieu,giaVe,trangThai) VALUES (N'LC0032',N'P007',N'2024-10-07', N'13:15:00',N'78000','1');
 INSERT INTO LichChieuPhim (maLichChieu, maPhim, ngayChieu,gioChieu,giaVe,trangThai) VALUES (N'LC0033',N'P007',N'2024-10-07', N'17:20:00',N'78000','1');
 INSERT INTO LichChieuPhim (maLichChieu, maPhim, ngayChieu,gioChieu,giaVe,trangThai) VALUES (N'LC0034',N'P007',N'2024-10-07', N'19:25:00',N'78000','1');
 INSERT INTO LichChieuPhim (maLichChieu, maPhim, ngayChieu,gioChieu,giaVe,trangThai) VALUES (N'LC0035',N'P007',N'2024-10-07', N'22:10:00',N'78000','1');
 
-INSERT INTO LichChieuPhim (maLichChieu, maPhim, ngayChieu,gioChieu,giaVe,trangThai) VALUES (N'LC0036',N'P008',N'2024-10-07', N'10:45:00',N'78000','0');
+INSERT INTO LichChieuPhim (maLichChieu, maPhim, ngayChieu,gioChieu,giaVe,trangThai) VALUES (N'LC0036',N'P008',N'2024-10-07', N'10:45:00',N'78000','1');
 INSERT INTO LichChieuPhim (maLichChieu, maPhim, ngayChieu,gioChieu,giaVe,trangThai) VALUES (N'LC0037',N'P008',N'2024-10-07', N'13:15:00',N'78000','1');
 INSERT INTO LichChieuPhim (maLichChieu, maPhim, ngayChieu,gioChieu,giaVe,trangThai) VALUES (N'LC0038',N'P008',N'2024-10-07', N'17:20:00',N'78000','1');
 INSERT INTO LichChieuPhim (maLichChieu, maPhim, ngayChieu,gioChieu,giaVe,trangThai) VALUES (N'LC0039',N'P008',N'2024-10-07', N'19:25:00',N'78000','1');
 INSERT INTO LichChieuPhim (maLichChieu, maPhim, ngayChieu,gioChieu,giaVe,trangThai) VALUES (N'LC0040',N'P008',N'2024-10-07', N'22:10:00',N'78000','1');
 
-INSERT INTO LichChieuPhim (maLichChieu, maPhim, ngayChieu,gioChieu,giaVe,trangThai) VALUES (N'LC0041',N'P009',N'2024-10-07', N'10:45:00',N'78000','0');
+INSERT INTO LichChieuPhim (maLichChieu, maPhim, ngayChieu,gioChieu,giaVe,trangThai) VALUES (N'LC0041',N'P009',N'2024-10-07', N'10:45:00',N'78000','1');
 INSERT INTO LichChieuPhim (maLichChieu, maPhim, ngayChieu,gioChieu,giaVe,trangThai) VALUES (N'LC0042',N'P009',N'2024-10-07', N'13:15:00',N'78000','1');
 INSERT INTO LichChieuPhim (maLichChieu, maPhim, ngayChieu,gioChieu,giaVe,trangThai) VALUES (N'LC0043',N'P009',N'2024-10-07', N'17:20:00',N'78000','1');
 INSERT INTO LichChieuPhim (maLichChieu, maPhim, ngayChieu,gioChieu,giaVe,trangThai) VALUES (N'LC0044',N'P009',N'2024-10-07', N'19:25:00',N'78000','1');

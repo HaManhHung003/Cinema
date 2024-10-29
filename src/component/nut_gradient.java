@@ -13,8 +13,8 @@ public class nut_gradient extends JButton{
     public nut_gradient(String text, GradientPaint gradient) {
         super(text);
         this.gradient = gradient;
-        setContentAreaFilled(false); // Disable default button fill
-        setBorderPainted(false);     // Disable default border painting
+        setContentAreaFilled(false); 
+        setBorderPainted(false);     
     }
 
     @Override
@@ -22,7 +22,7 @@ public class nut_gradient extends JButton{
         if (gradient != null) {
             Graphics2D g2d = (Graphics2D) g;
             g2d.setPaint(gradient);
-            g2d.fill(new RoundRectangle2D.Double(0, 0, getWidth(), getHeight(), 0, 0)); // Rounded corners
+            g2d.fill(new RoundRectangle2D.Double(0, 0, getWidth(), getHeight(), 0, 0));
         }
         super.paintComponent(g);
     }
