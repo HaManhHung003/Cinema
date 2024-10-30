@@ -363,3 +363,24 @@ INSERT INTO HoaDon (maHD, ngayLapHD, tienNhan,tienDu,tongTien,maPhong,maPhim,maG
 (N'HD18','2024-10-30',200000,25000 ,175000,N'P05',N'P02',N'G324',NULL,3,NULL),
 (N'HD19','2024-10-30',300000,50000 ,250000,N'P04',N'P01',N'G123',NULL,2,NULL),
 (N'HD20','2024-10-30',500000,230000,270000,N'P06',N'P04',N'G345',3   ,4,NULL);
+
+CREATE PROCEDURE sp_ThemKhachHang
+    @tenKhachHang NVARCHAR(255),
+    @loaiKhachHang NVARCHAR(50),
+    @soDienThoai NVARCHAR(50),
+    @cCCD NVARCHAR(50),
+    @email NVARCHAR(50),
+    @ngaySinh DATE
+AS
+BEGIN
+    INSERT INTO KhachHang (tenKhachHang, loaiKhachHang, soDienThoai, cCCD, email, ngaySinh)
+    VALUES (@tenKhachHang, @loaiKhachHang, @soDienThoai, @cCCD, @email, @ngaySinh);
+END
+
+EXEC sp_ThemKhachHang
+    @tenKhachHang = N'Vương Ngọc Huệ',
+    @loaiKhachHang = N'Bạch kim',
+    @soDienThoai = '0987654321',
+    @cCCD = '012345678910',
+    @email = 'ngochue12@gmail.com',
+    @ngaySinh = '2003-01-01';
