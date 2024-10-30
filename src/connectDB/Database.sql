@@ -364,6 +364,8 @@ INSERT INTO HoaDon (maHD, ngayLapHD, tienNhan,tienDu,tongTien,maPhong,maPhim,maG
 (N'HD19','2024-10-30',300000,50000 ,250000,N'P04',N'P01',N'G123',NULL,2,NULL),
 (N'HD20','2024-10-30',500000,230000,270000,N'P06',N'P04',N'G345',3   ,4,NULL);
 
+select * from HoaDon
+
 CREATE PROCEDURE sp_ThemKhachHang
     @tenKhachHang NVARCHAR(255),
     @loaiKhachHang NVARCHAR(50),
@@ -384,3 +386,71 @@ EXEC sp_ThemKhachHang
     @cCCD = '012345678910',
     @email = 'ngochue12@gmail.com',
     @ngaySinh = '2003-01-01';
+
+	-- thống kê doanh thu theo ca
+CREATE PROCEDURE ThongKPhim
+    @maPhim NVARCHAR(50) = P01,      
+    @caLamViec NVARCHAR(50) = N'Sáng'     
+AS
+BEGIN
+    SELECT 
+        P.maPhim,
+        P.tenPhim,
+        NV.caLamViec,
+        SUM(HD.tongTien) AS DoanhThu
+    FROM 
+        HoaDon HD
+    INNER JOIN 
+        Phim P ON HD.maPhim = P.maPhim
+    INNER JOIN 
+        NhanVien NV ON HD.IDNV = NV.IDNV
+    WHERE 
+        (@maPhim IS NULL OR P.maPhim = @maPhim) AND       
+        (@caLamViec IS NULL OR NV.caLamViec = @caLamViec)
+    GROUP BY 
+        P.maPhim, 
+        P.tenPhim,
+        NV.caLamViec
+    ORDER BY 
+        P.tenPhim, 
+        NV.caLamViec;
+END;
+EXEC ThongKPhim;
+--EXEC ThongKPhim @maPhim = 'P01';
+--EXEC ThongKPhim @caLamViec = 'Sáng';
+EXEC ThongKPhim @maPhim = 'P01', @caLamViec = 'Sáng';
+
+
+--thống kê doanh thu phim
+CREATE PROCEDURE ThongKeDoanhThuPhim
+    @MaPhim NVARCHAR(50)
+AS
+BEGIN
+    SELECT 
+        p.maPhim,
+        p.tenPhim,
+        SUM(hd.tongTien) AS DoanhThu
+    FROM 
+        Phim p
+    LEFT JOIN 
+        HoaDon hd ON p.maPhim = hd.maPhim
+    WHERE 
+        p.maPhim = @MaPhim  
+    GROUP BY 
+        p.maPhim, p.tenPhim
+    ORDER BY 
+        DoanhThu DESC; -- Sắp xếp theo doanh thu giảm dần
+END
+EXEC ThongKeDoanhThuPhim @MaPhim = N'P01';
+EXEC ThongKeDoanhThuPhim @MaPhim = N'P02';
+EXEC ThongKeDoanhThuPhim @MaPhim = N'P03';
+EXEC ThongKeDoanhThuPhim @MaPhim = N'P04';
+EXEC ThongKeDoanhThuPhim @MaPhim = N'P05';
+EXEC ThongKeDoanhThuPhim @MaPhim = N'P06';
+EXEC ThongKeDoanhThuPhim @MaPhim = N'P07';
+EXEC ThongKeDoanhThuPhim @MaPhim = N'P08';
+EXEC ThongKeDoanhThuPhim @MaPhim = N'P09';
+
+SELECT * FROM HoaDon;
+-- bảng hóa đơn bị lỗi => thống kê NULL
+
