@@ -16,7 +16,9 @@ CREATE TABLE NhanVien (
     ngaySinh DATE,
     cCCD NVARCHAR(50),
     email NVARCHAR(50),
-    caLamViec NVARCHAR(50)
+    caLamViec NVARCHAR(50),
+	taiKhoan AS 'NVAcc' + RIGHT('00' + CAST(IDNV AS VARCHAR(2)), 2) PERSISTED,
+	matKhau AS 'NVPass' + RIGHT('000' + CAST(IDNV AS VARCHAR(3)), 3) PERSISTED
 );
 
 
@@ -38,7 +40,9 @@ CREATE TABLE Phim (
 	thoiLuongPhim TIME,
 	thoiLuong int,
 	theLoai NVARCHAR(50),
-	moTa NVARCHAR(max)
+	daoDien NVARCHAR(50),
+	moTa NVARCHAR(max),
+	hinhAnh NVARCHAR(max)
 );
 
 
@@ -131,16 +135,16 @@ INSERT INTO KhachHang (tenKhachHang, loaiKhachHang,soDienThoai,cCCD,ngaySinh,ema
 (N'Đăng Thành Tiến',N'Vàng', N'0987654321',N'081923845561','2002-01-23',N'dangthanhtien@gmail.com'),
 (N'Lê Thành Đạt',N'Vàng', N'0987678892',N'0912837645212','2005-02-09',N'lethanhdat@gmail.com');
 
-INSERT INTO Phim (maPhim, tenPhim,thoiLuongPhim,thoiLuong,theLoai,moTa) VALUES 
-(N'P01',N'Mộ Đom Đóm','01:29:00',89,N'Hoạt hình',N'Thể loại : Hoạt hình\n\nĐạo diễn : Takahata Isao \n\nThời lượng : 89 phút \n\nMô tả : Hai anh em Seita và Setsuko mất mẹ sau cuộc thả bom dữ dội của \n\nkhông quân Mỹ. Cả hai phải vật lộn để tồn tại ở Nhật Bản hậu Thế chiến II. \n\nNhưng xã hội khắc nghiệt và chúng vật lộn tìm kiếm thức ăn cũng như \n\nthoát khỏi những khó khăn giữa chiến tranh.'),
-(N'P02',N'KUMANTHONG','02:01:00',121,N'Kinh dị',N'Thể loại : Kinh Dị\n\nĐạo diễn : Xian Lim \n\nThời lượng : 101 phút \n\nMô tả : Sau cái chết của con trai, Sarah tìm đến vùng đất tâm linh Thái Lan, khẩn cần một thầy tu nổi tiếng sử dụng tro cốt đứa bé để tạo nên bức tượng Kumanthong. Bức tượng làm sống lại tình mẫu tử, nhưng triệu hồi những oan hồn ngạ quỷ đến đoạt xác cả gia đình Sarah.'),
-(N'P03',N'Qủy Ăn Tạng 2','02:23:00',143,N'Kinh dị',N'Thể loại : Kinh Dị\n\nĐạo diễn : Taweewat Wantha \n\nThời lượng : 120 phút \n\nMô tả : Ba năm sau cái chết của Yam, Yak vẫn tiếp tục săn lùng linh hồn bí ẩn mặc áo choàng đen. Gặp một cô gái có triệu chứng giống Yam, Yak phát hiện ra người bảo vệ linh hồn, pháp sư ẩn dật Puang, sống trong một khu rừng đầy nguy hiểm. Giữa những phép thuật ma quỷ và những sinh vật nguy hiểm...'),
-(N'P04',N'JOKER: FOLIE À DEUX','02:03:00',123,N'Tâm lý',N'Thể loại : Tâm Lý\n\nĐạo diễn : Todd Phillips \n\nThời lượng : 138 phút \n\nMô tả : Joker: Folie à Deux" đưa Arthur Fleck đến trại tâm thần Arkham trong khi chờ xét xử cho những tội ác của hắn với tư cách là Joker. Trong lúc vật lộn với hai bản ngã của mình, Arthur không chỉ tìm thấy tình yêu đích thực mà còn khám phá ra âm nhạc luôn tồn tại trong con người hắn.'),
-(N'P05',N'CÁM - CHUYỆN CHƯA KỂ ','01:41:00',111,N'Kinh dị',N'Thể loại : Kinh Dị\n\nĐạo diễn : Trần Hữu Tấn \n\nThời lượng : 122 phút \n\nMô tả : Câu chuyện phim là dị bản kinh dị đẫm máu lấy cảm hứng từ truyện cổ tích nổi tiếng Tấm Cám, nội dung chính của phim xoay quanh Cám - em gái cùng cha khác mẹ của Tấm đồng thời sẽ có nhiều nhân vật và chi tiết sáng tạo, gợi cảm giác vừa lạ vừa quen cho khán giả.'),
-(N'P06',N'TRANSFORMERS MỘT','01:53:00',113,N'Hoạt hình',N'Thể loại : Hoạt Hình\n\nĐạo diễn : Josh Cooley \n\nThời lượng : 122 phút \n\nMô tả : Câu chuyện về nguồn gốc chưa từng được hé lộ của Optimus Prime và Megatron. Hai nhân vật được biết đến như những kẻ thù truyền kiếp, nhưng cũng từng là những người anh em gắn bó, đã thay đổi vận mệnh của Cybertron mãi mãi.'),
-(N'P07',N'HAI MUỐI','01:58:00',118,N'Tình cảm',N'Thể loại : Tình Cảm\n\nĐạo diễn : Josh Cooley \n\nThời lượng : 118 phút \n\nMô tả : Muối – một cô gái mất mẹ từ khi vừa lọt lòng và lớn lên trong tình yêu thương của cha tại vùng đất xã đảo Thiềng Liềng. Bước ngoặt của hai cha con bắt đầu khi Muối trưởng thành, quyết định lên thành phố học tập và làm việc với ước mơ đổi đời để phụ giúp cha.'),
-(N'P08',N'LOOK BACK','00:58:00',58,N'Hoạt hình',N'Thể loại : Hoạt Hình\n\nĐạo diễn : Kiyotaka Oshiyama \n\nThời lượng : 58 phút \n\nMô tả : Fujino tự tin thái quá, trong khi Kyomoto lại sống khép kín, cả hai dường như không thể khác biệt hơn, nhưng tình yêu mãnh liệt dành cho manga đã trở thành sợi dây duy nhất kết nối họ. Thế nhưng, một ngày nọ, một biến cố đã xảy ra, khiến thế giới của họ hoàn toàn thay đổi…'),
-(N'P09',N'ROBOT HOANG DÃ','00:58:00',58,N'Hoạt hình',N'Thể loại : Hoạt Hình\n\nĐạo diễn : Chris Sanders \n\nThời lượng : 58 phút \n\nMô tả : Cuộc phiêu lưu hoành tráng theo chân hành trình của một robot — đơn vị ROZZUM 7134, gọi tắt là Roz.Roz vô tình dạt vào hoang đảo sau một sự cố và nơi đây trở thành địa điểm sống mới của cô. Tại đây, Roz kết thân và nhận nuôi một chú ngỗng con, đặt tên là Brightbill..');
+INSERT INTO Phim (maPhim, tenPhim,thoiLuongPhim,thoiLuong,theLoai,daoDien,moTa,hinhAnh) VALUES 
+(N'P01',	N'Mộ Đom Đóm',				'01:29:00',	89,		N'Hoạt hình',	N'Takahata Isao',		N'Hai anh em Seita và Setsuko mất mẹ sau cuộc thả bom dữ dội của \n\nkhông quân Mỹ. Cả hai phải vật lộn để tồn tại ở Nhật Bản hậu Thế chiến II. \n\nNhưng xã hội khắc nghiệt và chúng vật lộn tìm kiếm thức ăn cũng như \n\nthoát khỏi những khó khăn giữa chiến tranh.',N'src\\resources\\Image\\banner\\modomdom.jpg'),
+(N'P02',	N'KUMANTHONG',				'02:01:00',	121,	N'Kinh dị',		N'Xian Lim',			N'Sau cái chết của con trai, Sarah tìm đến vùng đất tâm linh Thái Lan, khẩn cần một thầy tu nổi tiếng sử dụng tro cốt đứa bé để tạo nên bức tượng Kumanthong. Bức tượng làm sống lại tình mẫu tử, nhưng triệu hồi những oan hồn ngạ quỷ đến đoạt xác cả gia đình Sarah.',N'src\\resources\\Image\\banner\\kumathong.jpg'),
+(N'P03',	N'Qủy Ăn Tạng 2',			'02:23:00',	143,	N'Kinh dị',		N'Taweewat Wantha',		N'Ba năm sau cái chết của Yam, Yak vẫn tiếp tục săn lùng linh hồn bí ẩn mặc áo choàng đen. Gặp một cô gái có triệu chứng giống Yam, Yak phát hiện ra người bảo vệ linh hồn, pháp sư ẩn dật Puang, sống trong một khu rừng đầy nguy hiểm. Giữa những phép thuật ma quỷ và những sinh vật nguy hiểm...',N'src\\resources\\Image\\banner\\quyantang2.jpg'),
+(N'P04',	N'JOKER: FOLIE À DEUX',		'02:03:00',	123,	N'Tâm lý',		N'Todd Phillips',		N'Joker: Folie à Deux" đưa Arthur Fleck đến trại tâm thần Arkham trong khi chờ xét xử cho những tội ác của hắn với tư cách là Joker. Trong lúc vật lộn với hai bản ngã của mình, Arthur không chỉ tìm thấy tình yêu đích thực mà còn khám phá ra âm nhạc luôn tồn tại trong con người hắn.',N'src\\resources\\Image\\banner\\joker.jpg'),
+(N'P05',	N'CÁM - CHUYỆN CHƯA KỂ ',	'01:41:00',	111,	N'Kinh dị',		N'Trần Hữu Tấn',		N'Câu chuyện phim là dị bản kinh dị đẫm máu lấy cảm hứng từ truyện cổ tích nổi tiếng Tấm Cám, nội dung chính của phim xoay quanh Cám - em gái cùng cha khác mẹ của Tấm đồng thời sẽ có nhiều nhân vật và chi tiết sáng tạo, gợi cảm giác vừa lạ vừa quen cho khán giả.',N'src\\resources\\Image\\banner\\cam.jpg'),
+(N'P06',	N'TRANSFORMERS MỘT',		'01:53:00',	113,	N'Hoạt hình',	N'Josh Cooley',			N'Câu chuyện về nguồn gốc chưa từng được hé lộ của Optimus Prime và Megatron. Hai nhân vật được biết đến như những kẻ thù truyền kiếp, nhưng cũng từng là những người anh em gắn bó, đã thay đổi vận mệnh của Cybertron mãi mãi.',N'src\\resources\\Image\\banner\\transformer.jpg'),
+(N'P07',	N'HAI MUỐI',				'01:58:00',	118,	N'Tình cảm',	N'Josh Cooley',			N'Muối – một cô gái mất mẹ từ khi vừa lọt lòng và lớn lên trong tình yêu thương của cha tại vùng đất xã đảo Thiềng Liềng. Bước ngoặt của hai cha con bắt đầu khi Muối trưởng thành, quyết định lên thành phố học tập và làm việc với ước mơ đổi đời để phụ giúp cha.',N'src\\resources\\Image\\banner\\kumathong.jpg'),
+(N'P08',	N'LOOK BACK',				'00:58:00',	98,		N'Hoạt hình',	N'Kiyotaka Oshiyama',	N'Fujino tự tin thái quá, trong khi Kyomoto lại sống khép kín, cả hai dường như không thể khác biệt hơn, nhưng tình yêu mãnh liệt dành cho manga đã trở thành sợi dây duy nhất kết nối họ. Thế nhưng, một ngày nọ, một biến cố đã xảy ra, khiến thế giới của họ hoàn toàn thay đổi…',N'src\\resources\\Image\\banner\\kumathong.jpg'),
+(N'P09',	N'ROBOT HOANG DÃ',			'00:58:00',	128,	N'Hoạt hình',	N'Chris Sanders',		N'Cuộc phiêu lưu hoành tráng theo chân hành trình của một robot — đơn vị ROZZUM 7134, gọi tắt là Roz.Roz vô tình dạt vào hoang đảo sau một sự cố và nơi đây trở thành địa điểm sống mới của cô. Tại đây, Roz kết thân và nhận nuôi một chú ngỗng con, đặt tên là Brightbill..',N'src\\resources\\Image\\banner\\kumathong.jpg');
 
 DECLARE @ngayHienTai DATE;
 DECLARE @ngay2 DATE;
@@ -364,7 +368,9 @@ INSERT INTO HoaDon (maHD, ngayLapHD, tienNhan,tienDu,tongTien,maPhong,maPhim,maG
 (N'HD19','2024-10-30',300000,50000 ,250000,N'P04',N'P01',N'G123',NULL,2,NULL),
 (N'HD20','2024-10-30',500000,230000,270000,N'P06',N'P04',N'G345',3   ,4,NULL);
 
+
 select * from HoaDon
+go
 
 CREATE PROCEDURE sp_ThemKhachHang
     @tenKhachHang NVARCHAR(255),
@@ -387,7 +393,8 @@ EXEC sp_ThemKhachHang
     @email = 'ngochue12@gmail.com',
     @ngaySinh = '2003-01-01';
 
-	-- thống kê doanh thu theo ca
+go
+--	 thống kê doanh thu theo ca
 CREATE PROCEDURE ThongKPhim
     @maPhim NVARCHAR(50) = P01,      
     @caLamViec NVARCHAR(50) = N'Sáng'     
@@ -416,11 +423,11 @@ BEGIN
         NV.caLamViec;
 END;
 EXEC ThongKPhim;
---EXEC ThongKPhim @maPhim = 'P01';
---EXEC ThongKPhim @caLamViec = 'Sáng';
+EXEC ThongKPhim @maPhim = 'P01';
+EXEC ThongKPhim @caLamViec = 'Sáng';
 EXEC ThongKPhim @maPhim = 'P01', @caLamViec = 'Sáng';
 
-
+go
 --thống kê doanh thu phim
 CREATE PROCEDURE ThongKeDoanhThuPhim
     @MaPhim NVARCHAR(50)
@@ -451,6 +458,6 @@ EXEC ThongKeDoanhThuPhim @MaPhim = N'P07';
 EXEC ThongKeDoanhThuPhim @MaPhim = N'P08';
 EXEC ThongKeDoanhThuPhim @MaPhim = N'P09';
 
-SELECT * FROM HoaDon;
+--SELECT * FROM HoaDon;
 -- bảng hóa đơn bị lỗi => thống kê NULL
 
