@@ -262,6 +262,12 @@ public class GUI_Man_hinh_chinh extends JFrame{
 		inform_pnl.setLayout(new CardLayout());
 		cardLayout = (CardLayout) inform_pnl.getLayout();
 		
+		//Trang_chu
+		GUI_TrangChu homePanel = new GUI_TrangChu();
+		inform_pnl.add(homePanel, "homePanel");
+		//Chon_ghe
+		GUI_ChonGhe chooseSeatPanel = new GUI_ChonGhe(this);
+		inform_pnl.add(chooseSeatPanel,"chooseSeatPanel");
 		//khuyen_mai
 		GUI_Khuyen_Mai promotionPanel = new GUI_Khuyen_Mai();
 		inform_pnl.add(promotionPanel, "promotionPanel");
@@ -272,12 +278,27 @@ public class GUI_Man_hinh_chinh extends JFrame{
 		GUI_DatVe bookTicketPanel = new GUI_DatVe(this);
 		inform_pnl.add(bookTicketPanel, "bookTicketPanel");
 		//chon_gio
-		GUI_ChonGio chonGioPanel = new GUI_ChonGio();
+		GUI_ChonGio chonGioPanel = new GUI_ChonGio(this);
 		inform_pnl.add(chonGioPanel, "chonGioPanel");
 		//dang_nhap
 		panels = new JPanel[]{home_pnl, bookTicket_pnl, sale_pnl, staff_pnl, customer_pnl, statistic_pnl, help_pnl, logOut_pnl};
 		black = new Color(36,34,34);
 		
+		home_pnl.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+//            	resetPanelColors();
+                cardLayout.show(inform_pnl, "homePanel");
+                home_pnl.setBackground(new Color(171, 27, 27));
+                sale_pnl.setBackground(black);
+                bookTicket_pnl.setBackground(black);
+                staff_pnl.setBackground(black);
+                customer_pnl.setBackground(black);
+                statistic_pnl.setBackground(black);
+                help_pnl.setBackground(black);
+                logOut_pnl.setBackground(black);
+            }
+        });
 		
 		sale_pnl.addMouseListener(new MouseAdapter() {
             @Override
@@ -347,6 +368,10 @@ public class GUI_Man_hinh_chinh extends JFrame{
 	public void showChonGioPanel() {
         cardLayout.show(inform_pnl, "chonGioPanel");
     }
+	
+	public void showChonGhePanel() {
+		cardLayout.show(inform_pnl, "chooseSeatPanel");
+	}
 
 	
 	public static void main(String[] args) throws FontFormatException, IOException {

@@ -4,6 +4,8 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.FontFormatException;
 import java.awt.GradientPaint;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.geom.Point2D;
@@ -25,7 +27,7 @@ public class GUI_ChonGio extends JPanel{
 	private JLabel lich_chieu;
 	nut_gradient ngay_1,ngay_2,ngay_3,ngay_4,ngay_5,gio_1,gio_2,gio_3,gio_4,gio_5,gio_6,gio_7,gio_8,gio_9,gio_10,nut;
 	private GradientPaint mau_gradient1,mau_gradient2;
-	public GUI_ChonGio() throws FontFormatException, IOException {
+	public GUI_ChonGio(GUI_Man_hinh_chinh man_hinh) throws FontFormatException, IOException {
 		setSize(1128,705);
 		setLayout(null);
 		setBackground(new Color(36,34,34));
@@ -588,5 +590,11 @@ public class GUI_ChonGio extends JPanel{
 		    	gio_10.repaint();
 		    }
 		});
+		gio_1.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+            	man_hinh.showChonGhePanel();
+            }
+        });
 	}
 }
