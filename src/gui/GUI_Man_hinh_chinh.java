@@ -19,6 +19,8 @@ import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.border.LineBorder;
 import javax.swing.border.MatteBorder;
+import javax.swing.event.AncestorListener;
+import javax.swing.event.AncestorEvent;
 
 public class GUI_Man_hinh_chinh extends JFrame{
 	private JPanel menu_pnl,home_pnl,bookTicket_pnl,sale_pnl,staff_pnl,customer_pnl,statistic_pnl,help_pnl,logOut_pnl,main_pnl,inform_pnl,header_pnl;
@@ -140,6 +142,15 @@ public class GUI_Man_hinh_chinh extends JFrame{
 		staff_pnl.add(staff_label);
 		
 		customer_pnl = new JPanel();
+		customer_pnl.addAncestorListener(new AncestorListener() {
+			public void ancestorAdded(AncestorEvent event) {
+				
+			}
+			public void ancestorMoved(AncestorEvent event) {
+			}
+			public void ancestorRemoved(AncestorEvent event) {
+			}
+		});
 		customer_pnl.setLayout(null);
 		customer_pnl.setBackground(new Color(36, 34, 34));
 		customer_pnl.setBounds(22, 464, 235, 50);
@@ -263,8 +274,8 @@ public class GUI_Man_hinh_chinh extends JFrame{
 		cardLayout = (CardLayout) inform_pnl.getLayout();
 		
 		//Trang_chu
-		GUI_TrangChu homePanel = new GUI_TrangChu();
-		inform_pnl.add(homePanel, "homePanel");
+//		GUI_TrangChu homePanel = new GUI_TrangChu();
+//		inform_pnl.add(homePanel, "homePanel");
 		//Chon_ghe
 		GUI_ChonGhe chooseSeatPanel = new GUI_ChonGhe(this);
 		inform_pnl.add(chooseSeatPanel,"chooseSeatPanel");
@@ -274,8 +285,15 @@ public class GUI_Man_hinh_chinh extends JFrame{
 		//nhan_vien
 		GUI_NhanVien staffPanel = new GUI_NhanVien();
 		inform_pnl.add(staffPanel, "staffPanel");
+//		khach hang
+		GUI_KhachHang khachHangPanel = new GUI_KhachHang();
+		inform_pnl.add(khachHangPanel, "khachHangPanel");
+//		thongke
+		GUI_ThongKe thongKePanel = new GUI_ThongKe();
+		inform_pnl.add(thongKePanel, "thongkePanel");
 		//dat_ve
 		GUI_DatVe bookTicketPanel = new GUI_DatVe(this);
+		
 		inform_pnl.add(bookTicketPanel, "bookTicketPanel");
 		//chon_gio
 		GUI_ChonGio chonGioPanel = new GUI_ChonGio(this);
@@ -283,22 +301,6 @@ public class GUI_Man_hinh_chinh extends JFrame{
 		//dang_nhap
 		panels = new JPanel[]{home_pnl, bookTicket_pnl, sale_pnl, staff_pnl, customer_pnl, statistic_pnl, help_pnl, logOut_pnl};
 		black = new Color(36,34,34);
-		
-		home_pnl.addMouseListener(new MouseAdapter() {
-            @Override
-            public void mouseClicked(MouseEvent e) {
-//            	resetPanelColors();
-                cardLayout.show(inform_pnl, "homePanel");
-                home_pnl.setBackground(new Color(171, 27, 27));
-                sale_pnl.setBackground(black);
-                bookTicket_pnl.setBackground(black);
-                staff_pnl.setBackground(black);
-                customer_pnl.setBackground(black);
-                statistic_pnl.setBackground(black);
-                help_pnl.setBackground(black);
-                logOut_pnl.setBackground(black);
-            }
-        });
 		
 		sale_pnl.addMouseListener(new MouseAdapter() {
             @Override
@@ -345,6 +347,37 @@ public class GUI_Man_hinh_chinh extends JFrame{
             }
         });
 		
+		
+		customer_pnl.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                cardLayout.show(inform_pnl, "khachHangPanel");
+                customer_pnl.setBackground(new Color(171, 27, 27));
+                home_pnl.setBackground(black);
+                staff_pnl.setBackground(black);
+                sale_pnl.setBackground(black);
+                bookTicketPanel.setBackground(black);
+                statistic_pnl.setBackground(black);
+                help_pnl.setBackground(black);
+                logOut_pnl.setBackground(black);
+            }
+        });
+		
+		statistic_pnl.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                cardLayout.show(inform_pnl, "thongkePanel");
+                statistic_pnl.setBackground(new Color(171, 27, 27));
+                home_pnl.setBackground(black);
+                staff_pnl.setBackground(black);
+                sale_pnl.setBackground(black);
+                bookTicketPanel.setBackground(black);
+                customer_pnl.setBackground(black);
+                help_pnl.setBackground(black);
+                logOut_pnl.setBackground(black);
+            }
+        });
+		
 		logOut_pnl.addMouseListener(new MouseAdapter() {
 		    @Override
 		    public void mouseClicked(MouseEvent e) {
@@ -353,16 +386,14 @@ public class GUI_Man_hinh_chinh extends JFrame{
 				try {
 					loginFrame = new GUI_DangNhap();
 				} catch (FontFormatException e1) {
-					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				} catch (IOException e1) {
-					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				} 
 		        loginFrame.setVisible(true);
 		    }
 		});
-
+		
 	}
 	
 	public void showChonGioPanel() {
@@ -372,7 +403,12 @@ public class GUI_Man_hinh_chinh extends JFrame{
 	public void showChonGhePanel() {
 		cardLayout.show(inform_pnl, "chooseSeatPanel");
 	}
-
+	public void showthongKePanel() {
+		cardLayout.show(inform_pnl, "thongkePanel");
+	}
+	public void showkhachHangPanel() {
+		cardLayout.show(inform_pnl, "khachHangPanel");
+	}
 	
 	public static void main(String[] args) throws FontFormatException, IOException {
 		GUI_Man_hinh_chinh lg = new GUI_Man_hinh_chinh();

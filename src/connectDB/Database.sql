@@ -458,6 +458,18 @@ EXEC ThongKeDoanhThuPhim @MaPhim = N'P07';
 EXEC ThongKeDoanhThuPhim @MaPhim = N'P08';
 EXEC ThongKeDoanhThuPhim @MaPhim = N'P09';
 
+
+
+
+CREATE PROCEDURE getloaikhachhang
+AS
+BEGIN
+    SELECT loaiKhachHang FROM KhachHang;
+END;
+
+
+
+
 --SELECT * FROM HoaDon;
 -- bảng hóa đơn bị lỗi => thống kê NULL
 
