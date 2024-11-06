@@ -50,4 +50,9 @@ public class JDBCUtil {
             System.out.println("Failed to establish connection.");
         }
 	}
+
+	public static JDBCUtil getInstance() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }

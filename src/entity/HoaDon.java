@@ -3,7 +3,7 @@ package entity;
 import java.time.LocalDateTime;
 
 public class HoaDon {
-    private int maHD;
+    private String maHD;
 	private LocalDateTime ngayLapHD;
 	private double tienNhan;
 	private double tienDu;
@@ -14,7 +14,7 @@ public class HoaDon {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public HoaDon(int maHD, LocalDateTime ngayLapHD, double tienNhan, double tienDu, double tongTien,
+	public HoaDon(String maHD, LocalDateTime ngayLapHD, double tienNhan, double tienDu, double tongTien,
 			String maKhachHang, String maNhanVien) {
 		super();
 		this.maHD = maHD;
@@ -25,10 +25,10 @@ public class HoaDon {
 		this.maKhachHang = maKhachHang;
 		this.maNhanVien = maNhanVien;
 	}
-	public int getMaHD() {
+	public String getMaHD() {
 		return maHD;
 	}
-	public void setMaHD(int maHD) {
+	public void setMaHD(String maHD) {
 		this.maHD = maHD;
 	}
 	public LocalDateTime getNgayLapHD() {
@@ -67,6 +67,13 @@ public class HoaDon {
 	public void setMaNhanVien(String maNhanVien) {
 		this.maNhanVien = maNhanVien;
 	}
+	@Override
+	public String toString() {
+		return "HoaDon [maHD=" + maHD + ", ngayLapHD=" + ngayLapHD + ", tienNhan=" + tienNhan + ", tienDu=" + tienDu
+				+ ", tongTien=" + tongTien + ", maKhachHang=" + maKhachHang + ", maNhanVien=" + maNhanVien + "]";
+	}
+	
+	
 	
 	
 }

@@ -1,4 +1,4 @@
-﻿--DATABASE
+﻿﻿--DATABASE
 CREATE DATABASE cinema;
 go
 use cinema;
@@ -472,4 +472,3 @@ END;
 
 --SELECT * FROM HoaDon;
 -- bảng hóa đơn bị lỗi => thống kê NULL
-
