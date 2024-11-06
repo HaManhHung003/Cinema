@@ -67,26 +67,6 @@ public class HoaDonDao {
 		return dsHoaDon;
 	}
 	
-//	public boolean create(HoaDon HoaDon) {
-//		Connection con = JDBCUtil.getConnection();
-//		PreparedStatement stmt = null;
-//		int n = 0;
-//		try {
-//			stmt = con.prepareStatement("insert into HoaDon values(?, ?, ?, ?, ?, ?)");
-//			stmt.setInt(1, HoaDon.getMaHD());
-//			stmt.setObject(2, HoaDon.getNgayLapHoaDon());
-//			stmt.setString(3, HoaDon.getNhanVien().getMaNV());
-//			stmt.setString(4, HoaDon.getKhachHang().getMaKH());
-//			stmt.setBoolean(5, HoaDon.getDaHoanVe());
-//			stmt.setBoolean(6, HoaDon.getDaHoanTien());
-//			n = stmt.executeUpdate();
-//		} catch (SQLException e) {
-//			e.printStackTrace();
-//		}
-//
-//		return n > 0;
-//	}
-	
 	public Map<Integer, Double> thongKeDoanhTungThangTheoNam(int nam) {
 	    Map<Integer, Double> map = new HashMap<>();
 	    
