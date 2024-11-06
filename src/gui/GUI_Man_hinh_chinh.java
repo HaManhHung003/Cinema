@@ -19,24 +19,20 @@ import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.border.LineBorder;
 import javax.swing.border.MatteBorder;
+import java.awt.event.FocusAdapter;
+import java.awt.event.FocusEvent;
+import component.MyPanel;
 
 public class GUI_Man_hinh_chinh extends JFrame{
-	private JPanel menu_pnl,home_pnl,bookTicket_pnl,sale_pnl,staff_pnl,customer_pnl,statistic_pnl,help_pnl,logOut_pnl,main_pnl,inform_pnl,header_pnl,back_pnl;
-	private JLabel logo,menu_title,home_icon,home_label,bookTicket_icon,bookTicket_label,sale_icon,sale_label,staff_icon,staff_label,customer_icon,customer_label,statistic_icon,statistic_label,help_icon,help_label,logOut_icon,logOut_label,avatar,search_icon,back_icon,back_label;
-	private JTextField find_container; 
+	private JPanel menu_pnl,main_pnl,inform_pnl,header_pnl;
+	private JLabel logo,menu_title,home_icon,home_label,bookTicket_icon,bookTicket_label,sale_icon,sale_label,staff_icon,staff_label,customer_icon,customer_label,statistic_icon,statistic_label,help_icon,help_label,logOut_icon,logOut_label,avatar,search_icon,back_icon,back_label,clear_label,search_icon2,close_icon;
+	private JTextField find_container,find_container2; 
 	private Color black;
 	public static CardLayout cardLayout;
 	public static final long serialVersionUID = 1L;
 	private JPanel[] panels;
-	private JPanel add_pnl;
-	private JLabel add_icon;
-	private JLabel add_label;
-	private JPanel update_pnl;
-	private JLabel update_icon;
-	private JLabel update_label;
-	private JPanel remove_pnl;
-	private JLabel remove_icon;
-	private JLabel remove_label;
+	private JLabel add_icon,add_label,update_icon,update_label,remove_icon,remove_label;
+	private MyPanel home_pnl,bookTicket_pnl,sale_pnl,staff_pnl,customer_pnl,statistic_pnl,help_pnl,logOut_pnl,staffFind_pnl,filmFind_pnl,back_pnl,clear_pnl,add_pnl,update_pnl,remove_pnl;
 	public GUI_Man_hinh_chinh() throws FontFormatException, IOException {
 		setSize(1425,820);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -64,13 +60,18 @@ public class GUI_Man_hinh_chinh extends JFrame{
 		menu_pnl.add(logo);
 		
 		menu_title = new JLabel("Menu");
-		menu_title.setForeground(new Color(255, 238, 231));
-		menu_title.setFont(Dosis_Bold);
+		menu_title.setForeground(new Color(178, 176, 176));
+		menu_title.setFont(Dosis_Bold_22);
 		menu_title.setBounds(44, 81, 82, 32);
 		menu_pnl.add(menu_title);
 		
-		home_pnl = new JPanel();
-		home_pnl.setBackground(new Color(171, 27, 27));
+		home_pnl = new MyPanel();
+		home_pnl.setColor(new Color(171, 27, 27));;
+		home_pnl.setRadius(50);
+		home_pnl.setBorderColor(new Color(36, 34, 34));
+		home_pnl.setColorOver(new Color(171, 27, 27));
+		home_pnl.setColorClick(new Color(138,11,11));
+		home_pnl.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		home_pnl.setBounds(22, 124, 235, 50);
 		menu_pnl.add(home_pnl);
 		home_pnl.setLayout(null);
@@ -89,9 +90,14 @@ public class GUI_Man_hinh_chinh extends JFrame{
 		home_label.setBounds(64, 0, 171, 50);
 		home_pnl.add(home_label);
 		
-		bookTicket_pnl = new JPanel();
+		bookTicket_pnl = new MyPanel();
 		bookTicket_pnl.setLayout(null);
-		bookTicket_pnl.setBackground(new Color(36, 34, 34));
+		bookTicket_pnl.setColor(new Color(36, 34, 34));;
+		bookTicket_pnl.setRadius(50);
+		bookTicket_pnl.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		bookTicket_pnl.setBorderColor(new Color(36, 34, 34));
+		bookTicket_pnl.setColorOver(new Color(171, 27, 27));
+		bookTicket_pnl.setColorClick(new Color(138, 11, 11));
 		bookTicket_pnl.setBounds(22, 209, 235, 50);
 		menu_pnl.add(bookTicket_pnl);
 		
@@ -109,9 +115,14 @@ public class GUI_Man_hinh_chinh extends JFrame{
 		bookTicket_label.setBounds(65, 0, 170, 50);
 		bookTicket_pnl.add(bookTicket_label);
 		
-		sale_pnl = new JPanel();
+		sale_pnl = new MyPanel();
 		sale_pnl.setLayout(null);
-		sale_pnl.setBackground(new Color(36, 34, 34));
+		sale_pnl.setColor(new Color(36, 34, 34));;
+		sale_pnl.setRadius(50);
+		sale_pnl.setBorderColor(new Color(36, 34, 34));
+		sale_pnl.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		sale_pnl.setColorOver(new Color(171, 27, 27));
+		sale_pnl.setColorClick(new Color(138, 11, 11));
 		sale_pnl.setBounds(22, 294, 235, 50);
 		menu_pnl.add(sale_pnl);
 		
@@ -129,9 +140,14 @@ public class GUI_Man_hinh_chinh extends JFrame{
 		sale_label.setBounds(70, 0, 165, 50);
 		sale_pnl.add(sale_label);
 		
-		staff_pnl = new JPanel();
+		staff_pnl = new MyPanel();
 		staff_pnl.setLayout(null);
-		staff_pnl.setBackground(new Color(36, 34, 34));
+		staff_pnl.setColor(new Color(36, 34, 34));
+		staff_pnl.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		staff_pnl.setRadius(50);
+		staff_pnl.setBorderColor(new Color(36, 34, 34));
+		staff_pnl.setColorOver(new Color(171, 27, 27));
+		staff_pnl.setColorClick(new Color(138, 11, 11));
 		staff_pnl.setBounds(22, 379, 235, 50);
 		menu_pnl.add(staff_pnl);
 		
@@ -148,9 +164,14 @@ public class GUI_Man_hinh_chinh extends JFrame{
 		staff_label.setBounds(64, 0, 171, 50);
 		staff_pnl.add(staff_label);
 		
-		customer_pnl = new JPanel();
+		customer_pnl = new MyPanel();
 		customer_pnl.setLayout(null);
-		customer_pnl.setBackground(new Color(36, 34, 34));
+		customer_pnl.setColor(new Color(36, 34, 34));
+		customer_pnl.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		customer_pnl.setRadius(50);
+		customer_pnl.setBorderColor(new Color(36, 34, 34));
+		customer_pnl.setColorOver(new Color(171, 27, 27));
+		customer_pnl.setColorClick(new Color(138, 11, 11));
 		customer_pnl.setBounds(22, 464, 235, 50);
 		menu_pnl.add(customer_pnl);
 		
@@ -167,9 +188,14 @@ public class GUI_Man_hinh_chinh extends JFrame{
 		customer_label.setBounds(64, 0, 171, 50);
 		customer_pnl.add(customer_label);
 		
-		statistic_pnl = new JPanel();
+		statistic_pnl = new MyPanel();
 		statistic_pnl.setLayout(null);
-		statistic_pnl.setBackground(new Color(36, 34, 34));
+		statistic_pnl.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		statistic_pnl.setColor(new Color(36, 34, 34));;
+		statistic_pnl.setRadius(50);
+		statistic_pnl.setBorderColor(new Color(36, 34, 34));
+		statistic_pnl.setColorOver(new Color(171, 27, 27));
+		statistic_pnl.setColorClick(new Color(138, 11, 11));
 		statistic_pnl.setBounds(22, 549, 235, 50);
 		menu_pnl.add(statistic_pnl);
 		
@@ -186,9 +212,14 @@ public class GUI_Man_hinh_chinh extends JFrame{
 		statistic_label.setBounds(64, 0, 171, 50);
 		statistic_pnl.add(statistic_label);
 		
-		help_pnl = new JPanel();
+		help_pnl = new MyPanel();
 		help_pnl.setLayout(null);
-		help_pnl.setBackground(new Color(36, 34, 34));
+		help_pnl.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		help_pnl.setColor(new Color(36, 34, 34));;
+		help_pnl.setRadius(50);
+		help_pnl.setBorderColor(new Color(36, 34, 34));
+		help_pnl.setColorOver(new Color(171, 27, 27));
+		help_pnl.setColorClick(new Color(138, 11, 11));
 		help_pnl.setBounds(22, 634, 235, 50);
 		menu_pnl.add(help_pnl);
 		
@@ -205,10 +236,14 @@ public class GUI_Man_hinh_chinh extends JFrame{
 		help_label.setBounds(64, 0, 171, 50);
 		help_pnl.add(help_label);
 		
-		logOut_pnl = new JPanel();
-		logOut_pnl.setBorder(new LineBorder(new Color(65, 65, 65)));
+		logOut_pnl = new MyPanel();
 		logOut_pnl.setLayout(null);
-		logOut_pnl.setBackground(new Color(36, 34, 34));
+		logOut_pnl.setColor(new Color(36, 34, 34));
+		logOut_pnl.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		logOut_pnl.setRadius(50);
+		logOut_pnl.setBorderColor(new Color(178, 176, 176));
+		logOut_pnl.setColorOver(new Color(36, 34, 34));
+		logOut_pnl.setColorClick(new Color(36, 34, 34));
 		logOut_pnl.setBounds(22, 719, 235, 50);
 		menu_pnl.add(logOut_pnl);
 		
@@ -235,38 +270,93 @@ public class GUI_Man_hinh_chinh extends JFrame{
 		header_pnl = new JPanel();
 		header_pnl.setBackground(new Color(36, 34, 34));
 		header_pnl.setBounds(0, 0, 1128, 76);
+		header_pnl.setFocusable(true);
 		main_pnl.add(header_pnl);
 		header_pnl.setLayout(null);
 		
+		filmFind_pnl = new MyPanel();
+		filmFind_pnl.setOpaque(false);
+		filmFind_pnl.setBounds(745, 15, 274, 44);
+		filmFind_pnl.setColor(new Color(36, 34, 34));
+		filmFind_pnl.setRadius(30);
+		filmFind_pnl.setBorderColor(new Color(110, 110, 110));
+		filmFind_pnl.setColorOver(new Color(36, 34, 34));
+		filmFind_pnl.setColorClick(new Color(36, 34, 34));
+		header_pnl.add(filmFind_pnl);
+		filmFind_pnl.setLayout(null);
+		
+		search_icon2 = new JLabel("");
+		search_icon2.setBounds(7, 7, 30, 30);
+		filmFind_pnl.add(search_icon2);
+		search_icon2.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		search_icon2.setIcon(new ImageIcon("src\\resources\\Icon\\search2.png"));
+		search_icon2.setIconTextGap(0);
+		search_icon2.setHorizontalAlignment(SwingConstants.CENTER);
+		
+		close_icon = new JLabel("");
+		close_icon.setBounds(232, 10, 24, 24);
+		filmFind_pnl.add(close_icon);
+		close_icon.setIconTextGap(0);
+		close_icon.setIcon(new ImageIcon("src\\resources\\Icon\\close.png"));
+		close_icon.setHorizontalAlignment(SwingConstants.CENTER);
+		close_icon.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		
+		find_container2 = new JTextField();
+		find_container2.setBorder(null);
+		find_container2.setBounds(0, 0, 274, 44);
+		filmFind_pnl.add(find_container2);
+		find_container2.setText("Tìm kiếm phim");
+		find_container2.setOpaque(false);
+		find_container2.setHorizontalAlignment(SwingConstants.CENTER);
+		find_container2.setFont(Dosis_Bold_20);
+		find_container2.setForeground(new Color(178, 176, 176));
+		find_container2.setColumns(10);
+		
+		staffFind_pnl = new MyPanel();
+		staffFind_pnl.setOpaque(false);
+		staffFind_pnl.setBounds(795, 15, 224, 44);
+		staffFind_pnl.setColor(new Color(36, 34, 34));
+		staffFind_pnl.setRadius(30);
+		staffFind_pnl.setBorderColor(new Color(110, 110, 110));
+		staffFind_pnl.setColorOver(new Color(36, 34, 34));
+		staffFind_pnl.setColorClick(new Color(36, 34, 34));
+		header_pnl.add(staffFind_pnl);
+		staffFind_pnl.setLayout(null);
+		
+		search_icon = new JLabel("");
+		search_icon.setBounds(7, 7, 30, 30);
+		staffFind_pnl.add(search_icon);
+		
+		search_icon.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		search_icon.setIcon(new ImageIcon("src\\resources\\Icon\\search2.png"));
+		search_icon.setIconTextGap(0);
+		search_icon.setHorizontalAlignment(SwingConstants.CENTER);
+		
+		find_container = new JTextField();
+		find_container.setBorder(null);
+		find_container.setBounds(0, 0, 224, 44);
+		staffFind_pnl.add(find_container);
+		find_container.setOpaque(false);
+		find_container.setText("Tìm kiếm nhân viên");
+		find_container.setHorizontalAlignment(SwingConstants.CENTER);
+		find_container.setFont(Dosis_Bold_20);
+		find_container.setForeground(new Color(178, 176, 176));
+		find_container.setColumns(10);
+		
 		avatar = new JLabel("");
-		avatar.setIcon(new ImageIcon("src\\resources\\Image\\subLogo.jpg"));
+		avatar.setIcon(new ImageIcon("src\\resources\\Image\\subLogo.png"));
 		avatar.setIconTextGap(0);
 		avatar.setHorizontalAlignment(SwingConstants.CENTER);
 		avatar.setBounds(1052, 11, 55, 55);
 		header_pnl.add(avatar);
 		
-		search_icon = new JLabel("");
-		search_icon.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-		search_icon.setIcon(new ImageIcon("src\\resources\\Icon\\search2.png"));
-		search_icon.setBounds(655, 23, 30, 30);
-		header_pnl.add(search_icon);
-		search_icon.setIconTextGap(0);
-		search_icon.setHorizontalAlignment(SwingConstants.CENTER);
-		
-		find_container = new JTextField();
-		find_container.setOpaque(false);
-		find_container.setBounds(645, 15, 324, 44);
-		header_pnl.add(find_container);
-		find_container.setHorizontalAlignment(SwingConstants.CENTER);
-		find_container.setFont(Dosis_Bold_20);
-		find_container.setForeground(new Color(178, 176, 176));
-		find_container.setText("Tìm kiếm nhân viên");
-		find_container.setBorder(new LineBorder(new Color(110, 110, 110), 1, true));
-		find_container.setColumns(10);
-		
-		back_pnl = new JPanel();
-		back_pnl.setBorder(new LineBorder(new Color(110, 110, 110)));
+		back_pnl = new MyPanel();
 		back_pnl.setOpaque(false);
+		back_pnl.setColor(new Color(36, 34, 34));
+		back_pnl.setRadius(25);
+		back_pnl.setBorderColor(new Color(110, 110, 110));
+		back_pnl.setColorOver(new Color(36, 34, 34));
+		back_pnl.setColorClick(new Color(36, 34, 34));
 		back_pnl.setBounds(30, 15, 124, 44);
 		header_pnl.add(back_pnl);
 		back_pnl.setLayout(null);
@@ -286,10 +376,15 @@ public class GUI_Man_hinh_chinh extends JFrame{
 		back_label.setFont(Dosis_Bold_20);
 		back_pnl.add(back_label);
 		
-		add_pnl = new JPanel();
+		add_pnl = new MyPanel();
 		add_pnl.setLayout(null);
 		add_pnl.setOpaque(false);
-		add_pnl.setBorder(new LineBorder(new Color(110, 110, 110)));
+		add_pnl.setColor(new Color(36, 34, 34));
+		add_pnl.setRadius(25);
+		add_pnl.setBorderColor(new Color(110, 110, 110));
+		add_pnl.setColorOver(new Color(36, 34, 34));
+		add_pnl.setColorClick(new Color(36, 34, 34));
+		add_pnl.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		add_pnl.setBounds(30, 15, 98, 44);
 		header_pnl.add(add_pnl);
 		
@@ -297,7 +392,6 @@ public class GUI_Man_hinh_chinh extends JFrame{
 		add_icon.setIconTextGap(0);
 		add_icon.setIcon(new ImageIcon("src\\resources\\Icon\\type.png"));
 		add_icon.setHorizontalAlignment(SwingConstants.CENTER);
-		add_icon.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		add_icon.setBounds(10, 11, 24, 24);
 		add_pnl.add(add_icon);
 		
@@ -305,22 +399,25 @@ public class GUI_Man_hinh_chinh extends JFrame{
 		add_label.setForeground(new Color(178, 176, 176));
 		add_label.setFont(null);
 		add_label.setFont(Dosis_Bold_20);
-		add_label.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		add_label.setBounds(44, 0, 54, 44);
 		add_pnl.add(add_label);
 		
-		update_pnl = new JPanel();
+		update_pnl = new MyPanel();
 		update_pnl.setLayout(null);
 		update_pnl.setOpaque(false);
-		update_pnl.setBorder(new LineBorder(new Color(110, 110, 110)));
+		update_pnl.setColor(new Color(36, 34, 34));
+		update_pnl.setRadius(25);
+		update_pnl.setBorderColor(new Color(110, 110, 110));
+		update_pnl.setColorOver(new Color(36, 34, 34));
+		update_pnl.setColorClick(new Color(36, 34, 34));
 		update_pnl.setBounds(30, 15, 98, 44);
+		update_pnl.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		header_pnl.add(update_pnl);
 		
 		update_icon = new JLabel("");
 		update_icon.setIconTextGap(0);
 		update_icon.setIcon(new ImageIcon("src\\resources\\Icon\\type.png"));
 		update_icon.setHorizontalAlignment(SwingConstants.CENTER);
-		update_icon.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		update_icon.setBounds(10, 11, 24, 24);
 		update_pnl.add(update_icon);
 		
@@ -328,32 +425,54 @@ public class GUI_Man_hinh_chinh extends JFrame{
 		update_label.setForeground(new Color(178, 176, 176));
 		update_label.setFont(null);
 		update_label.setFont(Dosis_Bold_20);
-		update_label.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		update_label.setBounds(44, 0, 54, 44);
 		update_pnl.add(update_label);
 		
-		remove_pnl = new JPanel();
+		remove_pnl = new MyPanel();
 		remove_pnl.setLayout(null);
 		remove_pnl.setOpaque(false);
-		remove_pnl.setBorder(new LineBorder(new Color(110, 110, 110)));
+		remove_pnl.setColor(new Color(36, 34, 34));
+		remove_pnl.setRadius(25);
+		remove_pnl.setBorderColor(new Color(110, 110, 110));
+		remove_pnl.setColorOver(new Color(36, 34, 34));
+		remove_pnl.setColorClick(new Color(36, 34, 34));
 		remove_pnl.setBounds(30, 15, 98, 44);
+		remove_pnl.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		header_pnl.add(remove_pnl);
 		
 		remove_icon = new JLabel("");
 		remove_icon.setIconTextGap(0);
 		remove_icon.setIcon(new ImageIcon("src\\resources\\Icon\\type.png"));
 		remove_icon.setHorizontalAlignment(SwingConstants.CENTER);
-		remove_icon.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		remove_icon.setBounds(10, 11, 24, 24);
 		remove_pnl.add(remove_icon);
 		
 		remove_label = new JLabel("Xóa");
 		remove_label.setForeground(new Color(178, 176, 176));
 		remove_label.setFont(null);
-		remove_label.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		remove_label.setFont(Dosis_Bold_20);
 		remove_label.setBounds(44, 0, 54, 44);
 		remove_pnl.add(remove_label);
+		
+		clear_pnl = new MyPanel();
+		clear_pnl.setOpaque(false);
+		clear_pnl.setBounds(144, 15, 104, 44);
+		clear_pnl.setColor(new Color(36, 34, 34));
+		clear_pnl.setRadius(25);
+		clear_pnl.setBorderColor(new Color(110, 110, 110));
+		clear_pnl.setColorOver(new Color(36, 34, 34));
+		clear_pnl.setColorClick(new Color(36, 34, 34));
+		header_pnl.add(clear_pnl);
+		clear_pnl.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		clear_pnl.setLayout(null);
+		
+		clear_label = new JLabel("Xóa trắng");
+		clear_label.setHorizontalAlignment(SwingConstants.CENTER);
+		clear_label.setHorizontalTextPosition(SwingConstants.CENTER);
+		clear_label.setBounds(0, 0, 104, 44);
+		clear_pnl.add(clear_label);
+		clear_label.setForeground(new Color(178, 176, 176));
+		clear_label.setFont(Dosis_Bold_20);
 		
 		inform_pnl = new JPanel();
 		inform_pnl.setBackground(new Color(36, 34, 34));
@@ -362,6 +481,9 @@ public class GUI_Man_hinh_chinh extends JFrame{
 		inform_pnl.setLayout(new CardLayout());
 		cardLayout = (CardLayout) inform_pnl.getLayout();
 		
+		//Trang_chu
+		GUI_TrangChu homePanel = new GUI_TrangChu(this);
+		inform_pnl.add(homePanel, "homePanel");
 		//khuyen_mai
 		GUI_Khuyen_Mai promotionPanel = new GUI_Khuyen_Mai();
 		inform_pnl.add(promotionPanel, "promotionPanel");
@@ -372,7 +494,7 @@ public class GUI_Man_hinh_chinh extends JFrame{
 		GUI_DatVe bookTicketPanel = new GUI_DatVe(this);
 		inform_pnl.add(bookTicketPanel, "bookTicketPanel");
 		//chon_gio
-		GUI_ChonGio chonGioPanel = new GUI_ChonGio();
+		GUI_ChonGio chonGioPanel = new GUI_ChonGio(bookTicketPanel,homePanel);
 		inform_pnl.add(chonGioPanel, "chonGioPanel");
 		//tro_giup
 		GUI_TroGiup troGiupPanel = new GUI_TroGiup();
@@ -383,23 +505,90 @@ public class GUI_Man_hinh_chinh extends JFrame{
         remove_pnl.setVisible(false);
         update_pnl.setVisible(false);
         back_pnl.setVisible(false);
+        clear_pnl.setVisible(false);
+        staffFind_pnl.setVisible(false);
+        filmFind_pnl.setVisible(false);
+        
+        home_pnl.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+//            	resetPanelColors();
+                cardLayout.show(inform_pnl, "homePanel");
+                home_pnl.setColor(new Color(171, 27, 27));
+                sale_pnl.setColor(black);
+                bookTicket_pnl.setColor(black);
+                staff_pnl.setColor(black);
+                customer_pnl.setColor(black);
+                statistic_pnl.setColor(black);
+                help_pnl.setColor(black);
+                logOut_pnl.setColor(black);
+                add_pnl.setVisible(false);
+                remove_pnl.setVisible(false);
+                update_pnl.setVisible(false);
+                back_pnl.setVisible(false);
+                clear_pnl.setVisible(false);
+                staffFind_pnl.setVisible(false);
+                filmFind_pnl.setVisible(false);
+            }
+        });
+        
+        bookTicket_pnl.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                cardLayout.show(inform_pnl, "bookTicketPanel");
+                bookTicket_pnl.setColor(new Color(171, 27, 27));
+                home_pnl.setColor(black);
+                staff_pnl.setColor(black);
+                sale_pnl.setColor(black);
+                customer_pnl.setColor(black);
+                statistic_pnl.setColor(black);
+                help_pnl.setColor(black);
+                logOut_pnl.setColor(black);
+                add_pnl.setVisible(false);
+                remove_pnl.setVisible(false);
+                update_pnl.setVisible(false);
+                back_pnl.setVisible(false);
+                clear_pnl.setVisible(false);
+                staffFind_pnl.setVisible(false);
+                filmFind_pnl.setVisible(true);
+                find_container2.addFocusListener(new FocusAdapter() {
+        			@Override
+        			public void focusGained(FocusEvent e) {
+        				if(find_container2.getText().toString().equals("Tìm kiếm phim")) {
+        					find_container2.setText("");
+        					find_container2.setForeground(new Color(178, 176, 176));
+        				}
+        			}
+        			@Override
+        			public void focusLost(FocusEvent e) {
+        				if(find_container2.getText().toString().equals("")) {
+        					find_container2.setText("Tìm kiếm phim");
+        					find_container2.setForeground(new Color(178, 176, 176));
+        				}
+        			}
+        		});
+            }
+        });
 		
 		sale_pnl.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
                 cardLayout.show(inform_pnl, "promotionPanel");
-                sale_pnl.setBackground(new Color(171, 27, 27));
-                home_pnl.setBackground(black);
-                bookTicket_pnl.setBackground(black);
-                staff_pnl.setBackground(black);
-                customer_pnl.setBackground(black);
-                statistic_pnl.setBackground(black);
-                help_pnl.setBackground(black);
-                logOut_pnl.setBackground(black);
+                sale_pnl.setColor(new Color(171, 27, 27));
+                home_pnl.setColor(black);
+                bookTicket_pnl.setColor(black);
+                staff_pnl.setColor(black);
+                customer_pnl.setColor(black);
+                statistic_pnl.setColor(black);
+                help_pnl.setColor(black);
+                logOut_pnl.setColor(black);
                 add_pnl.setVisible(false);
                 remove_pnl.setVisible(false);
                 update_pnl.setVisible(false);
                 back_pnl.setVisible(false);
+                clear_pnl.setVisible(false);
+                staffFind_pnl.setVisible(false);
+                filmFind_pnl.setVisible(false);
             }
         });
 		
@@ -407,18 +596,37 @@ public class GUI_Man_hinh_chinh extends JFrame{
             @Override
             public void mouseClicked(MouseEvent e) {
                 cardLayout.show(inform_pnl, "staffPanel");
-                staff_pnl.setBackground(new Color(171, 27, 27));
-                home_pnl.setBackground(black);
-                bookTicket_pnl.setBackground(black);
-                sale_pnl.setBackground(black);
-                customer_pnl.setBackground(black);
-                statistic_pnl.setBackground(black);
-                help_pnl.setBackground(black);
-                logOut_pnl.setBackground(black);
-                add_pnl.setVisible(false);
+                staff_pnl.setColor(new Color(171, 27, 27));
+                home_pnl.setColor(black);
+                bookTicket_pnl.setColor(black);
+                sale_pnl.setColor(black);
+                customer_pnl.setColor(black);
+                statistic_pnl.setColor(black);
+                help_pnl.setColor(black);
+                logOut_pnl.setColor(black);
+                add_pnl.setVisible(true);
                 remove_pnl.setVisible(false);
-                update_pnl.setVisible(true);
+                update_pnl.setVisible(false);
                 back_pnl.setVisible(false);
+                clear_pnl.setVisible(true);
+                staffFind_pnl.setVisible(true);
+                filmFind_pnl.setVisible(false);
+                find_container.addFocusListener(new FocusAdapter() {
+        			@Override
+        			public void focusGained(FocusEvent e) {
+        				if(find_container.getText().toString().equals("Tìm kiếm nhân viên")) {
+        					find_container.setText("");
+        					find_container.setForeground(new Color(178, 176, 176));
+        				}
+        			}
+        			@Override
+        			public void focusLost(FocusEvent e) {
+        				if(find_container.getText().toString().equals("")) {
+        					find_container.setText("Tìm kiếm nhân viên");
+        					find_container.setForeground(new Color(178, 176, 176));
+        				}
+        			}
+        		});
                 update_label.addMouseListener(new MouseAdapter() {
 
         			@Override
@@ -457,41 +665,27 @@ public class GUI_Man_hinh_chinh extends JFrame{
             }
         });
 		
-		bookTicket_pnl.addMouseListener(new MouseAdapter() {
-            @Override
-            public void mouseClicked(MouseEvent e) {
-                cardLayout.show(inform_pnl, "bookTicketPanel");
-                bookTicket_pnl.setBackground(new Color(171, 27, 27));
-                home_pnl.setBackground(black);
-                staff_pnl.setBackground(black);
-                sale_pnl.setBackground(black);
-                customer_pnl.setBackground(black);
-                statistic_pnl.setBackground(black);
-                help_pnl.setBackground(black);
-                logOut_pnl.setBackground(black);
-                add_pnl.setVisible(false);
-                remove_pnl.setVisible(false);
-                update_pnl.setVisible(false);
-                back_pnl.setVisible(false);
-            }
-        });
+		
 		
 		help_pnl.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
                 cardLayout.show(inform_pnl, "troGiupPanel");
-                help_pnl.setBackground(new Color(171, 27, 27));
-                home_pnl.setBackground(black);
-                staff_pnl.setBackground(black);
-                sale_pnl.setBackground(black);
-                customer_pnl.setBackground(black);
-                statistic_pnl.setBackground(black);
-                bookTicket_pnl.setBackground(black);
-                logOut_pnl.setBackground(black);
+                help_pnl.setColor(new Color(171, 27, 27));
+                home_pnl.setColor(black);
+                staff_pnl.setColor(black);
+                sale_pnl.setColor(black);
+                customer_pnl.setColor(black);
+                statistic_pnl.setColor(black);
+                bookTicket_pnl.setColor(black);
+                logOut_pnl.setColor(black);
                 add_pnl.setVisible(false);
                 remove_pnl.setVisible(false);
                 update_pnl.setVisible(false);
                 back_pnl.setVisible(false);
+                clear_pnl.setVisible(false);
+                staffFind_pnl.setVisible(false);
+                filmFind_pnl.setVisible(false);
             }
         });
 		
@@ -516,6 +710,14 @@ public class GUI_Man_hinh_chinh extends JFrame{
 
 	}
 	
+	public JTextField getFind() {
+		return find_container;
+	}
+	
+	public JTextField getFind2() {
+		return find_container2;
+	}
+	
 	public JLabel getRemove() {
 		return remove_label;
 	}
@@ -530,6 +732,22 @@ public class GUI_Man_hinh_chinh extends JFrame{
 	
 	public JLabel getBack() {
 		return back_label;
+	}
+	
+	public JLabel getClear() {
+		return clear_label;
+	}
+	
+	public JLabel getSearch() {
+		return search_icon;
+	}
+	
+	public JLabel getSearch2() {
+		return search_icon2;
+	}
+	
+	public JLabel getClose() {
+		return close_icon;
 	}
 	
 	public JPanel getRemovePnl() {
@@ -548,7 +766,7 @@ public class GUI_Man_hinh_chinh extends JFrame{
 		return back_pnl;
 	}
 	
-	
+
 	public void showChonGioPanel() {
         cardLayout.show(inform_pnl, "chonGioPanel");
         add_pnl.setVisible(false);
@@ -559,13 +777,20 @@ public class GUI_Man_hinh_chinh extends JFrame{
 	
 	public void showDatVe() {
 		cardLayout.show(inform_pnl, "bookTicketPanel");
+		bookTicket_pnl.setColor(new Color(171, 27, 27));
+        home_pnl.setColor(black);
 		add_pnl.setVisible(false);
         remove_pnl.setVisible(false);
         update_pnl.setVisible(false);
         back_pnl.setVisible(false);
     }
+	
+	public void showChonGhePanel() {
+		cardLayout.show(inform_pnl, "chooseSeatPanel");
+	}
 
 	public static void main(String[] args) throws FontFormatException, IOException {
+		
 		GUI_Man_hinh_chinh lg = new GUI_Man_hinh_chinh();
 		lg.setVisible(true);
 		lg.setResizable(false);

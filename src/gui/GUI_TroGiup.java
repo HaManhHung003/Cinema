@@ -20,7 +20,7 @@ public class GUI_TroGiup extends JPanel{
 	private JTextField textField_3;
 
 	public GUI_TroGiup() throws FontFormatException, IOException {
-		setSize(1128,704);
+		setSize(1128,705);
 		setLayout(null);
 		setBackground(new Color(36,34,34));
 		

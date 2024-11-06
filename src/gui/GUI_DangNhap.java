@@ -3,10 +3,12 @@ package gui;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.FontFormatException;
+import java.awt.GradientPaint;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.geom.Point2D;
 import java.awt.geom.RoundRectangle2D;
 import java.awt.image.BufferedImage;
 import java.io.File;
@@ -24,12 +26,14 @@ import java.sql.*;
 import connectDB.JDBCUtil;
 import java.awt.event.FocusAdapter;
 import java.awt.event.FocusEvent;
+import component.MyPanel;
+import component.nut_gradient;
 
 public class GUI_DangNhap extends JFrame{
-	private JFrame frame;
-	private JPanel panel,pass_pnl;
+	private MyPanel account_pnl,pass_pnl,panel;
 	private JLabel logo,hiddenPass,background;
-	private JButton logIn;
+	private nut_gradient logIn;
+	private GradientPaint mau_gradient;
 	private JTextField account;
 	private JPasswordField pass_txtf;
 	private Connection conn = JDBCUtil.getConnection();
@@ -47,8 +51,17 @@ public class GUI_DangNhap extends JFrame{
 		Font Dosis_Bold_10 = Font.createFont(Font.TRUETYPE_FONT, DosisB).deriveFont(10f);
 		Font Dosis_Regular = Font.createFont(Font.TRUETYPE_FONT, Dosis).deriveFont(20f);
 		
-		panel = new JPanel();
+		Point2D.Double p1 = new Point2D.Double(100, 100); 
+		Point2D.Double p2 = new Point2D.Double(200, 100); 
+		mau_gradient = new GradientPaint(p1,new Color(255,78,67),p2,new Color(255,78,67));
+		
+		panel = new MyPanel();
 		panel.setBounds(551, 157, 361, 406);
+		panel.setColor(new Color(255,255,255));
+		panel.setBorderColor(new Color(255,255,255));
+		panel.setColorClick(new Color(255,255,255));
+		panel.setColorOver(new Color(255,255,255));
+		panel.setRadius(15);
 		getContentPane().add(panel);
 		panel.setLayout(null);
 		
@@ -57,13 +70,16 @@ public class GUI_DangNhap extends JFrame{
 		logo.setBounds(73, 24, 213, 103);
 		panel.add(logo);
 		
-		JPanel account_pnl = new JPanel();
-		account_pnl.setBackground(new Color(215, 215, 215));
+		account_pnl = new MyPanel();
 		account_pnl.setBounds(34, 150, 299, 62);
 		panel.add(account_pnl);
 		account_pnl.setLayout(null);
 		account_pnl.setFocusable(true);
-		
+		account_pnl.setColor(new Color(215,215,215));
+		account_pnl.setBorderColor(new Color(215,215,215));
+		account_pnl.setColorClick(new Color(215,215,215));
+		account_pnl.setColorOver(new Color(215,215,215));
+		account_pnl.setRadius(15);
 		account = new JTextField();
 		account.addFocusListener(new FocusAdapter() {
 			@Override
@@ -84,14 +100,18 @@ public class GUI_DangNhap extends JFrame{
 		account.setBounds(10, 0, 248, 62);
 		account_pnl.add(account);
 		account.setBorder(null);
-		account.setBackground(new Color(215, 215, 215));
+		account.setOpaque(false);
 		account.setForeground(new Color(153,153,153));
 		account.setFont(Dosis_Regular);
 		account.setText("Mã nhân viên");
 		account.setColumns(10);
 		
-		pass_pnl = new JPanel();
-		pass_pnl.setBackground(new Color(215, 215, 215));
+		pass_pnl = new MyPanel();
+		pass_pnl.setColor(new Color(215,215,215));
+		pass_pnl.setBorderColor(new Color(215,215,215));
+		pass_pnl.setColorClick(new Color(215,215,215));
+		pass_pnl.setColorOver(new Color(215,215,215));
+		pass_pnl.setRadius(15);
 		pass_pnl.setBounds(34, 249, 299, 62);
 		panel.add(pass_pnl);
 		pass_pnl.setLayout(null);
@@ -111,6 +131,7 @@ public class GUI_DangNhap extends JFrame{
 				String Pass = new String(pass);
 				if(Pass.equals("Mật khẩu")) {
 					pass_txtf.setText("");
+					pass_txtf.setEchoChar('*');
 					pass_txtf.setForeground(new Color(153,153,153));
 				}
 			}
@@ -125,16 +146,17 @@ public class GUI_DangNhap extends JFrame{
 			}
 		});
 		pass_txtf.setBorder(null);
-		pass_txtf.setBackground(new Color(215, 215, 215));
+		pass_txtf.setOpaque(false);
 		pass_txtf.setBounds(10, 0, 248, 62);
 		pass_pnl.add(pass_txtf);
 		pass_txtf.setText("Mật khẩu");
 		pass_txtf.setFont(Dosis_Regular);
 		pass_txtf.setColumns(10);
 		
-		logIn = new JButton("Đăng nhập");
+		logIn = new nut_gradient("Đăng nhập",mau_gradient);
 		logIn.setForeground(new Color(255, 255, 255));
 		logIn.setBorder(null);
+		logIn.setRadius(15);
 		logIn.setBackground(new Color(255, 78, 67));
 		logIn.setFont(Dosis_Bold_20);
 		logIn.setBounds(34, 336, 299, 45);
