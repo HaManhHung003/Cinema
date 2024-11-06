@@ -1,14 +1,17 @@
 package gui;
 
 import java.awt.Color;
+import java.awt.Cursor;
 import java.awt.Font;
 import java.awt.FontFormatException;
+import java.awt.GradientPaint;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.FocusAdapter;
 import java.awt.event.FocusEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.geom.Point2D;
 import java.io.File;
 import java.io.IOException;
 
@@ -19,694 +22,856 @@ import javax.swing.JPanel;
 import javax.swing.JSeparator;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
+import component.nut_gradient;
 
 public class GUI_ChonGhe extends JPanel{
 	private JTextField txtKhuyenMai;
-
+	private JSeparator thanh_ngang1,thanh_ngang2;
+	private JLabel lbManHinh,lbNgayGio,lbSuat,lbGheChon,lbGhe,lbPhim,lbGheDon,lbGheDoi,lbGheDangChon,lbGheDaDat,lbGheTrong;
+	private JLabel rowA,rowB,rowC,rowD,rowE,rowF,rowG,rowH,rowI,rowK;
+	private nut_gradient A01, A02, A03, A04, A05, A06, A07, A08, A09, A010, A011,B01, B02, B03, B04, B05, B06, B07, B08, B09, 
+					B010, B011,C01, C02, C03, C04, C05, C06, C07, C08, C09, C010, C011,D01, D02, D03, D04, D05, D06, D07, D08, D09, D010, D011,
+					E01, E02, E03, E04, E05, E06, E07, E08, E09, E010, E011,F01, F02, F03, F04, F05, F06, F07, F08, F09, F010, F011,
+					G01, G02, G03, G04, G05, G06, G07, G08, G09, G010, G011,H01, H02, H03, H04, H05, H06, H07, H08, H09, H010, H011,
+					I01, I02, I03, I04, I05, I06,gheTrong,gheDaDat,gheDangChon,gheDon,gheDoi,btn_DatVe;
+	private GradientPaint mau_Trong,mau_DaDat,mau_DangChon;
+	private JLabel lbTongCong;
+	private JLabel sum;
 	public GUI_ChonGhe(GUI_Man_hinh_chinh man_hinh) throws FontFormatException, IOException {
-		setBackground(new Color(35, 33, 33));
+		setSize(1128,705);
+		setBackground(new Color(36, 34, 34));
 		setLayout(null);
+		
+		Point2D.Double p1 = new Point2D.Double(100, 100); 
+		Point2D.Double p2 = new Point2D.Double(200, 100); 
+		mau_Trong = new GradientPaint(p1,new Color(217,217,217),p2,new Color(217,217,217));
+		mau_DaDat = new GradientPaint(p1,new Color(113,101,101),p2,new Color(113,101,101));
+		mau_DangChon = new GradientPaint(p1,new Color(255,80,67),p2,new Color(255,130,62));
 		
 		File DosisB = new File("src\\resources\\fonts\\Dosis-Bold.ttf");
 		File Dosis = new File("src\\resources\\fonts\\Dosis-Regular.ttf");
 		Font Dosis_Bold = Font.createFont(Font.TRUETYPE_FONT, DosisB).deriveFont(25f);
 		Font Dosis_Bold_20 = Font.createFont(Font.TRUETYPE_FONT, DosisB).deriveFont(19f);
 		Font Dosis_Bold_14 = Font.createFont(Font.TRUETYPE_FONT, DosisB).deriveFont(16f);
+		Font Dosis_Bold_13 = Font.createFont(Font.TRUETYPE_FONT, DosisB).deriveFont(12f);
 		Font Dosis_Regular = Font.createFont(Font.TRUETYPE_FONT, Dosis).deriveFont(21f);
         
-        JSeparator separator = new JSeparator();
-        separator.setBounds(130, 60, 900, 4);
-        add(separator);
-        JLabel lbManHinh = new JLabel(" Màn hình");
+        thanh_ngang1 = new JSeparator();
+        thanh_ngang1.setBounds(60, 58, 1050, 4);
+        add(thanh_ngang1);
+        
+        lbManHinh = new JLabel(" Màn hình");
         lbManHinh.setForeground(new Color(255, 255, 255));
         lbManHinh.setFont(new Font("Tahoma", Font.PLAIN, 20));
         lbManHinh.setBounds(520, 20, 100, 30);
         lbManHinh.setFont(Dosis_Bold);
         add(lbManHinh);
         
-        JLabel rowA = new JLabel("A");
+        rowA = new JLabel("A");
         rowA.setHorizontalAlignment(SwingConstants.CENTER);
         rowA.setForeground(new Color(255, 255, 255));
         rowA.setFont(new Font("Tahoma", Font.PLAIN, 20));
-        rowA.setBounds(20, 100, 20, 20);
+        rowA.setBounds(20, 95, 20, 20);
         rowA.setFont(Dosis_Bold_20);
         add(rowA);
         
         
-        JLabel rowB = new JLabel("B");
+        rowB = new JLabel("B");
         rowB.setHorizontalAlignment(SwingConstants.CENTER);
         rowB.setForeground(Color.WHITE);
         rowB.setFont(new Font("Tahoma", Font.PLAIN, 20));
-        rowB.setBounds(20, 150, 20, 20);
+        rowB.setBounds(20, 145, 20, 20);
         rowB.setFont(Dosis_Bold_20);
         add(rowB);
         
-        JLabel rowC = new JLabel("C");
+        rowC = new JLabel("C");
         rowC.setHorizontalAlignment(SwingConstants.CENTER);
         rowC.setForeground(Color.WHITE);
         rowC.setFont(new Font("Tahoma", Font.PLAIN, 20));
-        rowC.setBounds(20, 200, 20, 20);
+        rowC.setBounds(20, 195, 20, 20);
         rowC.setFont(Dosis_Bold_20);
         add(rowC);
         
-        JLabel rowD = new JLabel("D");
+        rowD = new JLabel("D");
         rowD.setHorizontalAlignment(SwingConstants.CENTER);
         rowD.setForeground(Color.WHITE);
         rowD.setFont(new Font("Tahoma", Font.PLAIN, 20));
-        rowD.setBounds(20, 250, 20, 20);
+        rowD.setBounds(20, 245, 20, 20);
         rowD.setFont(Dosis_Bold_20);
         add(rowD);
         
-        JLabel rowE = new JLabel("E");
+        rowE = new JLabel("E");
         rowE.setHorizontalAlignment(SwingConstants.CENTER);
         rowE.setForeground(Color.WHITE);
         rowE.setFont(new Font("Tahoma", Font.PLAIN, 20));
-        rowE.setBounds(20, 300, 20, 20);
+        rowE.setBounds(20, 295, 20, 20);
         rowE.setFont(Dosis_Bold_20);
         add(rowE);
         
-        JLabel rowF = new JLabel("F");
+        rowF = new JLabel("F");
         rowF.setHorizontalAlignment(SwingConstants.CENTER);
         rowF.setForeground(Color.WHITE);
         rowF.setFont(new Font("Tahoma", Font.PLAIN, 20));
-        rowF.setBounds(20, 350, 20, 20);
+        rowF.setBounds(20, 345, 20, 20);
         rowF.setFont(Dosis_Bold_20);
         add(rowF);
         
-        JLabel rowG = new JLabel("G");
+        rowG = new JLabel("G");
         rowG.setHorizontalAlignment(SwingConstants.CENTER);
         rowG.setForeground(Color.WHITE);
         rowG.setFont(new Font("Tahoma", Font.PLAIN, 20));
-        rowG.setBounds(20, 400, 20, 20);
+        rowG.setBounds(20, 395, 20, 20);
         rowG.setFont(Dosis_Bold_20);
         add(rowG);
         
-        JLabel rowH = new JLabel("H");
+        rowH = new JLabel("H");
         rowH.setHorizontalAlignment(SwingConstants.CENTER);
         rowH.setForeground(Color.WHITE);
         rowH.setFont(new Font("Tahoma", Font.PLAIN, 20));
-        rowH.setBounds(20, 450, 20, 20);
+        rowH.setBounds(20, 445, 20, 20);
         rowH.setFont(Dosis_Bold_20);
         add(rowH);
         
-        JLabel rowI = new JLabel("I");
+        rowI = new JLabel("I");
         rowI.setHorizontalAlignment(SwingConstants.CENTER);
         rowI.setForeground(Color.WHITE);
         rowI.setFont(new Font("Tahoma", Font.PLAIN, 20));
-        rowI.setBounds(20, 500, 20, 20);
+        rowI.setBounds(20, 495, 20, 20);
         rowI.setFont(Dosis_Bold_20);
         add(rowI);
         
-        JButton A01 = new JButton("A01");
-        A01.setFont(new Font("Tahoma", Font.PLAIN, 14));
-        A01.setBackground(new Color(255, 255, 255));
-        A01.setBounds(100, 90, 60, 30);
+        A01 = new nut_gradient("A01",mau_Trong);
+        A01.setFont(Dosis_Bold_13);
+        A01.setRadius(10);
+        A01.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+        A01.setBounds(83, 90, 55, 30);
         add(A01);
         
-        JButton A02 = new JButton("A02");
-        A02.setFont(new Font("Tahoma", Font.PLAIN, 14));
-        A02.setBackground(Color.WHITE);
-        A02.setBounds(200, 90, 60, 30);
+        A02 = new nut_gradient("A02",mau_Trong);
+        A02.setFont(Dosis_Bold_13);
+        A02.setRadius(10);
+        A02.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+        A02.setBounds(178, 90, 55, 30);
         add(A02);
         
-        JButton A03 = new JButton("A03");
-        A03.setFont(new Font("Tahoma", Font.PLAIN, 14));
-        A03.setBackground(Color.WHITE);
-        A03.setBounds(300, 90, 60, 30);
+        A03 = new nut_gradient("A03",mau_Trong);
+        A03.setFont(Dosis_Bold_13);
+        A03.setRadius(10);
+        A03.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+        A03.setBounds(273, 90, 55, 30);
         add(A03);
         
-        JButton A04 = new JButton("A04");
-        A04.setFont(new Font("Tahoma", Font.PLAIN, 14));
-        A04.setBackground(Color.WHITE);
-        A04.setBounds(400, 90, 60, 30);
+        A04 = new nut_gradient("A04",mau_Trong);
+        A04.setFont(Dosis_Bold_13);
+        A04.setRadius(10);
+        A04.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+        A04.setBounds(368, 90, 55, 30);
         add(A04);
         
-        JButton A05 = new JButton("A05");
-        A05.setFont(new Font("Tahoma", Font.PLAIN, 14));
-        A05.setBackground(Color.WHITE);
-        A05.setBounds(500, 90, 60, 30);
+        A05 = new nut_gradient("A05",mau_Trong);
+        A05.setFont(Dosis_Bold_13);
+        A05.setRadius(10);
+        A05.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+        A05.setBounds(463, 90, 55, 30);
         add(A05);
         
-        JButton A06 = new JButton("A06");
-        A06.setFont(new Font("Tahoma", Font.PLAIN, 14));
-        A06.setBackground(Color.WHITE);
-        A06.setBounds(600, 90, 60, 30);
+        A06 = new nut_gradient("A06",mau_Trong);
+        A06.setFont(Dosis_Bold_13);
+        A06.setRadius(10);
+        A06.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+        A06.setBounds(558, 90, 55, 30);
         add(A06);
         
-        JButton A07 = new JButton("A07");
-        A07.setFont(new Font("Tahoma", Font.PLAIN, 14));
-        A07.setBackground(Color.WHITE);
-        A07.setBounds(700, 90, 60, 30);
+        A07 = new nut_gradient("A07",mau_Trong);
+        A07.setFont(Dosis_Bold_13);
+        A07.setRadius(10);
+        A07.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+        A07.setBounds(653, 90, 55, 30);
         add(A07);
         
-        JButton A08 = new JButton("A08");
-        A08.setFont(new Font("Tahoma", Font.PLAIN, 14));
-        A08.setBackground(Color.WHITE);
-        A08.setBounds(800, 90, 60, 30);
+        A08 = new nut_gradient("A08",mau_Trong);
+        A08.setFont(Dosis_Bold_13);
+        A08.setRadius(10);
+        A08.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+        A08.setBounds(748, 90, 55, 30);
         add(A08);
         
-        JButton A09 = new JButton("A09");
-        A09.setFont(new Font("Tahoma", Font.PLAIN, 14));
-        A09.setBackground(Color.WHITE);
-        A09.setBounds(900, 90, 60, 30);
+        A09 = new nut_gradient("A09",mau_Trong);
+        A09.setFont(Dosis_Bold_13);
+        A09.setRadius(10);
+        A09.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+        A09.setBounds(843, 90, 55, 30);
         add(A09);
         
-        JButton A010 = new JButton("A10");
-        A010.setFont(new Font("Tahoma", Font.PLAIN, 14));
-        A010.setBackground(Color.WHITE);
-        A010.setBounds(1000, 90, 60, 30);
+        A010 = new nut_gradient("A10",mau_Trong);
+        A010.setFont(Dosis_Bold_13);
+        A010.setRadius(10);
+        A010.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+        A010.setBounds(938, 90, 55, 30);
         add(A010);
         
-        JButton B01 = new JButton("B01");
-        B01.setFont(new Font("Tahoma", Font.PLAIN, 14));
-        B01.setBackground(Color.WHITE);
-        B01.setBounds(100, 140, 60, 30);
+        A011 = new nut_gradient("A011",mau_Trong);
+        A011.setFont(Dosis_Bold_13);
+        A011.setRadius(10);
+        A011.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+        A011.setBounds(1033, 90, 55, 30);
+        add(A011);
+        
+        B01 = new nut_gradient("B01",mau_Trong);
+        B01.setFont(Dosis_Bold_13);
+        B01.setRadius(10);
+        B01.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+        B01.setBounds(83, 140, 55, 30);
         add(B01);
         
-        JButton B02 = new JButton("B02");
-        B02.setFont(new Font("Tahoma", Font.PLAIN, 14));
-        B02.setBackground(Color.WHITE);
-        B02.setBounds(200, 140, 60, 30);
+        B02 = new nut_gradient("B02",mau_Trong);
+        B02.setFont(Dosis_Bold_13);
+        B02.setRadius(10);
+        B02.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+        B02.setBounds(178, 140, 55, 30);
         add(B02);
         
-        JButton B03 = new JButton("B03");
-        B03.setFont(new Font("Tahoma", Font.PLAIN, 14));
-        B03.setBackground(Color.WHITE);
-        B03.setBounds(300, 140, 60, 30);
+        B03 = new nut_gradient("B03",mau_Trong);
+        B03.setFont(Dosis_Bold_13);
+        B03.setRadius(10);
+        B03.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+        B03.setBounds(273, 140, 55, 30);
         add(B03);
         
-        JButton B04 = new JButton("B04");
-        B04.setFont(new Font("Tahoma", Font.PLAIN, 14));
-        B04.setBackground(Color.WHITE);
-        B04.setBounds(400, 140, 60, 30);
+        B04 = new nut_gradient("B04",mau_Trong);
+        B04.setFont(Dosis_Bold_13);
+        B04.setRadius(10);
+        B04.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+        B04.setBounds(368, 140, 55, 30);
         add(B04);
         
-        JButton B05 = new JButton("B05");
-        B05.setFont(new Font("Tahoma", Font.PLAIN, 14));
-        B05.setBackground(Color.WHITE);
-        B05.setBounds(500, 140, 60, 30);
+        B05 = new nut_gradient("B05",mau_Trong);
+        B05.setFont(Dosis_Bold_13);
+        B05.setRadius(10);
+        B05.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+        B05.setBounds(463, 140, 55, 30);
         add(B05);
         
-        JButton B06 = new JButton("B06");
-        B06.setFont(new Font("Tahoma", Font.PLAIN, 14));
-        B06.setBackground(Color.WHITE);
-        B06.setBounds(600, 140, 60, 30);
+        B06 = new nut_gradient("B06",mau_Trong);
+        B06.setFont(Dosis_Bold_13);
+        B06.setRadius(10);
+        B06.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+        B06.setBounds(558, 140, 55, 30);
         add(B06);
         
-        JButton B07 = new JButton("B07");
-        B07.setFont(new Font("Tahoma", Font.PLAIN, 14));
-        B07.setBackground(Color.WHITE);
-        B07.setBounds(700, 140, 60, 30);
+        B07 = new nut_gradient("B07",mau_Trong);
+        B07.setFont(Dosis_Bold_13);
+        B07.setRadius(10);
+        B07.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+        B07.setBounds(653, 140, 55, 30);
         add(B07);
         
-        JButton B08 = new JButton("B08");
-        B08.setFont(new Font("Tahoma", Font.PLAIN, 14));
-        B08.setBackground(Color.WHITE);
-        B08.setBounds(800, 140, 60, 30);
+        B08 = new nut_gradient("B08",mau_Trong);
+        B08.setFont(Dosis_Bold_13);
+        B08.setRadius(10);
+        B08.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+        B08.setBounds(748, 140, 55, 30);
         add(B08);
         
-        JButton B09 = new JButton("B09");
-        B09.setFont(new Font("Tahoma", Font.PLAIN, 14));
-        B09.setBackground(Color.WHITE);
-        B09.setBounds(900, 140, 60, 30);
+        B09 = new nut_gradient("B09",mau_Trong);
+        B09.setFont(Dosis_Bold_13);
+        B09.setRadius(10);
+        B09.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+        B09.setBounds(843, 140, 55, 30);
         add(B09);
         
-        JButton B010 = new JButton("B10");
-        B010.setFont(new Font("Tahoma", Font.PLAIN, 14));
-        B010.setBackground(Color.WHITE);
-        B010.setBounds(1000, 140, 60, 30);
+        B010 = new nut_gradient("B10",mau_Trong);
+        B010.setFont(Dosis_Bold_13);
+        B010.setRadius(10);
+        B010.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+        B010.setBounds(938, 140, 55, 30);
         add(B010);
         
-        JButton C01 = new JButton("C01");
-        C01.setFont(new Font("Tahoma", Font.PLAIN, 14));
-        C01.setBackground(Color.WHITE);
-        C01.setBounds(100, 190, 60, 30);
+        B011 = new nut_gradient("B011",mau_Trong);
+        B011.setFont(Dosis_Bold_13);
+        B011.setRadius(10);
+        B011.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+        B011.setBounds(1033, 140, 55, 30);
+        add(B011);
+        
+        C01 = new nut_gradient("C01",mau_Trong);
+        C01.setFont(Dosis_Bold_13);
+        C01.setRadius(10);
+        C01.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+        C01.setBounds(83, 190, 55, 30);
         add(C01);
         
-        JButton C02 = new JButton("C02");
-        C02.setFont(new Font("Tahoma", Font.PLAIN, 14));
-        C02.setBackground(Color.WHITE);
-        C02.setBounds(200, 190, 60, 30);
+        C02 = new nut_gradient("C02",mau_Trong);
+        C02.setFont(Dosis_Bold_13);
+        C02.setRadius(10);
+        C02.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+        C02.setBounds(178, 190, 55, 30);
         add(C02);
         
-        JButton C03 = new JButton("C03");
-        C03.setFont(new Font("Tahoma", Font.PLAIN, 14));
-        C03.setBackground(Color.WHITE);
-        C03.setBounds(300, 190, 60, 30);
+        C03 = new nut_gradient("C03",mau_Trong);
+        C03.setFont(Dosis_Bold_13);
+        C03.setRadius(10);
+        C03.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+        C03.setBounds(273, 190, 55, 30);
         add(C03);
         
-        JButton C04 = new JButton("C04");
-        C04.setFont(new Font("Tahoma", Font.PLAIN, 14));
-        C04.setBackground(Color.WHITE);
-        C04.setBounds(400, 190, 60, 30);
+        C04 = new nut_gradient("C04",mau_Trong);
+        C04.setFont(Dosis_Bold_13);
+        C04.setRadius(10);
+        C04.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+        C04.setBounds(368, 190, 55, 30);
         add(C04);
         
-        JButton C05 = new JButton("C05");
-        C05.setFont(new Font("Tahoma", Font.PLAIN, 14));
-        C05.setBackground(Color.WHITE);
-        C05.setBounds(500, 190, 60, 30);
+        C05 = new nut_gradient("C05",mau_Trong);
+        C05.setFont(Dosis_Bold_13);
+        C05.setRadius(10);
+        C05.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+        C05.setBounds(463, 190, 55, 30);
         add(C05);
         
-        JButton C06 = new JButton("C06");
-        C06.setFont(new Font("Tahoma", Font.PLAIN, 14));
-        C06.setBackground(Color.WHITE);
-        C06.setBounds(600, 190, 60, 30);
+        C06 = new nut_gradient("C06",mau_Trong);
+        C06.setFont(Dosis_Bold_13);
+        C06.setRadius(10);
+        C06.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+        C06.setBounds(558, 190, 55, 30);
         add(C06);
         
-        JButton C07 = new JButton("C07");
-        C07.setFont(new Font("Tahoma", Font.PLAIN, 14));
-        C07.setBackground(Color.WHITE);
-        C07.setBounds(700, 190, 60, 30);
+        C07 = new nut_gradient("C07",mau_Trong);
+        C07.setFont(Dosis_Bold_13);
+        C07.setRadius(10);
+        C07.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+        C07.setBounds(653, 190, 55, 30);
         add(C07);
         
-        JButton C08 = new JButton("C08");
-        C08.setFont(new Font("Tahoma", Font.PLAIN, 14));
-        C08.setBackground(Color.WHITE);
-        C08.setBounds(800, 190, 60, 30);
+        C08 = new nut_gradient("C08",mau_Trong);
+        C08.setFont(Dosis_Bold_13);
+        C08.setRadius(10);
+        C08.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+        C08.setBounds(748, 190, 55, 30);
         add(C08);
         
-        JButton C09 = new JButton("C09");
-        C09.setFont(new Font("Tahoma", Font.PLAIN, 14));
-        C09.setBackground(Color.WHITE);
-        C09.setBounds(900, 190, 60, 30);
+        C09 = new nut_gradient("C09",mau_Trong);
+        C09.setFont(Dosis_Bold_13);
+        C09.setRadius(10);
+        C09.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+        C09.setBounds(843, 190, 55, 30);
         add(C09);
         
-        JButton C010 = new JButton("C10");
-        C010.setFont(new Font("Tahoma", Font.PLAIN, 14));
-        C010.setBackground(Color.WHITE);
-        C010.setBounds(1000, 190, 60, 30);
+        C010 = new nut_gradient("C10",mau_Trong);
+        C010.setFont(Dosis_Bold_13);
+        C010.setRadius(10);
+        C010.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+        C010.setBounds(938, 190, 55, 30);
         add(C010);
         
-        JButton D01 = new JButton("D01");
-        D01.addActionListener(new ActionListener() {
-        	public void actionPerformed(ActionEvent e) {
-        	}
-        });
-        D01.setFont(new Font("Tahoma", Font.PLAIN, 14));
-        D01.setBackground(Color.WHITE);
-        D01.setBounds(100, 240, 60, 30);
+        C011 = new nut_gradient("C011",mau_Trong);
+        C011.setFont(Dosis_Bold_13);
+        C011.setRadius(10);
+        C011.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+        C011.setBounds(1033, 190, 55, 30);
+        add(C011);
+        
+        D01 = new nut_gradient("D01",mau_Trong);
+        D01.setFont(Dosis_Bold_13);
+        D01.setRadius(10);
+        D01.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+        D01.setBounds(83, 240, 55, 30);
         add(D01);
         
-        JButton D02 = new JButton("D02");
-        D02.setFont(new Font("Tahoma", Font.PLAIN, 14));
-        D02.setBackground(Color.WHITE);
-        D02.setBounds(200, 240, 60, 30);
+        D02 = new nut_gradient("D02",mau_Trong);
+        D02.setFont(Dosis_Bold_13);
+        D02.setRadius(10);
+        D02.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+        D02.setBounds(178, 240, 55, 30);
         add(D02);
         
-        JButton D03 = new JButton("D03");
-        D03.setFont(new Font("Tahoma", Font.PLAIN, 14));
-        D03.setBackground(Color.WHITE);
-        D03.setBounds(300, 240, 60, 30);
+        D03 = new nut_gradient("D03",mau_Trong);
+        D03.setFont(Dosis_Bold_13);
+        D03.setRadius(10);
+        D03.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+        D03.setBounds(273, 240, 55, 30);
         add(D03);
         
-        JButton D04 = new JButton("D04");
-        D04.setFont(new Font("Tahoma", Font.PLAIN, 14));
-        D04.setBackground(Color.WHITE);
-        D04.setBounds(400, 240, 60, 30);
+        D04 = new nut_gradient("D04",mau_Trong);
+        D04.setFont(Dosis_Bold_13);
+        D04.setRadius(10);
+        D04.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+        D04.setBounds(368, 240, 55, 30);
         add(D04);
         
-        JButton D05 = new JButton("D05");
-        D05.setFont(new Font("Tahoma", Font.PLAIN, 14));
-        D05.setBackground(Color.WHITE);
-        D05.setBounds(500, 240, 60, 30);
+        D05 = new nut_gradient("D05",mau_Trong);
+        D05.setFont(Dosis_Bold_13);
+        D05.setRadius(10);
+        D05.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+        D05.setBounds(463, 240, 55, 30);
         add(D05);
         
-        JButton D06 = new JButton("D06");
-        D06.setFont(new Font("Tahoma", Font.PLAIN, 14));
-        D06.setBackground(Color.WHITE);
-        D06.setBounds(600, 240, 60, 30);
+        D06 = new nut_gradient("D06",mau_Trong);
+        D06.setFont(Dosis_Bold_13);
+        D06.setRadius(10);
+        D06.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+        D06.setBounds(558, 240, 55, 30);
         add(D06);
         
-        JButton D07 = new JButton("D07");
-        D07.setFont(new Font("Tahoma", Font.PLAIN, 14));
-        D07.setBackground(Color.WHITE);
-        D07.setBounds(700, 240, 60, 30);
+        D07 = new nut_gradient("D07",mau_Trong);
+        D07.setFont(Dosis_Bold_13);
+        D07.setRadius(10);
+        D07.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+        D07.setBounds(653, 240, 55, 30);
         add(D07);
         
-        JButton D08 = new JButton("D08");
-        D08.setFont(new Font("Tahoma", Font.PLAIN, 14));
-        D08.setBackground(Color.WHITE);
-        D08.setBounds(800, 240, 60, 30);
+        D08 = new nut_gradient("D08",mau_Trong);
+        D08.setFont(Dosis_Bold_13);
+        D08.setRadius(10);
+        D08.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+        D08.setBounds(748, 240, 55, 30);
         add(D08);
         
-        JButton D09 = new JButton("D09");
-        D09.setFont(new Font("Tahoma", Font.PLAIN, 14));
-        D09.setBackground(Color.WHITE);
-        D09.setBounds(900, 240, 60, 30);
+        D09 = new nut_gradient("D09",mau_Trong);
+        D09.setFont(Dosis_Bold_13);
+        D09.setRadius(10);
+        D09.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+        D09.setBounds(843, 240, 55, 30);
         add(D09);
         
-        JButton D010 = new JButton("D10");
-        D010.setFont(new Font("Tahoma", Font.PLAIN, 14));
-        D010.setBackground(Color.WHITE);
-        D010.setBounds(1000, 240, 60, 30);
+        D010 = new nut_gradient("D10",mau_Trong);
+        D010.setFont(Dosis_Bold_13);
+        D010.setRadius(10);
+        D010.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+        D010.setBounds(938, 240, 55, 30);
         add(D010);
         
-        JButton E01 = new JButton("E01");
-        E01.setFont(new Font("Tahoma", Font.PLAIN, 14));
-        E01.setBackground(Color.WHITE);
-        E01.setBounds(100, 290, 60, 30);
+        D011 = new nut_gradient("D011",mau_Trong);
+        D011.setFont(Dosis_Bold_13);
+        D011.setRadius(10);
+        D011.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+        D011.setBounds(1033, 240, 55, 30);
+        add(D011);
+        
+        E01 = new nut_gradient("E01",mau_Trong);
+        E01.setFont(Dosis_Bold_13);
+        E01.setRadius(10);
+        E01.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+        E01.setBounds(83, 290, 55, 30);
         add(E01);
         
-        JButton E02 = new JButton("E02");
-        E02.setFont(new Font("Tahoma", Font.PLAIN, 14));
-        E02.setBackground(Color.WHITE);
-        E02.setBounds(200, 290, 60, 30);
+        E02 = new nut_gradient("E02",mau_Trong);
+        E02.setFont(Dosis_Bold_13);
+        E02.setRadius(10);
+        E02.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+        E02.setBounds(178, 290, 55, 30);
         add(E02);
         
-        JButton E03 = new JButton("E03");
-        E03.setFont(new Font("Tahoma", Font.PLAIN, 14));
-        E03.setBackground(Color.WHITE);
-        E03.setBounds(300, 290, 60, 30);
+        E03 = new nut_gradient("E03",mau_Trong);
+        E03.setFont(Dosis_Bold_13);
+        E03.setRadius(10);
+        E03.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+        E03.setBounds(273, 290, 55, 30);
         add(E03);
         
-        JButton E04 = new JButton("E04");
-        E04.setFont(new Font("Tahoma", Font.PLAIN, 14));
-        E04.setBackground(Color.WHITE);
-        E04.setBounds(400, 290, 60, 30);
+        E04 = new nut_gradient("E04",mau_Trong);
+        E04.setFont(Dosis_Bold_13);
+        E04.setRadius(10);
+        E04.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+        E04.setBounds(368, 290, 55, 30);
         add(E04);
         
-        JButton E05 = new JButton("E05");
-        E05.setForeground(new Color(0, 0, 0));
-        E05.setFont(new Font("Tahoma", Font.PLAIN, 14));
-        E05.setBackground(new Color(255, 255, 255));
-        E05.setBounds(500, 290, 60, 30);
+        E05 = new nut_gradient("E05",mau_Trong);
+        E05.setFont(Dosis_Bold_13);
+        E05.setRadius(10);
+        E05.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+        E05.setBounds(463, 290, 55, 30);
         add(E05);
         
-        JButton E06 = new JButton("E06");
-        E06.setForeground(new Color(0, 0, 0));
-        E06.setFont(new Font("Tahoma", Font.PLAIN, 14));
-        E06.setBackground(new Color(255, 255, 255));
-        E06.setBounds(600, 290, 60, 30);
+        E06 = new nut_gradient("E06",mau_Trong);
+        E06.setFont(Dosis_Bold_13);
+        E06.setRadius(10);
+        E06.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+        E06.setBounds(558, 290, 55, 30);
         add(E06);
         
-        JButton E07 = new JButton("E07");
-        E07.setFont(new Font("Tahoma", Font.PLAIN, 14));
-        E07.setBackground(Color.WHITE);
-        E07.setBounds(700, 290, 60, 30);
+        E07 = new nut_gradient("E07",mau_Trong);
+        E07.setFont(Dosis_Bold_13);
+        E07.setRadius(10);
+        E07.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+        E07.setBounds(653, 290, 55, 30);
         add(E07);
         
-        JButton E08 = new JButton("E08");
-        E08.setFont(new Font("Tahoma", Font.PLAIN, 14));
-        E08.setBackground(Color.WHITE);
-        E08.setBounds(800, 290, 60, 30);
+        E08 = new nut_gradient("E08",mau_Trong);
+        E08.setFont(Dosis_Bold_13);
+        E08.setRadius(10);
+        E08.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+        E08.setBounds(748, 290, 55, 30);
         add(E08);
         
-        JButton E09 = new JButton("E09");
-        E09.setFont(new Font("Tahoma", Font.PLAIN, 14));
-        E09.setBackground(Color.WHITE);
-        E09.setBounds(900, 290, 60, 30);
+        E09 = new nut_gradient("E09",mau_Trong);
+        E09.setFont(Dosis_Bold_13);
+        E09.setRadius(10);
+        E09.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+        E09.setBounds(843, 290, 55, 30);
         add(E09);
         
-        JButton E010 = new JButton("E10");
-        E010.setFont(new Font("Tahoma", Font.PLAIN, 14));
-        E010.setBackground(Color.WHITE);
-        E010.setBounds(1000, 290, 60, 30);
+        E010 = new nut_gradient("E10",mau_Trong);
+        E010.setFont(Dosis_Bold_13);
+        E010.setRadius(10);
+        E010.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+        E010.setBounds(938, 290, 55, 30);
         add(E010);
         
-        JButton F01 = new JButton("F01");
-        F01.setFont(new Font("Tahoma", Font.PLAIN, 14));
-        F01.setBackground(Color.WHITE);
-        F01.setBounds(100, 340, 60, 30);
+        E011 = new nut_gradient("E011",mau_Trong);
+        E011.setFont(Dosis_Bold_13);
+        E011.setRadius(10);
+        E011.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+        E011.setBounds(1033, 290, 55, 30);
+        add(E011);
+        
+        F01 = new nut_gradient("F01",mau_Trong);
+        F01.setFont(Dosis_Bold_13);
+        F01.setRadius(10);
+        F01.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+        F01.setBounds(83, 340, 55, 30);
         add(F01);
         
-        JButton G01 = new JButton("G01");
-        G01.setFont(new Font("Tahoma", Font.PLAIN, 14));
-        G01.setBackground(Color.WHITE);
-        G01.setBounds(100, 390, 60, 30);
-        add(G01);
-        
-        JButton H01 = new JButton("H01");
-        H01.setFont(new Font("Tahoma", Font.PLAIN, 14));
-        H01.setBackground(Color.WHITE);
-        H01.setBounds(100, 440, 60, 30);
-        add(H01);
-        
-        JButton I01 = new JButton("I01");
-        I01.setFont(new Font("Tahoma", Font.PLAIN, 14));
-        I01.setBackground(Color.WHITE);
-        I01.setBounds(100, 490, 100, 30);
-        add(I01);
-        
-        JButton F02 = new JButton("F02");
-        F02.setFont(new Font("Tahoma", Font.PLAIN, 14));
-        F02.setBackground(Color.WHITE);
-        F02.setBounds(200, 340, 60, 30);
+        F02 = new nut_gradient("F02",mau_Trong);
+        F02.setFont(Dosis_Bold_13);
+        F02.setRadius(10);
+        F02.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+        F02.setBounds(178, 340, 55, 30);
         add(F02);
         
-        JButton F03 = new JButton("F03");
-        F03.setFont(new Font("Tahoma", Font.PLAIN, 14));
-        F03.setBackground(Color.WHITE);
-        F03.setBounds(300, 340, 60, 30);
+        F03 = new nut_gradient("F03",mau_Trong);
+        F03.setFont(Dosis_Bold_13);
+        F03.setRadius(10);
+        F03.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+        F03.setBounds(273, 340, 55, 30);
         add(F03);
         
-        JButton F04 = new JButton("F04");
-        F04.setFont(new Font("Tahoma", Font.PLAIN, 14));
-        F04.setBackground(Color.WHITE);
-        F04.setBounds(400, 340, 60, 30);
+        F04 = new nut_gradient("F04",mau_Trong);
+        F04.setFont(Dosis_Bold_13);
+        F04.setRadius(10);
+        F04.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+        F04.setBounds(368, 340, 55, 30);
         add(F04);
         
-        JButton F05 = new JButton("F05");
-        F05.setFont(new Font("Tahoma", Font.PLAIN, 14));
-        F05.setBackground(Color.WHITE);
-        F05.setBounds(500, 340, 60, 30);
+        F05 = new nut_gradient("F05",mau_Trong);
+        F05.setFont(Dosis_Bold_13);
+        F05.setRadius(10);
+        F05.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+        F05.setBounds(463, 340, 55, 30);
         add(F05);
         
-        JButton F06 = new JButton("F06");
-        F06.setFont(new Font("Tahoma", Font.PLAIN, 14));
-        F06.setBackground(new Color(255, 255, 255));
-        F06.setBounds(600, 340, 60, 30);
+        F06 = new nut_gradient("F06",mau_Trong);
+        F06.setFont(Dosis_Bold_13);
+        F06.setRadius(10);
+        F06.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+        F06.setBounds(558, 340, 55, 30);
         add(F06);
         
-        JButton F07 = new JButton("F07");
-        F07.setFont(new Font("Tahoma", Font.PLAIN, 14));
-        F07.setBackground(Color.WHITE);
-        F07.setBounds(700, 340, 60, 30);
+        F07 = new nut_gradient("F07",mau_Trong);
+        F07.setFont(Dosis_Bold_13);
+        F07.setRadius(10);
+        F07.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+        F07.setBounds(653, 340, 55, 30);
         add(F07);
         
-        JButton F08 = new JButton("F08");
-        F08.setFont(new Font("Tahoma", Font.PLAIN, 14));
-        F08.setBackground(Color.WHITE);
-        F08.setBounds(800, 340, 60, 30);
+        F08 = new nut_gradient("F08",mau_Trong);
+        F08.setFont(Dosis_Bold_13);
+        F08.setRadius(10);
+        F08.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+        F08.setBounds(748, 340, 55, 30);
         add(F08);
         
-        JButton F09 = new JButton("F09");
-        F09.setFont(new Font("Tahoma", Font.PLAIN, 14));
-        F09.setBackground(Color.WHITE);
-        F09.setBounds(900, 340, 60, 30);
+        F09 = new nut_gradient("F09",mau_Trong);
+        F09.setFont(Dosis_Bold_13);
+        F09.setRadius(10);
+        F09.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+        F09.setBounds(843, 340, 55, 30);
         add(F09);
         
-        JButton F010 = new JButton("F10");
-        F010.setFont(new Font("Tahoma", Font.PLAIN, 14));
-        F010.setBackground(Color.WHITE);
-        F010.setBounds(1000, 340, 60, 30);
+        F010 = new nut_gradient("F10",mau_Trong);
+        F010.setFont(Dosis_Bold_13);
+        F010.setRadius(10);
+        F010.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+        F010.setBounds(938, 340, 55, 30);
         add(F010);
         
-        JButton G02 = new JButton("G02");
-        G02.setFont(new Font("Tahoma", Font.PLAIN, 14));
-        G02.setBackground(Color.WHITE);
-        G02.setBounds(200, 390, 60, 30);
+        F011 = new nut_gradient("F011",mau_Trong);
+        F011.setFont(Dosis_Bold_13);
+        F011.setRadius(10);
+        F011.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+        F011.setBounds(1033, 340, 55, 30);
+        add(F011);
+        
+        G01 = new nut_gradient("G01",mau_Trong);
+        G01.setFont(Dosis_Bold_13);
+        G01.setRadius(10);
+        G01.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+        G01.setBounds(83, 390, 55, 30);
+        add(G01);
+        
+        G02 = new nut_gradient("G02",mau_Trong);
+        G02.setFont(Dosis_Bold_13);
+        G02.setRadius(10);
+        G02.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+        G02.setBounds(178, 390, 55, 30);
         add(G02);
         
-        JButton G03 = new JButton("G03");
-        G03.setFont(new Font("Tahoma", Font.PLAIN, 14));
-        G03.setBackground(Color.WHITE);
-        G03.setBounds(300, 390, 60, 30);
+        G03 = new nut_gradient("G03",mau_Trong);
+        G03.setFont(Dosis_Bold_13);
+        G03.setRadius(10);
+        G03.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+        G03.setBounds(273, 390, 55, 30);
         add(G03);
         
-        JButton G04 = new JButton("G04");
-        G04.setFont(new Font("Tahoma", Font.PLAIN, 14));
-        G04.setBackground(Color.WHITE);
-        G04.setBounds(400, 390, 60, 30);
+        G04 = new nut_gradient("G04",mau_Trong);
+        G04.setFont(Dosis_Bold_13);
+        G04.setRadius(10);
+        G04.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+        G04.setBounds(368, 390, 55, 30);
         add(G04);
         
-        JButton G05 = new JButton("G05");
-        G05.setFont(new Font("Tahoma", Font.PLAIN, 14));
-        G05.setBackground(Color.WHITE);
-        G05.setBounds(500, 390, 60, 30);
+        G05 = new nut_gradient("G05",mau_Trong);
+        G05.setFont(Dosis_Bold_13);
+        G05.setRadius(10);
+        G05.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+        G05.setBounds(463, 390, 55, 30);
         add(G05);
         
-        JButton G06 = new JButton("G06");
-        G06.setFont(new Font("Tahoma", Font.PLAIN, 14));
-        G06.setBackground(Color.WHITE);
-        G06.setBounds(600, 390, 60, 30);
+        G06 = new nut_gradient("G06",mau_Trong);
+        G06.setFont(Dosis_Bold_13);
+        G06.setRadius(10);
+        G06.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+        G06.setBounds(558, 390, 55, 30);
         add(G06);
         
-        JButton G07 = new JButton("G07");
-        G07.setFont(new Font("Tahoma", Font.PLAIN, 14));
-        G07.setBackground(Color.WHITE);
-        G07.setBounds(700, 390, 60, 30);
+        G07 = new nut_gradient("G07",mau_Trong);
+        G07.setFont(Dosis_Bold_13);
+        G07.setRadius(10);
+        G07.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+        G07.setBounds(653, 390, 55, 30);
         add(G07);
         
-        JButton G08 = new JButton("G08");
-        G08.setFont(new Font("Tahoma", Font.PLAIN, 14));
-        G08.setBackground(Color.WHITE);
-        G08.setBounds(800, 390, 60, 30);
+        G08 = new nut_gradient("G08",mau_Trong);
+        G08.setFont(Dosis_Bold_13);
+        G08.setRadius(10);
+        G08.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+        G08.setBounds(748, 390, 55, 30);
         add(G08);
         
-        JButton G09 = new JButton("G09");
-        G09.setFont(new Font("Tahoma", Font.PLAIN, 14));
-        G09.setBackground(Color.WHITE);
-        G09.setBounds(900, 390, 60, 30);
+        G09 = new nut_gradient("G09",mau_Trong);
+        G09.setFont(Dosis_Bold_13);
+        G09.setRadius(10);
+        G09.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+        G09.setBounds(843, 390, 55, 30);
         add(G09);
         
-        JButton G010 = new JButton("G10");
-        G010.setFont(new Font("Tahoma", Font.PLAIN, 14));
-        G010.setBackground(Color.WHITE);
-        G010.setBounds(1000, 390, 60, 30);
+        G010 = new nut_gradient("G10",mau_Trong);
+        G010.setFont(Dosis_Bold_13);
+        G010.setRadius(10);
+        G010.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+        G010.setBounds(938, 390, 55, 30);
         add(G010);
         
-        JButton H02 = new JButton("H02");
-        H02.setFont(new Font("Tahoma", Font.PLAIN, 14));
-        H02.setBackground(Color.WHITE);
-        H02.setBounds(200, 440, 60, 30);
+        G011 = new nut_gradient("G011",mau_Trong);
+        G011.setFont(Dosis_Bold_13);
+        G011.setRadius(10);
+        G011.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+        G011.setBounds(1033, 390, 55, 30);
+        add(G011);
+        
+        H01 = new nut_gradient("H01",mau_Trong);
+        H01.setFont(Dosis_Bold_13);
+        H01.setRadius(10);
+        H01.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+        H01.setBounds(83, 440, 55, 30);
+        add(H01);
+        
+        H02 = new nut_gradient("H02",mau_Trong);
+        H02.setFont(Dosis_Bold_13);
+        H02.setRadius(10);
+        H02.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+        H02.setBounds(178, 440, 55, 30);
         add(H02);
         
-        JButton H03 = new JButton("H03");
-        H03.setFont(new Font("Tahoma", Font.PLAIN, 14));
-        H03.setBackground(Color.WHITE);
-        H03.setBounds(300, 440, 60, 30);
+        H03 = new nut_gradient("H03",mau_Trong);
+        H03.setFont(Dosis_Bold_13);
+        H03.setRadius(10);
+        H03.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+        H03.setBounds(273, 440, 55, 30);
         add(H03);
         
-        JButton H04 = new JButton("H04");
-        H04.setFont(new Font("Tahoma", Font.PLAIN, 14));
-        H04.setBackground(Color.WHITE);
-        H04.setBounds(400, 440, 60, 30);
+        H04 = new nut_gradient("H04",mau_Trong);
+        H04.setFont(Dosis_Bold_13);
+        H04.setRadius(10);
+        H04.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+        H04.setBounds(368, 440, 55, 30);
         add(H04);
         
-        JButton H05 = new JButton("H05");
-        H05.setFont(new Font("Tahoma", Font.PLAIN, 14));
-        H05.setBackground(Color.WHITE);
-        H05.setBounds(500, 440, 60, 30);
+        H05 = new nut_gradient("H05",mau_Trong);
+        H05.setFont(Dosis_Bold_13);
+        H05.setRadius(10);
+        H05.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+        H05.setBounds(463, 440, 55, 30);
         add(H05);
         
-        JButton H06 = new JButton("H06");
-        H06.setFont(new Font("Tahoma", Font.PLAIN, 14));
-        H06.setBackground(Color.WHITE);
-        H06.setBounds(600, 440, 60, 30);
+        H06 = new nut_gradient("H06",mau_Trong);
+        H06.setFont(Dosis_Bold_13);
+        H06.setRadius(10);
+        H06.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+        H06.setBounds(558, 440, 55, 30);
         add(H06);
         
-        JButton H07 = new JButton("H07");
-        H07.setFont(new Font("Tahoma", Font.PLAIN, 14));
-        H07.setBackground(Color.WHITE);
-        H07.setBounds(700, 440, 60, 30);
+        H07 = new nut_gradient("H07",mau_Trong);
+        H07.setFont(Dosis_Bold_13);
+        H07.setRadius(10);
+        H07.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+        H07.setBounds(653, 440, 55, 30);
         add(H07);
         
-        JButton H08 = new JButton("H08");
-        H08.setFont(new Font("Tahoma", Font.PLAIN, 14));
-        H08.setBackground(Color.WHITE);
-        H08.setBounds(800, 440, 60, 30);
+        H08 = new nut_gradient("H08",mau_Trong);
+        H08.setFont(Dosis_Bold_13);
+        H08.setRadius(10);
+        H08.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+        H08.setBounds(748, 440, 55, 30);
         add(H08);
         
-        JButton H09 = new JButton("H09");
-        H09.setFont(new Font("Tahoma", Font.PLAIN, 14));
-        H09.setBackground(Color.WHITE);
-        H09.setBounds(900, 440, 60, 30);
+        H09 = new nut_gradient("H09",mau_Trong);
+        H09.setFont(Dosis_Bold_13);
+        H09.setRadius(10);
+        H09.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+        H09.setBounds(843, 440, 55, 30);
         add(H09);
         
-        JButton H010 = new JButton("H10");
-        H010.setFont(new Font("Tahoma", Font.PLAIN, 14));
-        H010.setBackground(Color.WHITE);
-        H010.setBounds(1000, 440, 60, 30);
+        H010 = new nut_gradient("H10",mau_Trong);
+        H010.setFont(Dosis_Bold_13);
+        H010.setRadius(10);
+        H010.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+        H010.setBounds(938, 440, 55, 30);
         add(H010);
         
-        JButton I02 = new JButton("I02");
-        I02.setFont(new Font("Tahoma", Font.PLAIN, 14));
-        I02.setBackground(Color.WHITE);
-        I02.setBounds(300, 490, 100, 30);
+        H011 = new nut_gradient("H011",mau_Trong);
+        H011.setFont(Dosis_Bold_13);
+        H011.setRadius(10);
+        H011.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+        H011.setBounds(1033, 440, 55, 30);
+        add(H011);
+        
+        I01 = new nut_gradient("I01",mau_Trong);
+        I01.setFont(Dosis_Bold_13);
+        I01.setRadius(10);
+        I01.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+        I01.setBounds(109, 490, 95, 30);
+        add(I01);
+
+        I02 = new nut_gradient("I02",mau_Trong);
+        I02.setFont(Dosis_Bold_13);
+        I02.setRadius(10);
+        I02.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+        I02.setBounds(270, 490, 100, 30);
         add(I02);
         
-        JButton I03 = new JButton("I03");
-        I03.setFont(new Font("Tahoma", Font.PLAIN, 14));
-        I03.setBackground(Color.WHITE);
-        I03.setBounds(530, 490, 100, 30);
+        I03 = new nut_gradient("I03",mau_Trong);
+        I03.setFont(Dosis_Bold_13);
+        I03.setRadius(10);
+        I03.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+        I03.setBounds(450, 490, 100, 30);
         add(I03);
         
-        JButton I05 = new JButton("I05");
-        I05.setFont(new Font("Tahoma", Font.PLAIN, 14));
-        I05.setBackground(Color.WHITE);
-        I05.setBounds(960, 490, 100, 30);
-        add(I05);
-        
-        JButton I04 = new JButton("I04");
-        I04.setFont(new Font("Tahoma", Font.PLAIN, 14));
-        I04.setBackground(Color.WHITE);
-        I04.setBounds(760, 490, 100, 30);
+        I04 = new nut_gradient("I04",mau_Trong);
+        I04.setFont(Dosis_Bold_13);
+        I04.setRadius(10);
+        I04.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+        I04.setBounds(630, 490, 100, 30);
         add(I04);
         
-        JSeparator separator_1 = new JSeparator();
-        separator_1.setBounds(30, 580, 1060, 4);
-        add(separator_1);
+        I05 = new nut_gradient("I05",mau_Trong);
+        I05.setFont(Dosis_Bold_13);
+        I05.setRadius(10);
+        I05.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+        I05.setBounds(800, 490, 100, 30);
+        add(I05);
+
+        I06 = new nut_gradient("I06",mau_Trong);
+        I06.setFont(Dosis_Bold_13);
+        I06.setRadius(10);
+        I06.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+        I06.setBounds(970, 490, 100, 30);
+        add(I06);
         
-        JLabel lbGheTrong = new JLabel("Ghế trống");
+        thanh_ngang2 = new JSeparator();
+        thanh_ngang2.setBounds(60, 590, 1050, 4);
+        add(thanh_ngang2);
+        
+        lbGheTrong = new JLabel("Ghế trống");
         lbGheTrong.setForeground(new Color(255, 255, 255));
         lbGheTrong.setFont(new Font("Tahoma", Font.PLAIN, 14));
         lbGheTrong.setBounds(120, 550, 70, 20);
         lbGheTrong.setFont(Dosis_Bold_14);
         add(lbGheTrong);
         
-        JLabel lbGheDaDat = new JLabel("Ghế đã đặt");
+        lbGheDaDat = new JLabel("Ghế đã đặt");
         lbGheDaDat.setForeground(Color.WHITE);
         lbGheDaDat.setFont(new Font("Tahoma", Font.PLAIN, 14));
         lbGheDaDat.setBounds(290, 550, 70, 20);
         lbGheDaDat.setFont(Dosis_Bold_14);
         add(lbGheDaDat);
         
-        JLabel lbGheDangChon = new JLabel("Ghế đang chọn");
+        lbGheDangChon = new JLabel("Ghế đang chọn");
         lbGheDangChon.setForeground(Color.WHITE);
         lbGheDangChon.setFont(new Font("Tahoma", Font.PLAIN, 14));
         lbGheDangChon.setBounds(452, 550, 100, 20);
         lbGheDangChon.setFont(Dosis_Bold_14);
         add(lbGheDangChon);
         
-        JLabel lbGheDon = new JLabel("Ghế đơn");
+        lbGheDon = new JLabel("Ghế đơn");
         lbGheDon.setForeground(Color.WHITE);
         lbGheDon.setFont(new Font("Tahoma", Font.PLAIN, 14));
         lbGheDon.setBounds(791, 550, 70, 20);
         lbGheDon.setFont(Dosis_Bold_14);
         add(lbGheDon);
         
-        JLabel lbGheDoi = new JLabel("Ghế đôi");
+        lbGheDoi = new JLabel("Ghế đôi");
         lbGheDoi.setForeground(Color.WHITE);
         lbGheDoi.setFont(new Font("Tahoma", Font.PLAIN, 14));
         lbGheDoi.setBounds(1000, 550, 70, 20);
         lbGheDoi.setFont(Dosis_Bold_14);
         add(lbGheDoi);
         
-        JLabel lbPhim = new JLabel("");
+        lbPhim = new JLabel("");
         lbPhim.setForeground(new Color(255, 130, 62));
         lbPhim.setFont(new Font("Tahoma", Font.BOLD, 16));
         lbPhim.setBounds(50, 600, 150, 30);
         add(lbPhim);
         
-        JButton btn_DatVe = new JButton("ĐẶT VÉ");
+        btn_DatVe = new nut_gradient("ĐẶT VÉ",mau_Trong);
         btn_DatVe.setForeground(new Color(0, 0, 0));
-        btn_DatVe.setFont(new Font("Tahoma", Font.PLAIN, 16));
-        btn_DatVe.setBackground(new Color(255, 130, 62));
+        btn_DatVe.setRadius(10);
+        btn_DatVe.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
         btn_DatVe.setBounds(960, 600, 100, 34);
         btn_DatVe.setFont(Dosis_Bold_20);
         add(btn_DatVe);
         
-        JLabel lbGhe = new JLabel("Ghế: ");
+        lbGhe = new JLabel("Ghế: ");
         lbGhe.setForeground(new Color(255, 130, 62));
         lbGhe.setFont(new Font("Tahoma", Font.BOLD, 16));
         lbGhe.setBounds(200, 600, 50, 30);
         lbGhe.setFont(Dosis_Bold_20);
         add(lbGhe);
         
-        JLabel lbGheChon = new JLabel("");
+        lbGheChon = new JLabel("");
         lbGheChon.setForeground(new Color(255, 255, 255));
         lbGheChon.setFont(new Font("Tahoma", Font.BOLD, 16));
         lbGheChon.setBounds(250, 600, 50, 30);
         add(lbGheChon);
         
-        JLabel lbSuat = new JLabel("Suất: ");
+        lbSuat = new JLabel("Suất: ");
         lbSuat.setForeground(new Color(255, 130, 62));
         lbSuat.setFont(new Font("Tahoma", Font.BOLD, 16));
         lbSuat.setBounds(330, 600, 50, 30);
         lbSuat.setFont(Dosis_Bold_20);
         add(lbSuat);
         
-        JLabel lbNgayGio = new JLabel("");
+        lbNgayGio = new JLabel("");
         lbNgayGio.setForeground(Color.WHITE);
         lbNgayGio.setFont(new Font("Tahoma", Font.BOLD, 16));
         lbNgayGio.setBounds(380, 600, 150, 30);
@@ -729,39 +894,42 @@ public class GUI_ChonGhe extends JPanel{
         add(txtKhuyenMai);
         txtKhuyenMai.setColumns(10);
         
-        JLabel lbTongCong = new JLabel("Tổng cộng:");
+        lbTongCong = new JLabel("Tổng cộng:");
         lbTongCong.setForeground(new Color(255, 130, 62));
         lbTongCong.setFont(new Font("Tahoma", Font.BOLD, 16));
         lbTongCong.setBounds(750, 600, 100, 30);
         lbTongCong.setFont(Dosis_Bold_20);
         add(lbTongCong);
         
-        JLabel sum = new JLabel("");
+        sum = new JLabel("");
         sum.setForeground(Color.WHITE);
         sum.setFont(new Font("Tahoma", Font.BOLD, 16));
         sum.setBounds(850, 600, 100, 30);
         add(sum);
         
-        JPanel gheDangChon = new JPanel();
-        gheDangChon.setBackground(new Color(255, 130, 62));
-        gheDangChon.setBounds(402, 550, 40, 20);
+        gheDangChon = new nut_gradient("",mau_DangChon);
+        gheDangChon.setRadius(10);
+        gheDangChon.setBounds(402, 550, 40, 25);
         add(gheDangChon);
         
-        JPanel gheDaDat = new JPanel();
-        gheDaDat.setBackground(new Color(113, 101, 101));
-        gheDaDat.setBounds(240, 550, 40, 20);
+        gheDaDat = new nut_gradient("",mau_DaDat);
+        gheDaDat.setRadius(10);
+        gheDaDat.setBounds(240, 550, 40, 25);
         add(gheDaDat);
         
-        JPanel gheTrong = new JPanel();
-        gheTrong.setBounds(70, 550, 40, 20);
+        gheTrong = new nut_gradient("",mau_Trong);
+        gheTrong.setRadius(10);
+        gheTrong.setBounds(70, 550, 40, 25);
         add(gheTrong);
         
-        JPanel gheDon = new JPanel();
-        gheDon.setBounds(741, 550, 40, 20);
+        gheDon = new nut_gradient("",mau_Trong);
+        gheDon.setRadius(10);
+        gheDon.setBounds(741, 550, 40, 25);
         add(gheDon);
         
-        JPanel gheDaDat_1 = new JPanel();
-        gheDaDat_1.setBounds(910, 550, 80, 20);
-        add(gheDaDat_1);
+        gheDoi = new nut_gradient("",mau_Trong);
+        gheDoi.setRadius(10);
+        gheDoi.setBounds(910, 550, 80, 25);
+        add(gheDoi); 
 	}
 }

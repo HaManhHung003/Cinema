@@ -494,11 +494,14 @@ public class GUI_Man_hinh_chinh extends JFrame{
 		GUI_DatVe bookTicketPanel = new GUI_DatVe(this);
 		inform_pnl.add(bookTicketPanel, "bookTicketPanel");
 		//chon_gio
-		GUI_ChonGio chonGioPanel = new GUI_ChonGio(bookTicketPanel,homePanel);
+		GUI_ChonGio chonGioPanel = new GUI_ChonGio(bookTicketPanel,homePanel,this);
 		inform_pnl.add(chonGioPanel, "chonGioPanel");
 		//tro_giup
 		GUI_TroGiup troGiupPanel = new GUI_TroGiup();
 		inform_pnl.add(troGiupPanel, "troGiupPanel");
+		//chon_ghe
+		GUI_ChonGhe chonGhePanel = new GUI_ChonGhe(this);
+		inform_pnl.add(chonGhePanel,"chonGhePanel");
 		black = new Color(36,34,34);
 		
 		add_pnl.setVisible(false);
@@ -786,7 +789,7 @@ public class GUI_Man_hinh_chinh extends JFrame{
     }
 	
 	public void showChonGhePanel() {
-		cardLayout.show(inform_pnl, "chooseSeatPanel");
+		cardLayout.show(inform_pnl, "chonGhePanel");
 	}
 
 	public static void main(String[] args) throws FontFormatException, IOException {

@@ -181,7 +181,6 @@ public class GUI_DangNhap extends JFrame{
 		                    	GUI_Man_hinh_chinh main_screen = new GUI_Man_hinh_chinh(); 
 		    					main_screen.setVisible(true);
 		    					dispose();
-		    					JDBCUtil.closeConnection(); 
 		                    } else {
 		                        System.out.println("khongKhop");
 		                    }

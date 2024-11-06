@@ -35,7 +35,7 @@ public class GUI_ChonGio extends JPanel{
 	private GradientPaint mau_gradient1,mau_gradient2;
 	private String tenPhim,theloai,daodien,thoiluong,mota,motabreak,link,maphim,ngaychieu1,ngaychieu2,ngaychieu3,ngaychieu4,ngaychieu5,giochieu1,giochieu2,giochieu3,giochieu4,giochieu5,giochieu6,giochieu7,giochieu8,giochieu9,giochieu10,trangthai1,trangthai2,trangthai3,trangthai4,trangthai5,trangthai6,trangthai7,trangthai8,trangthai9,trangthai10;
 	private Connection conn = JDBCUtil.getConnection();
-	public GUI_ChonGio(GUI_DatVe datve, GUI_TrangChu trangchu) throws FontFormatException, IOException{
+	public GUI_ChonGio(GUI_DatVe datve, GUI_TrangChu trangchu,GUI_Man_hinh_chinh man_hinh) throws FontFormatException, IOException{
 		setSize(1128,705);
 		setLayout(null);
 		setBackground(new Color(36,34,34));
@@ -49,7 +49,7 @@ public class GUI_ChonGio extends JPanel{
             	getGioChieu(tenPhim,ngaychieu1);
             	try {
             		clearUI();
-					UI();
+					UI(man_hinh);
 					resetTime();
 				} catch (FontFormatException | IOException e1) {
 					// TODO Auto-generated catch block
@@ -66,7 +66,7 @@ public class GUI_ChonGio extends JPanel{
             	getGioChieu(tenPhim,ngaychieu1);
             	try {
             		clearUI();
-					UI();
+					UI(man_hinh);
 					resetTime();
 				} catch (FontFormatException | IOException e1) {
 					// TODO Auto-generated catch block
@@ -83,7 +83,7 @@ public class GUI_ChonGio extends JPanel{
             	getGioChieu(tenPhim,ngaychieu1);
             	try {
             		clearUI();
-					UI();
+					UI(man_hinh);
 					resetTime();
 				} catch (FontFormatException | IOException e1) {
 					// TODO Auto-generated catch block
@@ -100,7 +100,7 @@ public class GUI_ChonGio extends JPanel{
             	getGioChieu(tenPhim,ngaychieu1);
             	try {
             		clearUI();
-					UI();
+					UI(man_hinh);
 					resetTime();
 				} catch (FontFormatException | IOException e1) {
 					// TODO Auto-generated catch block
@@ -117,7 +117,7 @@ public class GUI_ChonGio extends JPanel{
             	getGioChieu(tenPhim,ngaychieu1);
             	try {
             		clearUI();
-					UI();
+					UI(man_hinh);
 					resetTime();
 				} catch (FontFormatException | IOException e1) {
 					// TODO Auto-generated catch block
@@ -134,7 +134,7 @@ public class GUI_ChonGio extends JPanel{
             	getGioChieu(tenPhim,ngaychieu1);
             	try {
             		clearUI();
-					UI();
+					UI(man_hinh);
 					resetTime();
 				} catch (FontFormatException | IOException e1) {
 					// TODO Auto-generated catch block
@@ -151,7 +151,7 @@ public class GUI_ChonGio extends JPanel{
             	getGioChieu(tenPhim,ngaychieu1);
             	try {
             		clearUI();
-					UI();
+					UI(man_hinh);
 					resetTime();
 				} catch (FontFormatException | IOException e1) {
 					// TODO Auto-generated catch block
@@ -168,7 +168,7 @@ public class GUI_ChonGio extends JPanel{
             	getGioChieu(tenPhim,ngaychieu1);
             	try {
             		clearUI();
-					UI();
+					UI(man_hinh);
 					resetTime();
 				} catch (FontFormatException | IOException e1) {
 					// TODO Auto-generated catch block
@@ -185,7 +185,7 @@ public class GUI_ChonGio extends JPanel{
             	getGioChieu(tenPhim,ngaychieu1);
             	try {
             		clearUI();
-					UI();
+					UI(man_hinh);
 					resetTime();
 				} catch (FontFormatException | IOException e1) {
 					// TODO Auto-generated catch block
@@ -330,7 +330,7 @@ public class GUI_ChonGio extends JPanel{
             e2.printStackTrace();
         } 
 	}
-	private void UI() throws FontFormatException, IOException {
+	private void UI(GUI_Man_hinh_chinh man_hinh) throws FontFormatException, IOException {
 		// TODO Auto-generated method stub
 		File DosisB = new File("src\\resources\\fonts\\Dosis-Bold.ttf");
 		File Dosis = new File("src\\resources\\fonts\\Dosis-Regular.ttf");
@@ -430,7 +430,8 @@ public class GUI_ChonGio extends JPanel{
 		lich_chieu.setBounds(39, 444, 287, 48);
 		add(lich_chieu);
 		
-		ngay_1 = new nut_gradient(ngaychieu1,mau_gradient2);
+		ngay_1 = new nut_gradient(ngaychieu1,mau_gradient1);
+		ngay_1.setForeground(new Color(255,238,231));
 		ngay_1.setBounds(198, 486, 100, 44);	
 		ngay_1.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		ngay_1.setRadius(10);
@@ -559,7 +560,7 @@ public class GUI_ChonGio extends JPanel{
 		        getGioChieu(tenPhim,ngaychieu1);
 		        clearUI();
 				try {
-					UI();
+					UI(man_hinh);
 				} catch (FontFormatException | IOException e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
@@ -574,7 +575,7 @@ public class GUI_ChonGio extends JPanel{
 		    	getGioChieu(tenPhim,ngaychieu2);
 		        clearUI();
 				try {
-					UI();
+					UI(man_hinh);
 				} catch (FontFormatException | IOException e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
@@ -605,7 +606,7 @@ public class GUI_ChonGio extends JPanel{
 		    	getGioChieu(tenPhim,ngaychieu3);
 		        clearUI();
 				try {
-					UI();
+					UI(man_hinh);
 				} catch (FontFormatException | IOException e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
@@ -636,7 +637,7 @@ public class GUI_ChonGio extends JPanel{
 		    	getGioChieu(tenPhim,ngaychieu4);
 		        clearUI();
 				try {
-					UI();
+					UI(man_hinh);
 				} catch (FontFormatException | IOException e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
@@ -667,7 +668,7 @@ public class GUI_ChonGio extends JPanel{
 		    	getGioChieu(tenPhim,ngaychieu5);
 		        clearUI();
 				try {
-					UI();
+					UI(man_hinh);
 				} catch (FontFormatException | IOException e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
@@ -759,7 +760,7 @@ public class GUI_ChonGio extends JPanel{
 		gio_10.addMouseListener(new MouseAdapter() {
 		    @Override
 		    public void mouseClicked(MouseEvent e) {
-		    	
+		    	man_hinh.showChonGhePanel();
 		    }
 		});
 	}
