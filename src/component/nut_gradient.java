@@ -11,11 +11,17 @@ import javax.swing.JButton;
 public class nut_gradient extends JButton{
 	private GradientPaint gradient;
 	private int radius = 0;
+	private String text;
     public nut_gradient(String text, GradientPaint gradient) {
         super(text);
+        this.text = text;
         this.gradient = gradient;
         setContentAreaFilled(false); 
         setBorderPainted(false);     
+    }
+    
+    public GradientPaint getRadiant() {
+    	return gradient;
     }
 
     public int getRadius() {
@@ -25,6 +31,10 @@ public class nut_gradient extends JButton{
 
 	public void setRadius(int radius) {
 		this.radius = radius;
+	}
+	
+	public String getText() {
+		return text;
 	}
 
 

@@ -214,6 +214,102 @@ END;
 
 go
 
-EXEC getGioChieu @filmName = N'QUỶ ĂN TẠNG 2', @dateFilm = '06/11';
+CREATE PROCEDURE getTTGhe
+    @movieCode NVARCHAR(50),
+    @dateFilm NVARCHAR(50),
+    @timeFilm NVARCHAR(50)
+AS
+BEGIN
+    DECLARE @maLichChieu NVARCHAR(50);
+
+    SELECT  @maLichChieu = maLichChieu
+    FROM LichChieuPhim
+    WHERE maPhim = @movieCode
+      AND FORMAT(ngayChieu, 'dd/MM') = @dateFilm
+      AND LEFT(CAST(gioChieu AS VARCHAR(8)), 5) = @timeFilm;
+
+    IF @maLichChieu IS NOT NULL
+    BEGIN
+        SELECT viTri, 
+			CASE 
+				WHEN trangThai = 0 THEN '0' 
+				WHEN trangThai = 1 THEN '1' 
+			END AS trangThaiStatus, 
+			maPhong, 
+			giaGhe
+        FROM Ghe
+        WHERE maLichChieu = @maLichChieu;
+    END
+	ELSE
+	BEGIN
+		SELECT 'P99999' AS viTri;
+		SELECT 0 AS trangThaiStatus;
+		SELECT 'NULL' AS maPhong;
+		SELECT 'NULL' AS giaGhe;
+	END
+END;
+
+go
+
+CREATE PROCEDURE getMaGiamGia
+    @code NVARCHAR(50) 
+AS
+BEGIN
+    SELECT  CAST(soTienGiam AS INT) AS soTienGiamInt
+    FROM MaGiamGia
+    WHERE maGiamGia = @code;
+END;
+
+
+go
+
+EXEC getMaGiamGia @code = 'MGG01';
+
+go
+
+CREATE PROCEDURE getKhachHang
+    @code NVARCHAR(50) 
+AS
+BEGIN
+    SELECT tenKhachHang
+    FROM KhachHang
+    WHERE cCCD = @code;
+END;
+
+
+go
+
+EXEC getKhachHang @code = '012375681234';
+
+go
+
+CREATE PROCEDURE themHD
+    @dateBook NVARCHAR(50),         
+    @timeBook NVARCHAR(50),        
+    @sumCost NVARCHAR(50),        
+    @maPhong NVARCHAR(50),        
+    @maPhim NVARCHAR(50),       
+    @maGiamGia NVARCHAR(50)       
+AS
+BEGIN
+    DECLARE @ngayLapHD DATE;
+    DECLARE @thoiGianLapHD TIME;
+    DECLARE @tongTien FLOAT;
+
+    SET @ngayLapHD = CONVERT(DATE, CONCAT(YEAR(GETDATE()), '-', LEFT(@dateBook, 2), '-', RIGHT(@dateBook, 2)), 120);
+
+    SET @thoiGianLapHD = CONVERT(TIME, @timeBook, 114);
+
+    SET @tongTien = CONVERT(FLOAT, @sumCost);
+
+    INSERT INTO HoaDon (ngayLapHD, thoiGianLapHD, tongTien, maPhong, maPhim, maGiamGia)
+    VALUES (@ngayLapHD, @thoiGianLapHD, @tongTien, @maPhong, @maPhim, @maGiamGia);
+END;
+
+
+GO
+EXEC InsertBooking '09/11', '13:59', '159000', 'P01', 'P03', 'MGG01';
+
+
 
 

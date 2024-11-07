@@ -410,7 +410,8 @@ public class GUI_DatVe extends JPanel{
 		    @Override
 		    public void mouseClicked(MouseEvent e) {
 		    	phimClose();
-//		        man_hinh.showDatVe();
+		        man_hinh.showDatVe();
+		        man_hinh.getFilmFind().setVisible(true);
 		    }
 		});
 		

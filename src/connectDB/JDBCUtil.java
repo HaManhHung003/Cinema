@@ -19,7 +19,7 @@ public class JDBCUtil {
 //	}
 	private static final String URL = "jdbc:sqlserver://ROON:1433;databaseName=cinema;encrypt=true;trustServerCertificate=true";
     private static final String USERNAME = "sa";
-    private static final String PASSWORD = "123";
+    private static final String PASSWORD = "sapassword";
     private static Connection connection = null;
 
     static {

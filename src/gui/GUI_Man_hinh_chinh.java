@@ -31,8 +31,18 @@ public class GUI_Man_hinh_chinh extends JFrame{
 	public static CardLayout cardLayout;
 	public static final long serialVersionUID = 1L;
 	private JPanel[] panels;
-	private JLabel add_icon,add_label,update_icon,update_label,remove_icon,remove_label;
-	private MyPanel home_pnl,bookTicket_pnl,sale_pnl,staff_pnl,customer_pnl,statistic_pnl,help_pnl,logOut_pnl,staffFind_pnl,filmFind_pnl,back_pnl,clear_pnl,add_pnl,update_pnl,remove_pnl;
+	private JLabel add_icon,add_label,update_icon,update_label,remove_icon,remove_label,back2_icon,back2_label;
+	private MyPanel home_pnl,bookTicket_pnl,sale_pnl,staff_pnl,customer_pnl,statistic_pnl,help_pnl,logOut_pnl,staffFind_pnl,filmFind_pnl,back_pnl,back2_pnl,clear_pnl,add_pnl,update_pnl,remove_pnl;
+	private JLabel tenPhim,maPhim,ngayChieu,gioChieu;
+	private GUI_TrangChu homePanel;
+	private GUI_Khuyen_Mai promotionPanel;
+	private GUI_NhanVien staffPanel;
+	private GUI_DatVe bookTicketPanel;
+	private GUI_ChonGio chonGioPanel;
+	private GUI_TroGiup troGiupPanel;
+	private GUI_ChonGhe chonGhePanel;
+	private GUI_HoaDon hoaDonPanel;
+	
 	public GUI_Man_hinh_chinh() throws FontFormatException, IOException {
 		setSize(1425,820);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -376,6 +386,32 @@ public class GUI_Man_hinh_chinh extends JFrame{
 		back_label.setFont(Dosis_Bold_20);
 		back_pnl.add(back_label);
 		
+		back2_pnl = new MyPanel();
+		back2_pnl.setOpaque(false);
+		back2_pnl.setColor(new Color(36, 34, 34));
+		back2_pnl.setRadius(25);
+		back2_pnl.setBorderColor(new Color(110, 110, 110));
+		back2_pnl.setColorOver(new Color(36, 34, 34));
+		back2_pnl.setColorClick(new Color(36, 34, 34));
+		back2_pnl.setBounds(30, 15, 124, 44);
+		header_pnl.add(back2_pnl);
+		back2_pnl.setLayout(null);
+		
+		back2_icon = new JLabel("");
+		back2_icon.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		back2_icon.setIcon(new ImageIcon("src\\resources\\Icon\\back.png"));
+		back2_icon.setIconTextGap(0);
+		back2_icon.setHorizontalAlignment(SwingConstants.CENTER);
+		back2_icon.setBounds(10, 11, 24, 24);
+		back2_pnl.add(back2_icon);
+		
+		back2_label = new JLabel("Quay lại");
+		back2_label.setForeground(new Color(178,176,176));
+		back2_label.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		back2_label.setBounds(44, 0, 78, 44);
+		back2_label.setFont(Dosis_Bold_20);
+		back2_pnl.add(back2_label);
+		
 		add_pnl = new MyPanel();
 		add_pnl.setLayout(null);
 		add_pnl.setOpaque(false);
@@ -474,6 +510,26 @@ public class GUI_Man_hinh_chinh extends JFrame{
 		clear_label.setForeground(new Color(178, 176, 176));
 		clear_label.setFont(Dosis_Bold_20);
 		
+		tenPhim = new JLabel("");
+		tenPhim.setForeground(new Color(36, 34, 34));
+		tenPhim.setBounds(322, 15, 46, 22);
+		header_pnl.add(tenPhim);
+		
+		maPhim = new JLabel("");
+		maPhim.setForeground(new Color(36, 34, 34));
+		maPhim.setBounds(322, 48, 46, 22);
+		header_pnl.add(maPhim);
+		
+		ngayChieu = new JLabel("");
+		ngayChieu.setForeground(new Color(36, 34, 34));
+		ngayChieu.setBounds(392, 15, 46, 22);
+		header_pnl.add(ngayChieu);
+		
+		gioChieu = new JLabel("");
+		gioChieu.setForeground(new Color(36, 34, 34));
+		gioChieu.setBounds(392, 44, 46, 22);
+		header_pnl.add(gioChieu);
+		
 		inform_pnl = new JPanel();
 		inform_pnl.setBackground(new Color(36, 34, 34));
 		inform_pnl.setBounds(0, 76, 1128, 705);
@@ -482,32 +538,31 @@ public class GUI_Man_hinh_chinh extends JFrame{
 		cardLayout = (CardLayout) inform_pnl.getLayout();
 		
 		//Trang_chu
-		GUI_TrangChu homePanel = new GUI_TrangChu(this);
+		homePanel = new GUI_TrangChu(this);
 		inform_pnl.add(homePanel, "homePanel");
 		//khuyen_mai
-		GUI_Khuyen_Mai promotionPanel = new GUI_Khuyen_Mai();
+		promotionPanel = new GUI_Khuyen_Mai();
 		inform_pnl.add(promotionPanel, "promotionPanel");
 		//nhan_vien
-		GUI_NhanVien staffPanel = new GUI_NhanVien(this);
+		staffPanel = new GUI_NhanVien(this);
 		inform_pnl.add(staffPanel, "staffPanel");
 		//dat_ve
-		GUI_DatVe bookTicketPanel = new GUI_DatVe(this);
+		bookTicketPanel = new GUI_DatVe(this);
 		inform_pnl.add(bookTicketPanel, "bookTicketPanel");
 		//chon_gio
-		GUI_ChonGio chonGioPanel = new GUI_ChonGio(bookTicketPanel,homePanel,this);
+		chonGioPanel = new GUI_ChonGio(bookTicketPanel,homePanel,this);
 		inform_pnl.add(chonGioPanel, "chonGioPanel");
 		//tro_giup
-		GUI_TroGiup troGiupPanel = new GUI_TroGiup();
+		troGiupPanel = new GUI_TroGiup();
 		inform_pnl.add(troGiupPanel, "troGiupPanel");
-		//chon_ghe
-		GUI_ChonGhe chonGhePanel = new GUI_ChonGhe(this);
-		inform_pnl.add(chonGhePanel,"chonGhePanel");
+		
 		black = new Color(36,34,34);
 		
 		add_pnl.setVisible(false);
         remove_pnl.setVisible(false);
         update_pnl.setVisible(false);
         back_pnl.setVisible(false);
+        back2_pnl.setVisible(false);
         clear_pnl.setVisible(false);
         staffFind_pnl.setVisible(false);
         filmFind_pnl.setVisible(false);
@@ -515,7 +570,6 @@ public class GUI_Man_hinh_chinh extends JFrame{
         home_pnl.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
-//            	resetPanelColors();
                 cardLayout.show(inform_pnl, "homePanel");
                 home_pnl.setColor(new Color(171, 27, 27));
                 sale_pnl.setColor(black);
@@ -529,6 +583,7 @@ public class GUI_Man_hinh_chinh extends JFrame{
                 remove_pnl.setVisible(false);
                 update_pnl.setVisible(false);
                 back_pnl.setVisible(false);
+                back2_pnl.setVisible(false);
                 clear_pnl.setVisible(false);
                 staffFind_pnl.setVisible(false);
                 filmFind_pnl.setVisible(false);
@@ -551,6 +606,7 @@ public class GUI_Man_hinh_chinh extends JFrame{
                 remove_pnl.setVisible(false);
                 update_pnl.setVisible(false);
                 back_pnl.setVisible(false);
+                back2_pnl.setVisible(false);
                 clear_pnl.setVisible(false);
                 staffFind_pnl.setVisible(false);
                 filmFind_pnl.setVisible(true);
@@ -589,6 +645,7 @@ public class GUI_Man_hinh_chinh extends JFrame{
                 remove_pnl.setVisible(false);
                 update_pnl.setVisible(false);
                 back_pnl.setVisible(false);
+                back2_pnl.setVisible(false);
                 clear_pnl.setVisible(false);
                 staffFind_pnl.setVisible(false);
                 filmFind_pnl.setVisible(false);
@@ -611,6 +668,7 @@ public class GUI_Man_hinh_chinh extends JFrame{
                 remove_pnl.setVisible(false);
                 update_pnl.setVisible(false);
                 back_pnl.setVisible(false);
+                back2_pnl.setVisible(false);
                 clear_pnl.setVisible(true);
                 staffFind_pnl.setVisible(true);
                 filmFind_pnl.setVisible(false);
@@ -637,6 +695,7 @@ public class GUI_Man_hinh_chinh extends JFrame{
         				update_pnl.setVisible(false);
         				add_pnl.setVisible(false);
         				back_pnl.setVisible(false);
+        				back2_pnl.setVisible(false);
         				remove_pnl.setVisible(true);
         			}
         			
@@ -648,6 +707,7 @@ public class GUI_Man_hinh_chinh extends JFrame{
         			public void mouseClicked(MouseEvent e) {
         				update_pnl.setVisible(false);
         				add_pnl.setVisible(true);
+        				back2_pnl.setVisible(false);
         				back_pnl.setVisible(false);
         				remove_pnl.setVisible(false);
         			}
@@ -661,6 +721,7 @@ public class GUI_Man_hinh_chinh extends JFrame{
         				update_pnl.setVisible(true);
         				add_pnl.setVisible(false);
         				back_pnl.setVisible(false);
+        				back2_pnl.setVisible(false);
         				remove_pnl.setVisible(false);
         			}
         			
@@ -673,7 +734,8 @@ public class GUI_Man_hinh_chinh extends JFrame{
 		help_pnl.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                cardLayout.show(inform_pnl, "troGiupPanel");
+            	showHoaDon();
+//                cardLayout.show(inform_pnl, "troGiupPanel");
                 help_pnl.setColor(new Color(171, 27, 27));
                 home_pnl.setColor(black);
                 staff_pnl.setColor(black);
@@ -686,6 +748,7 @@ public class GUI_Man_hinh_chinh extends JFrame{
                 remove_pnl.setVisible(false);
                 update_pnl.setVisible(false);
                 back_pnl.setVisible(false);
+                back2_pnl.setVisible(false);
                 clear_pnl.setVisible(false);
                 staffFind_pnl.setVisible(false);
                 filmFind_pnl.setVisible(false);
@@ -710,7 +773,12 @@ public class GUI_Man_hinh_chinh extends JFrame{
 		    }
 		});
 		
-
+		back2_pnl.addMouseListener(new MouseAdapter() {
+		    @Override
+		    public void mouseClicked(MouseEvent e) {
+		        showChonGioPanel();
+		    }
+		});
 	}
 	
 	public JTextField getFind() {
@@ -769,13 +837,44 @@ public class GUI_Man_hinh_chinh extends JFrame{
 		return back_pnl;
 	}
 	
+	public JPanel getBack2Pnl() {
+		return back2_pnl;
+	}
+	
+	public MyPanel getStaffFind() {
+		return staffFind_pnl;
+	}
+	
+	public MyPanel getFilmFind() {
+		return filmFind_pnl;
+	}
+	
+	public JLabel getTenPhim() {
+		return tenPhim;
+	}
+	
+	public JLabel getMaPhim() {
+		return maPhim;
+	}
+	
+	public JLabel getNgayChieu() {
+		return ngayChieu;
+	}
+	
+	public JLabel getGioChieu() {
+		return gioChieu;
+	}
+	
 
 	public void showChonGioPanel() {
         cardLayout.show(inform_pnl, "chonGioPanel");
         add_pnl.setVisible(false);
         remove_pnl.setVisible(false);
         update_pnl.setVisible(false);
+        staffFind_pnl.setVisible(false);
+        filmFind_pnl.setVisible(false);
         back_pnl.setVisible(true);
+        back2_pnl.setVisible(false);
     }
 	
 	public void showDatVe() {
@@ -789,7 +888,41 @@ public class GUI_Man_hinh_chinh extends JFrame{
     }
 	
 	public void showChonGhePanel() {
+		
+		try {
+			chonGhePanel = new GUI_ChonGhe(this,chonGioPanel);
+		} catch (FontFormatException | IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		inform_pnl.add(chonGhePanel,"chonGhePanel");
 		cardLayout.show(inform_pnl, "chonGhePanel");
+		add_pnl.setVisible(false);
+        remove_pnl.setVisible(false);
+        update_pnl.setVisible(false);
+        staffFind_pnl.setVisible(false);
+        filmFind_pnl.setVisible(false);
+        back_pnl.setVisible(false);
+        back2_pnl.setVisible(true);
+	}
+	
+public void showHoaDon() {
+		
+		try {
+			hoaDonPanel = new GUI_HoaDon(this,chonGhePanel);
+		} catch (FontFormatException | IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		inform_pnl.add(hoaDonPanel,"hoaDonPanel");
+		cardLayout.show(inform_pnl, "hoaDonPanel");
+		add_pnl.setVisible(false);
+        remove_pnl.setVisible(false);
+        update_pnl.setVisible(false);
+        staffFind_pnl.setVisible(false);
+        filmFind_pnl.setVisible(false);
+        back_pnl.setVisible(false);
+        back2_pnl.setVisible(false);
 	}
 
 	public static void main(String[] args) throws FontFormatException, IOException {

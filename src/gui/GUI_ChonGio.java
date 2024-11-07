@@ -33,13 +33,12 @@ public class GUI_ChonGio extends JPanel{
 	private nut_gradient[] tohop;
 	nut_gradient ngay_1,ngay_2,ngay_3,ngay_4,ngay_5,gio_1,gio_2,gio_3,gio_4,gio_5,gio_6,gio_7,gio_8,gio_9,gio_10,nut;
 	private GradientPaint mau_gradient1,mau_gradient2;
-	private String tenPhim,theloai,daodien,thoiluong,mota,motabreak,link,maphim,ngaychieu1,ngaychieu2,ngaychieu3,ngaychieu4,ngaychieu5,giochieu1,giochieu2,giochieu3,giochieu4,giochieu5,giochieu6,giochieu7,giochieu8,giochieu9,giochieu10,trangthai1,trangthai2,trangthai3,trangthai4,trangthai5,trangthai6,trangthai7,trangthai8,trangthai9,trangthai10;
+	private String tenPhim,theloai,daodien,thoiluong,mota,motabreak,link,maphim,ngaychieu1,ngaychieu2,ngaychieu3,ngaychieu4,ngaychieu5,giochieu1,giochieu2,giochieu3,giochieu4,giochieu5,giochieu6,giochieu7,giochieu8,giochieu9,giochieu10,trangthai1,trangthai2,trangthai3,trangthai4,trangthai5,trangthai6,trangthai7,trangthai8,trangthai9,trangthai10,ngayCHIEU,gioCHIEU;
 	private Connection conn = JDBCUtil.getConnection();
 	public GUI_ChonGio(GUI_DatVe datve, GUI_TrangChu trangchu,GUI_Man_hinh_chinh man_hinh) throws FontFormatException, IOException{
 		setSize(1128,705);
 		setLayout(null);
 		setBackground(new Color(36,34,34));
-		
 		
 		datve.getPhim1().addActionListener(new ActionListener() {
             @Override
@@ -193,6 +192,7 @@ public class GUI_ChonGio extends JPanel{
 				}
             }
         });;
+        
 	}
 	protected void resetTime() {
 		// TODO Auto-generated method stub
@@ -346,6 +346,8 @@ public class GUI_ChonGio extends JPanel{
 		Point2D.Double p2 = new Point2D.Double(100, 50); 
 		mau_gradient1 = new GradientPaint(p1,new Color(255,80,67),p2,new Color(255,130,62));
 		mau_gradient2 = new GradientPaint(p1,new Color(217,217,217),p2,new Color(217,217,217));
+		
+		
 		
 		hinh_phim = new JLabel("New label");
 		hinh_phim.setIcon(new ImageIcon(link));
@@ -539,9 +541,9 @@ public class GUI_ChonGio extends JPanel{
 		status = new String[] {trangthai1,trangthai2,trangthai3,trangthai4,trangthai5,trangthai6,trangthai7,trangthai8,trangthai9,trangthai10};
 		tohop = new nut_gradient[] {gio_1,gio_2,gio_3,gio_4,gio_5,gio_6,gio_7,gio_8,gio_9,gio_10};
 		
-		ngay_1.addMouseListener(new MouseAdapter() {
+		ngay_1.addActionListener(new ActionListener() {
 		    @Override
-		    public void mouseClicked(MouseEvent e) {
+		    public void actionPerformed(ActionEvent e) {
 		        ngay_1.setGradient(mau_gradient1); 
 		        ngay_2.setGradient(mau_gradient2); 
 			    ngay_3.setGradient(mau_gradient2); 
@@ -561,6 +563,7 @@ public class GUI_ChonGio extends JPanel{
 		        clearUI();
 				try {
 					UI(man_hinh);
+					ngayCHIEU = ngaychieu1;
 				} catch (FontFormatException | IOException e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
@@ -569,13 +572,14 @@ public class GUI_ChonGio extends JPanel{
 		    }
 		});
 		
-		ngay_2.addMouseListener(new MouseAdapter() {
+		ngay_2.addActionListener(new ActionListener() {
 		    @Override
-		    public void mouseClicked(MouseEvent e) {
+		    public void actionPerformed(ActionEvent e) {
 		    	getGioChieu(tenPhim,ngaychieu2);
 		        clearUI();
 				try {
 					UI(man_hinh);
+					ngayCHIEU = ngaychieu2;
 				} catch (FontFormatException | IOException e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
@@ -600,13 +604,14 @@ public class GUI_ChonGio extends JPanel{
 		    }
 		});
 		
-		ngay_3.addMouseListener(new MouseAdapter() {
+		ngay_3.addActionListener(new ActionListener() {
 		    @Override
-		    public void mouseClicked(MouseEvent e) {
+		    public void actionPerformed(ActionEvent e) {
 		    	getGioChieu(tenPhim,ngaychieu3);
 		        clearUI();
 				try {
 					UI(man_hinh);
+					ngayCHIEU = ngaychieu3;
 				} catch (FontFormatException | IOException e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
@@ -631,13 +636,14 @@ public class GUI_ChonGio extends JPanel{
 		    }
 		});
 		
-		ngay_4.addMouseListener(new MouseAdapter() {
+		ngay_4.addActionListener(new ActionListener() {
 		    @Override
-		    public void mouseClicked(MouseEvent e) {
+		    public void actionPerformed(ActionEvent e) {
 		    	getGioChieu(tenPhim,ngaychieu4);
 		        clearUI();
 				try {
 					UI(man_hinh);
+					ngayCHIEU = ngaychieu4;
 				} catch (FontFormatException | IOException e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
@@ -662,13 +668,14 @@ public class GUI_ChonGio extends JPanel{
 		    }
 		});
 		
-		ngay_5.addMouseListener(new MouseAdapter() {
+		ngay_5.addActionListener(new ActionListener() {
 		    @Override
-		    public void mouseClicked(MouseEvent e) {
+		    public void actionPerformed(ActionEvent e) {
 		    	getGioChieu(tenPhim,ngaychieu5);
 		        clearUI();
 				try {
 					UI(man_hinh);
+					ngayCHIEU = ngaychieu5;
 				} catch (FontFormatException | IOException e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
@@ -693,73 +700,96 @@ public class GUI_ChonGio extends JPanel{
 		    }
 		});
 		
-		gio_1.addMouseListener(new MouseAdapter() {
+		gio_1.addActionListener(new ActionListener() {
 		    @Override
-		    public void mouseClicked(MouseEvent e) {
-		    	
+		    public void actionPerformed(ActionEvent e) {
+		    	gioCHIEU = giochieu1;
+		    	man_hinh.showChonGhePanel();
 		    }
 		});
 		
-		gio_2.addMouseListener(new MouseAdapter() {
+		gio_2.addActionListener(new ActionListener() {
 		    @Override
-		    public void mouseClicked(MouseEvent e) {
-		    	
+		    public void actionPerformed(ActionEvent e) {
+		    	gioCHIEU = giochieu2;
+		    	man_hinh.showChonGhePanel();
 		    }
 		});
 		
-		gio_3.addMouseListener(new MouseAdapter() {
+		gio_3.addActionListener(new ActionListener() {
 		    @Override
-		    public void mouseClicked(MouseEvent e) {
-		    	
+		    public void actionPerformed(ActionEvent e) {
+		    	gioCHIEU = giochieu3;
+		    	man_hinh.showChonGhePanel();
 		    }
 		});
 		
-		gio_4.addMouseListener(new MouseAdapter() {
+		gio_4.addActionListener(new ActionListener() {
 		    @Override
-		    public void mouseClicked(MouseEvent e) {
-		    	
+		    public void actionPerformed(ActionEvent e) {
+		    	gioCHIEU = giochieu4;
+		    	man_hinh.showChonGhePanel();
 		    }
 		});
 		
-		gio_5.addMouseListener(new MouseAdapter() {
+		gio_5.addActionListener(new ActionListener() {
 		    @Override
-		    public void mouseClicked(MouseEvent e) {
-		    	
+		    public void actionPerformed(ActionEvent e) {
+		    	gioCHIEU = giochieu5;
+		    	man_hinh.showChonGhePanel();
 		    }
 		});
 		
 		
-		gio_6.addMouseListener(new MouseAdapter() {
+		gio_6.addActionListener(new ActionListener() {
 		    @Override
-		    public void mouseClicked(MouseEvent e) {
-		    	
+		    public void actionPerformed(ActionEvent e) {
+		    	gioCHIEU = giochieu6;
+		    	man_hinh.showChonGhePanel();
+		    	man_hinh.getTenPhim().setText(tenPhim);
+		    	man_hinh.getMaPhim().setText(maphim);
+		    	man_hinh.getNgayChieu().setText(ngayCHIEU);
+		    	man_hinh.getGioChieu().setText(gioCHIEU);
+		    	man_hinh.showChonGhePanel();
 		    }
 		});
 		
-		gio_7.addMouseListener(new MouseAdapter() {
+		gio_7.addActionListener(new ActionListener() {
 		    @Override
-		    public void mouseClicked(MouseEvent e) {
-		    	
+		    public void actionPerformed(ActionEvent e) {
+		    	gioCHIEU = giochieu7;
+		    	man_hinh.showChonGhePanel();
 		    }
 		});
 		
-		gio_8.addMouseListener(new MouseAdapter() {
+		gio_8.addActionListener(new ActionListener() {
 		    @Override
-		    public void mouseClicked(MouseEvent e) {
-		    	
+		    public void actionPerformed(ActionEvent e) {
+		    	gioCHIEU = giochieu8;
+		    	man_hinh.showChonGhePanel();
 		    }
 		});
 		
-		gio_9.addMouseListener(new MouseAdapter() {
+		gio_9.addActionListener(new ActionListener() {
 		    @Override
-		    public void mouseClicked(MouseEvent e) {
-		    	
+		    public void actionPerformed(ActionEvent e) {
+		    	gioCHIEU = giochieu9;
+		    	man_hinh.getTenPhim().setText(tenPhim);
+		    	man_hinh.getMaPhim().setText(maphim);
+		    	man_hinh.getNgayChieu().setText(ngayCHIEU);
+		    	man_hinh.getGioChieu().setText(gioCHIEU);
+		    	man_hinh.showChonGhePanel();
 		    }
 		});
 		
-		gio_10.addMouseListener(new MouseAdapter() {
+		gio_10.addActionListener(new ActionListener() {
 		    @Override
-		    public void mouseClicked(MouseEvent e) {
+		    public void actionPerformed(ActionEvent e) {
+		    	gioCHIEU = giochieu10;
+		    	man_hinh.getTenPhim().setText(tenPhim);
+		    	man_hinh.getMaPhim().setText(maphim);
+		    	man_hinh.getNgayChieu().setText(ngayCHIEU);
+		    	man_hinh.getGioChieu().setText(gioCHIEU);
 		    	man_hinh.showChonGhePanel();
 		    }
 		});
@@ -774,4 +804,19 @@ public class GUI_ChonGio extends JPanel{
 		repaint();
 	}
 	
+	public String getTenPhim() {
+		return tenPhim;
+	}
+	
+	public String getMaPhim() {
+		return maphim;
+	}
+	
+	public String getngayCHIEU() {
+		return ngayCHIEU;
+	}
+	
+	public String getgioCHIEU() {
+		return gioCHIEU;
+	}
 }
