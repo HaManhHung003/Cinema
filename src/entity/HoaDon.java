@@ -376,10 +376,7 @@ public class HoaDon {
 //				table.addCell(new Cell().add(new Paragraph(df.format(khuyenMai)).setFont(fontRegular).setFontSize(10)
 //						.setTextAlignment(TextAlignment.CENTER)));
 //
-//				// Thành tiền chưa thuế
-//				float tienChuaThue = giaGoc - khuyenMai;
-//				table.addCell(new Cell().add(new Paragraph(df.format(tienChuaThue)).setFont(fontRegular).setFontSize(10)
-//						.setTextAlignment(TextAlignment.CENTER)));
+//				
 //
 //				tongGiaGoc += giaGoc;
 //				tongKhuyenMai += khuyenMai;
