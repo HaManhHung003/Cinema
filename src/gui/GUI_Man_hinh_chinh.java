@@ -734,8 +734,7 @@ public class GUI_Man_hinh_chinh extends JFrame{
 		help_pnl.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
-            	showHoaDon();
-//                cardLayout.show(inform_pnl, "troGiupPanel");
+                cardLayout.show(inform_pnl, "troGiupPanel");
                 help_pnl.setColor(new Color(171, 27, 27));
                 home_pnl.setColor(black);
                 staff_pnl.setColor(black);
@@ -907,7 +906,7 @@ public class GUI_Man_hinh_chinh extends JFrame{
 	}
 	
 public void showHoaDon() {
-		
+		System.out.println(1);
 		try {
 			hoaDonPanel = new GUI_HoaDon(this,chonGhePanel);
 		} catch (FontFormatException | IOException e) {

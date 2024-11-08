@@ -7,6 +7,7 @@ import java.awt.GradientPaint;
 import java.awt.geom.Point2D;
 import java.io.File;
 import java.io.IOException;
+import java.text.DecimalFormat;
 
 import javax.swing.JPanel;
 import component.nut_gradient;
@@ -21,11 +22,19 @@ public class GUI_HoaDon extends JPanel{
 	private JLabel thanh_ngang;
 	private JLabel thanh_ngang_1;
 	private JLabel thanh_ngang_2;
+	private String tenPhim,ngayChieu,gioChieu,maPhong,gheDat,KH;
+	private int Tongtien;
 	public GUI_HoaDon(GUI_Man_hinh_chinh man_hinh, GUI_ChonGhe chon_ghe) throws FontFormatException, IOException {
 		setSize(1128,705);
 		setLayout(null);
 		setBackground(new Color(36,34,34));
-
+		tenPhim = chon_ghe.getTenPhim();
+		ngayChieu = chon_ghe.getNgayChieu();
+		gioChieu = chon_ghe.getGioChieu();
+		maPhong = chon_ghe.getMaPhong();
+		KH = chon_ghe.getKH();
+		gheDat = chon_ghe.getGheDat();
+		Tongtien = chon_ghe.getTongTien();
 		UI();
 	}
 	
@@ -79,32 +88,32 @@ public class GUI_HoaDon extends JPanel{
 		
 		tenPhim_lbl = new JLabel();
 		tenPhim_lbl.setForeground(new Color(0, 0, 0));
-		tenPhim_lbl.setText("MỘ ĐOM ĐÓM");
+		tenPhim_lbl.setText(tenPhim);
 		tenPhim_lbl.setBounds(28, 209, 217, 43);
 		tenPhim_lbl.setFont(Dosis_Bold_18);
 		panel.add(tenPhim_lbl);
 		
 		ngayChieu_lbl = new JLabel();
 		ngayChieu_lbl.setBounds(28, 251, 306, 32);
-		ngayChieu_lbl.setText("Thời gian : "+"27/10"+"/2024" +" - "+ "19:35");
+		ngayChieu_lbl.setText("Thời gian : "+ngayChieu+"/2024" +" - "+ gioChieu);
 		ngayChieu_lbl.setFont(Dosis_Bold_14);
 		panel.add(ngayChieu_lbl);
 		
 		phong_lbl = new JLabel();
 		phong_lbl.setBounds(28, 294, 94, 32);
-		phong_lbl.setText("Phòng : "+"P03");
+		phong_lbl.setText("Phòng : "+maPhong);
 		phong_lbl.setFont(Dosis_Bold_14);
 		panel.add(phong_lbl);
 		
 		ghe_lbl = new JLabel();
 		ghe_lbl.setBounds(221, 294, 156, 32);
-		ghe_lbl.setText("Ghế : "+"K03,K14,K12");
+		ghe_lbl.setText("Ghế : "+gheDat);
 		ghe_lbl.setFont(Dosis_Bold_14);
 		panel.add(ghe_lbl);
 		
 		KhachHang_lbl = new JLabel();
 		KhachHang_lbl.setBounds(28, 362, 257, 24);
-		KhachHang_lbl.setText("LÊ VĂN TUẤN NGUYÊN");
+		KhachHang_lbl.setText(KH);
 		KhachHang_lbl.setFont(Dosis_Bold_18);
 		panel.add(KhachHang_lbl);
 		
@@ -116,7 +125,9 @@ public class GUI_HoaDon extends JPanel{
 		
 		sum = new JLabel();
 		sum.setBounds(221, 401, 130, 24);
-		sum.setText("VNĐ "+"365.000");
+		DecimalFormat formatter = new DecimalFormat("#,###");
+        String tongTienGhePhim = formatter.format(Tongtien).replace(",", ".");
+		sum.setText("VNĐ "+tongTienGhePhim);
 		sum.setFont(Dosis_Bold_14);
 		panel.add(sum);
 		

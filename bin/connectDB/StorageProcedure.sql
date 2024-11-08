@@ -236,7 +236,8 @@ BEGIN
 				WHEN trangThai = 1 THEN '1' 
 			END AS trangThaiStatus, 
 			maPhong, 
-			giaGhe
+			giaGhe,
+			maLichChieu
         FROM Ghe
         WHERE maLichChieu = @maLichChieu;
     END
@@ -246,6 +247,7 @@ BEGIN
 		SELECT 0 AS trangThaiStatus;
 		SELECT 'NULL' AS maPhong;
 		SELECT 'NULL' AS giaGhe;
+		SELECT 'NULL' AS maLichChieu;
 	END
 END;
 
@@ -263,10 +265,6 @@ END;
 
 go
 
-EXEC getMaGiamGia @code = 'MGG01';
-
-go
-
 CREATE PROCEDURE getKhachHang
     @code NVARCHAR(50) 
 AS
@@ -277,9 +275,6 @@ BEGIN
 END;
 
 
-go
-
-EXEC getKhachHang @code = '012375681234';
 
 go
 
@@ -307,8 +302,23 @@ BEGIN
 END;
 
 
+go
+
+CREATE PROCEDURE UpdateTTGhe
+    @position NVARCHAR(50),
+    @maLich NVARCHAR(50)
+AS
+BEGIN
+    UPDATE Ghe
+    SET trangThai = 1
+    WHERE viTri = @position AND maLichChieu = @maLich;
+END;
+
+
 GO
-EXEC InsertBooking '09/11', '13:59', '159000', 'P01', 'P03', 'MGG01';
+EXEC UpdateTTGhe @position = 'B09', @maLich = 'LC16';
+
+
 
 
 

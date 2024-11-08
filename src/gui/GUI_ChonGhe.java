@@ -4431,5 +4431,33 @@ public class GUI_ChonGhe extends JPanel{
 		revalidate();
 		repaint();
 	}
-
+	
+	public String getNgayChieu() {
+		return ngayChieu;
+	}
+	public int getTongTien() {
+		return tongTien;
+	}
+	
+	public String getGioChieu() {
+		return gioChieu;
+	}
+	
+	public String getTenPhim() {
+		return tenPhim;
+	}
+	
+	public String getMaPhong() {
+		return maPhong;
+	}
+	
+	public String getKH() {
+		return tenKH;
+	}
+	
+	public String getGheDat() {
+		return GheDat;
+	}
+	
+	
 }
