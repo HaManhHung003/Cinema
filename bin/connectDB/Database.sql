@@ -97,6 +97,7 @@ CREATE TABLE HoaDon (
     ngayLapHD DATE,
 	thoiGianLapHD TIME,
     tongTien FLOAT,
+	maNhanVien NVARCHAR(50),
 	maPhong NVARCHAR(50),
 	maPhim NVARCHAR(50),
 	IDGHE INT,

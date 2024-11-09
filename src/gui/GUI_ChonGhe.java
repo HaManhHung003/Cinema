@@ -51,7 +51,7 @@ public class GUI_ChonGhe extends JPanel{
 	TTB10, TTB11,TTC1, TTC2, TTC3, TTC4, TTC5, TTC6, TTC7, TTC8, TTC9, TTC10, TTC11,TTD1, TTD2, TTD3, TTD4, TTD5, TTD6, TTD7, TTD8, TTD9, TTD10, TTD11,
 	TTE1, TTE2, TTE3, TTE4, TTE5, TTE6, TTE7, TTE8, TTE9, TTE10, TTE11,TTF1, TTF2, TTF3, TTF4, TTF5, TTF6, TTF7, TTF8, TTF9, TTF10, TTF11,
 	TTG1, TTG2, TTG3, TTG4, TTG5, TTG6, TTG7, TTG8, TTG9, TTG10, TTG11,TTH1, TTH2, TTH3, TTH4, TTH5, TTH6, TTH7, TTH8, TTH9, TTH10, TTH11,
-	TTI1, TTI2, TTI3, TTI4, TTI5, TTI6,out = 0;
+	TTI1, TTI2, TTI3, TTI4, TTI5, TTI6;
 	private int giaGheA01, giaGheA02, giaGheA03, giaGheA04, giaGheA05, giaGheA06, giaGheA07, giaGheA08, giaGheA09, giaGheA10, giaGheA11,
 	giaGheB01, giaGheB02, giaGheB03, giaGheB04, giaGheB05, giaGheB06, giaGheB07, giaGheB08, giaGheB09, giaGheB10, giaGheB11,
 	giaGheC01, giaGheC02, giaGheC03, giaGheC04, giaGheC05, giaGheC06, giaGheC07, giaGheC08, giaGheC09, giaGheC10, giaGheC11,
@@ -60,7 +60,8 @@ public class GUI_ChonGhe extends JPanel{
 	giaGheF01, giaGheF02, giaGheF03, giaGheF04, giaGheF05, giaGheF06, giaGheF07, giaGheF08, giaGheF09, giaGheF10, giaGheF11,
 	giaGheG01, giaGheG02, giaGheG03, giaGheG04, giaGheG05, giaGheG06, giaGheG07, giaGheG08, giaGheG09, giaGheG10, giaGheG11,
 	giaGheH01, giaGheH02, giaGheH03, giaGheH04, giaGheH05, giaGheH06, giaGheH07, giaGheH08, giaGheH09, giaGheH10, giaGheH11,
-	giaGheI01,giaGheI02,giaGheI03,giaGheI04,giaGheI05,giaGheI06,giaPhim,tongTien,giaGheDoi;
+	giaGheI01,giaGheI02,giaGheI03,giaGheI04,giaGheI05,giaGheI06,giaPhim,giaGheDoi;
+	private double out = 0,tongTien,giaVe,KM;
 	private GradientPaint mau_Trong,mau_DaDat,mau_DangChon,mau_gradient;
 	private MyPanel  promotion_in,customer_in;
 	private JTextField promotion_out,customer_out,dateTime,sum;
@@ -1803,7 +1804,7 @@ public class GUI_ChonGhe extends JPanel{
 				}
         	}
         });
-        txtKhuyenMai.setBounds(10, 0, 145, 30);
+        txtKhuyenMai.setBounds(10, 3, 145, 24);
         promotion_in.add(txtKhuyenMai);
         
         promotion_out = new JTextField();
@@ -3766,8 +3767,20 @@ public class GUI_ChonGhe extends JPanel{
 	                try (ResultSet rs = stmt.executeQuery()) {
 	                    if (rs.next()) {  
 	                    	out = rs.getInt("soTienGiamInt");
-	    	                promotion_out.setText("Giảm "+out+" vnđ" );
-	    	                TinhTien();
+	                    	if(out == 0 ) {
+	                    		promotion_in.setBorderColor(new Color(171,27,27));
+	                    		promotion_in.repaint();
+	                    		promotion_out.setText("Không tồn tại mã");
+	                    	}else {
+	                    		promotion_in.setBorderColor(new Color(255,255,255));
+	                    		promotion_in.repaint();
+	                    		if(out < 100) {
+	                    			promotion_out.setText("Giảm "+out+"%" );
+	                    		}else {
+	                    			promotion_out.setText("Giảm "+out+" vnđ" );
+	                    		}
+		    	                TinhTien();
+	                    	}
 	                    } 
 	                }  
 	            } catch (SQLException e2) {
@@ -3786,8 +3799,16 @@ public class GUI_ChonGhe extends JPanel{
 	                stmt.setString(1, code);
 	                try (ResultSet rs = stmt.executeQuery()) {
 	                    if (rs.next()) {  
-	                    	tenKH = rs.getString("tenKhachHang");
-	    	                customer_out.setText(tenKH);
+	                    	tenKH = rs.getString("tenKH");
+	                    	if(tenKH.equalsIgnoreCase("notfound")) {
+	                    		customer_in.setBorderColor(new Color(171,27,27));
+	                    		customer_in.repaint();
+	                    		customer_out.setText("Không tồn tại cccd");
+	                    	}else {
+	                    		customer_in.setBorderColor(new Color(255,255,255));
+	                    		customer_in.repaint();
+	                    		customer_out.setText(tenKH);
+	                    	} 
 	                    } 
 	                }  
 	            } catch (SQLException e2) {
@@ -4412,7 +4433,7 @@ public class GUI_ChonGhe extends JPanel{
 		}else {
 			giaGheI06 = 0;
 		}
-		tongTien =
+		giaVe =
 					giaGheA01 + giaGheA02 + giaGheA03 + giaGheA04 + giaGheA05 + giaGheA06 + giaGheA07 + giaGheA08 + giaGheA09 + giaGheA10 + giaGheA11
 	             + 	giaGheB01 + giaGheB02 + giaGheB03 + giaGheB04 + giaGheB05 + giaGheB06 + giaGheB07 + giaGheB08 + giaGheB09 + giaGheB10 + giaGheB11
 	             + 	giaGheC01 + giaGheC02 + giaGheC03 + giaGheC04 + giaGheC05 + giaGheC06 + giaGheC07 + giaGheC08 + giaGheC09 + giaGheC10 + giaGheC11
@@ -4421,7 +4442,8 @@ public class GUI_ChonGhe extends JPanel{
 	             + 	giaGheF01 + giaGheF02 + giaGheF03 + giaGheF04 + giaGheF05 + giaGheF06 + giaGheF07 + giaGheF08 + giaGheF09 + giaGheF10 + giaGheF11
 	             + 	giaGheG01 + giaGheG02 + giaGheG03 + giaGheG04 + giaGheG05 + giaGheG06 + giaGheG07 + giaGheG08 + giaGheG09 + giaGheG10 + giaGheG11
 	             + 	giaGheH01 + giaGheH02 + giaGheH03 + giaGheH04 + giaGheH05 + giaGheH06 + giaGheH07 + giaGheH08 + giaGheH09 + giaGheH10 + giaGheH11
-	             +	giaGheI01 + giaGheI02 + giaGheI03 + giaGheI04 + giaGheI05 + giaGheI06 - out;
+	             +	giaGheI01 + giaGheI02 + giaGheI03 + giaGheI04 + giaGheI05 + giaGheI06;
+		
 		DecimalFormat formatter = new DecimalFormat("#,###");
         String tongTienGhePhim = formatter.format(tongTien).replace(",", ".");
         sum.setText(tongTienGhePhim +" vnđ");

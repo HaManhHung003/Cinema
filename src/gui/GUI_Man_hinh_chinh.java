@@ -734,7 +734,8 @@ public class GUI_Man_hinh_chinh extends JFrame{
 		help_pnl.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                cardLayout.show(inform_pnl, "troGiupPanel");
+            	showHoaDon();
+//                cardLayout.show(inform_pnl, "troGiupPanel");
                 help_pnl.setColor(new Color(171, 27, 27));
                 home_pnl.setColor(black);
                 staff_pnl.setColor(black);

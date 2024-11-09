@@ -10,7 +10,12 @@ BEGIN
         WHERE taiKhoan = @TaiKhoan AND matKhau = @MatKhau
     )
     BEGIN
-        SELECT 'khop' AS Result;
+        SELECT 'khop' AS Result,
+				tenNhanVien,
+				chucVu,
+				maNhanVien
+		FROM NhanVien
+		WHERE taiKhoan = @TaiKhoan AND matKhau = @MatKhau
     END
     ELSE
     BEGIN
@@ -257,9 +262,16 @@ CREATE PROCEDURE getMaGiamGia
     @code NVARCHAR(50) 
 AS
 BEGIN
-    SELECT  CAST(soTienGiam AS INT) AS soTienGiamInt
+    DECLARE @soTienGiamInt INT;
+
+    SELECT @soTienGiamInt = CAST(soTienGiam AS INT)
     FROM MaGiamGia
     WHERE maGiamGia = @code;
+
+    IF @soTienGiamInt IS NULL
+        SET @soTienGiamInt = 0;
+    SELECT @soTienGiamInt AS soTienGiamInt;
+
 END;
 
 
@@ -269,12 +281,16 @@ CREATE PROCEDURE getKhachHang
     @code NVARCHAR(50) 
 AS
 BEGIN
-    SELECT tenKhachHang
+	DECLARE @tenKH NVARCHAR(255);
+
+    SELECT @tenKH = tenKhachHang
     FROM KhachHang
     WHERE cCCD = @code;
+
+	IF @tenKH IS NULL
+		SET @tenKH = 'NOTFOUND';
+	SELECT @tenKH AS tenKH;
 END;
-
-
 
 go
 
@@ -284,7 +300,8 @@ CREATE PROCEDURE themHD
     @sumCost NVARCHAR(50),        
     @maPhong NVARCHAR(50),        
     @maPhim NVARCHAR(50),       
-    @maGiamGia NVARCHAR(50)       
+    @maGiamGia NVARCHAR(50),
+	@maNhanVien NVARCHAR(50)
 AS
 BEGIN
     DECLARE @ngayLapHD DATE;
@@ -297,8 +314,8 @@ BEGIN
 
     SET @tongTien = CONVERT(FLOAT, @sumCost);
 
-    INSERT INTO HoaDon (ngayLapHD, thoiGianLapHD, tongTien, maPhong, maPhim, maGiamGia)
-    VALUES (@ngayLapHD, @thoiGianLapHD, @tongTien, @maPhong, @maPhim, @maGiamGia);
+    INSERT INTO HoaDon (ngayLapHD, thoiGianLapHD, tongTien,maNhanVien, maPhong, maPhim, maGiamGia)
+    VALUES (@ngayLapHD, @thoiGianLapHD, @tongTien,@maNhanVien, @maPhong, @maPhim, @maGiamGia);
 END;
 
 
