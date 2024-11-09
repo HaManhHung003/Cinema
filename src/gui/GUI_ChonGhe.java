@@ -61,7 +61,7 @@ public class GUI_ChonGhe extends JPanel{
 	giaGheF01, giaGheF02, giaGheF03, giaGheF04, giaGheF05, giaGheF06, giaGheF07, giaGheF08, giaGheF09, giaGheF10, giaGheF11,
 	giaGheG01, giaGheG02, giaGheG03, giaGheG04, giaGheG05, giaGheG06, giaGheG07, giaGheG08, giaGheG09, giaGheG10, giaGheG11,
 	giaGheH01, giaGheH02, giaGheH03, giaGheH04, giaGheH05, giaGheH06, giaGheH07, giaGheH08, giaGheH09, giaGheH10, giaGheH11,
-	giaGheI01,giaGheI02,giaGheI03,giaGheI04,giaGheI05,giaGheI06,giaPhim,giaGheDoi,tongTien = 0,giaVe,KM,getGiaFilm;
+	giaGheI01,giaGheI02,giaGheI03,giaGheI04,giaGheI05,giaGheI06,giaPhim,giaGheDoi,tongTien = 0,giaVe,KM,getGiaFilm,giaGheRieng;;
 	private GradientPaint mau_Trong,mau_DaDat,mau_DangChon,mau_gradient;
 	private MyPanel  promotion_in,customer_in;
 	private JTextField promotion_out,customer_out,dateTime,sum;
@@ -3819,7 +3819,6 @@ public class GUI_ChonGhe extends JPanel{
 		});
         
         btn_DatVe.addActionListener(new ActionListener() {
-			
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
@@ -3847,6 +3846,17 @@ public class GUI_ChonGhe extends JPanel{
 	            	    H1, H2, H3, H4, H5, H6, H7, H8, H9, H10, H11,
 	            	    I1, I2, I3, I4, I5, I6
 	            };
+				int[] giaGheArray = {
+					    giaGheA01, giaGheA02, giaGheA03, giaGheA04, giaGheA05, giaGheA06, giaGheA07, giaGheA08, giaGheA09, giaGheA10, giaGheA11,
+					    giaGheB01, giaGheB02, giaGheB03, giaGheB04, giaGheB05, giaGheB06, giaGheB07, giaGheB08, giaGheB09, giaGheB10, giaGheB11,
+					    giaGheC01, giaGheC02, giaGheC03, giaGheC04, giaGheC05, giaGheC06, giaGheC07, giaGheC08, giaGheC09, giaGheC10, giaGheC11,
+					    giaGheD01, giaGheD02, giaGheD03, giaGheD04, giaGheD05, giaGheD06, giaGheD07, giaGheD08, giaGheD09, giaGheD10, giaGheD11,
+					    giaGheE01, giaGheE02, giaGheE03, giaGheE04, giaGheE05, giaGheE06, giaGheE07, giaGheE08, giaGheE09, giaGheE10, giaGheE11,
+					    giaGheF01, giaGheF02, giaGheF03, giaGheF04, giaGheF05, giaGheF06, giaGheF07, giaGheF08, giaGheF09, giaGheF10, giaGheF11,
+					    giaGheG01, giaGheG02, giaGheG03, giaGheG04, giaGheG05, giaGheG06, giaGheG07, giaGheG08, giaGheG09, giaGheG10, giaGheG11,
+					    giaGheH01, giaGheH02, giaGheH03, giaGheH04, giaGheH05, giaGheH06, giaGheH07, giaGheH08, giaGheH09, giaGheH10, giaGheH11,
+					    giaGheI01, giaGheI02, giaGheI03, giaGheI04, giaGheI05, giaGheI06
+				};
     			for (int i = 0; i < TTGhe.length; i++) {
     			        if (TTGhe[i] == 1) {
     			            ct++; 
@@ -3867,6 +3877,7 @@ public class GUI_ChonGhe extends JPanel{
     			        }
     			}
     			tenGheRieng = array[vitri];
+    			giaGheRieng = giaGheArray[vitri];
     			System.out.println(ct);
     			if(ct !=0) {
     				try (CallableStatement stmt = conn.prepareCall("{CALL themHD(?,?,?,?,?,?,?)}")) {
@@ -3900,14 +3911,38 @@ public class GUI_ChonGhe extends JPanel{
 	}
 	
 	protected void updateTTGhe() {
-		if(A01.getRadiant() == mau_DangChon) {
-			try (CallableStatement stmt = conn.prepareCall("{CALL UpdateTTGhe(?,?)}")) {
-                stmt.setString(1, "A01");
-                stmt.setString(2, maLichChieu);
-                stmt.execute();
-            } catch (SQLException e2) {
-                e2.printStackTrace();
-            } 
+		nut_gradient[] nutGradientArray = {
+			    A01, A02, A03, A04, A05, A06, A07, A08, A09, A010, A011,
+			    B01, B02, B03, B04, B05, B06, B07, B08, B09, B010, B011,
+			    C01, C02, C03, C04, C05, C06, C07, C08, C09, C010, C011,
+			    D01, D02, D03, D04, D05, D06, D07, D08, D09, D010, D011,
+			    E01, E02, E03, E04, E05, E06, E07, E08, E09, E010, E011,
+			    F01, F02, F03, F04, F05, F06, F07, F08, F09, F010, F011,
+			    G01, G02, G03, G04, G05, G06, G07, G08, G09, G010, G011,
+			    H01, H02, H03, H04, H05, H06, H07, H08, H09, H010, H011,
+			    I01, I02, I03, I04, I05, I06
+		};
+		String[] array = {
+        	    A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11,
+        	    B1, B2, B3, B4, B5, B6, B7, B8, B9, B10, B11,
+        	    C1, C2, C3, C4, C5, C6, C7, C8, C9, C10, C11,
+        	    D1, D2, D3, D4, D5, D6, D7, D8, D9, D10, D11,
+        	    E1, E2, E3, E4, E5, E6, E7, E8, E9, E10, E11,
+        	    F1, F2, F3, F4, F5, F6, F7, F8, F9, F10, F11,
+        	    G1, G2, G3, G4, G5, G6, G7, G8, G9, G10, G11,
+        	    H1, H2, H3, H4, H5, H6, H7, H8, H9, H10, H11,
+        	    I1, I2, I3, I4, I5, I6
+        };
+		for(int i = 0;i<nutGradientArray.length;i++) {
+			if(nutGradientArray[i].getRadiant() == mau_DangChon) {
+				try (CallableStatement stmt = conn.prepareCall("{CALL UpdateTTGhe(?,?)}")) {
+	                stmt.setString(1, array[i].replaceAll(",$", ""));
+	                stmt.setString(2, maLichChieu);
+	                stmt.execute();
+	            } catch (SQLException e2) {
+	                e2.printStackTrace();
+	            } 
+			}
 		}
 	}
 	
@@ -4565,5 +4600,9 @@ public class GUI_ChonGhe extends JPanel{
 	
 	public String getTenGheRieng() {
 		return tenGheRieng;
+	}
+	
+	public int getGiaGheRieng() {
+		return giaGheRieng;
 	}
 }

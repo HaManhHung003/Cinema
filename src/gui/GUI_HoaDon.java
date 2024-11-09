@@ -22,7 +22,7 @@ public class GUI_HoaDon extends JPanel{
 	private JTextArea the_lbl,diaChi_lbl,the_lbl_1;
 	private JLabel thanh_ngang,thanh_ngang_1,thanh_ngang_2,thanh_ngang_2_1,thanh_ngang_3,thanh_ngang_1_1;
 	private String tenPhim,ngayChieu,gioChieu,maPhong,gheDat,KH, gheDatRieng,tenNhanVien;
-	private int Tongtien,KM,giaVe;
+	private int Tongtien,KM,giaVe,giaGheRieng;
 	private JLabel sum_km_1;
 	private JLabel tongTien_lbl_1;
 	private JLabel sum_1;
@@ -41,6 +41,7 @@ public class GUI_HoaDon extends JPanel{
 		KM = chon_ghe.getKM();
 		giaVe = chon_ghe.getGiaVe();
 		tenNhanVien = logIn.getTenNV();
+		giaGheRieng = chon_ghe.getGiaGheRieng();
 		UI();
 	}
 	
@@ -120,7 +121,8 @@ public class GUI_HoaDon extends JPanel{
 		
 		ghe_lbl = new JLabel();
 		ghe_lbl.setBounds(221, 294, 156, 32);
-		ghe_lbl.setText("Ghế : "+gheDatRieng);
+		String gheChon = gheDatRieng.replaceAll(",$", "");
+		ghe_lbl.setText("Ghế : "+gheChon);
 		ghe_lbl.setFont(Dosis_Bold_14);
 		panel.add(ghe_lbl);
 		
@@ -139,7 +141,7 @@ public class GUI_HoaDon extends JPanel{
 		sum = new JLabel();
 		sum.setBounds(221, 401, 130, 24);
 		DecimalFormat formatter = new DecimalFormat("#,###");
-        String tongTienGhePhim = formatter.format(Tongtien).replace(",", ".");
+        String tongTienGhePhim = formatter.format(giaGheRieng).replace(",", ".");
 		sum.setText("VNĐ "+tongTienGhePhim);
 		sum.setFont(Dosis_Bold_14);
 		panel.add(sum);
@@ -208,8 +210,13 @@ public class GUI_HoaDon extends JPanel{
 		panel_1.add(ghe_lbl_1);
 		
 		KhachHang_lbl_1 = new JLabel();
-		KhachHang_lbl_1.setText(KH);
-		KhachHang_lbl_1.setFont(Dosis_Bold_18);
+		if(KH.equals("")) {
+			KhachHang_lbl_1.setText("- Giá vé : ");
+			KhachHang_lbl_1.setFont(Dosis_Bold_14);
+		}else {
+			KhachHang_lbl_1.setText(KH);
+			KhachHang_lbl_1.setFont(Dosis_Bold_18);
+		}
 		KhachHang_lbl_1.setBounds(27, 286, 188, 24);
 		panel_1.add(KhachHang_lbl_1);
 		
@@ -221,7 +228,6 @@ public class GUI_HoaDon extends JPanel{
 		
 		sum_km = new JLabel();
 		String kmMoi = formatter.format(KM).replace(",", ".");
-		
 		sum_km.setText("VNĐ "+kmMoi);
 		sum_km.setFont(Dosis_Bold_14);
 		sum_km.setBounds(220, 325, 130, 24);
@@ -254,7 +260,7 @@ public class GUI_HoaDon extends JPanel{
 		
 		sum_km_1 = new JLabel();
 		String giaVeMoi = formatter.format(giaVe).replace(",", ".");
-		sum_km_1.setText("VNĐ "+kmMoi);
+		sum_km_1.setText("VNĐ "+giaVeMoi);
 		sum_km_1.setFont(Dosis_Bold_14);
 		sum_km_1.setBounds(220, 286, 130, 24);
 		panel_1.add(sum_km_1);

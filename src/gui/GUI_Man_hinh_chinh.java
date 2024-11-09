@@ -44,6 +44,7 @@ public class GUI_Man_hinh_chinh extends JFrame{
 	private GUI_ChonGhe chonGhePanel;
 	private GUI_HoaDon hoaDonPanel;
 	private static GUI_DangNhap loginFrame;
+	private JLabel help_title;
 	
 	public GUI_Man_hinh_chinh() throws FontFormatException, IOException {
 		setSize(1425,820);
@@ -55,6 +56,7 @@ public class GUI_Man_hinh_chinh extends JFrame{
 		Font Dosis_Bold = Font.createFont(Font.TRUETYPE_FONT, DosisB).deriveFont(25f);
 		Font Dosis_Bold_20 = Font.createFont(Font.TRUETYPE_FONT, DosisB).deriveFont(18f);
 		Font Dosis_Bold_22 = Font.createFont(Font.TRUETYPE_FONT, DosisB).deriveFont(22f);
+		Font Dosis_Bold_30 = Font.createFont(Font.TRUETYPE_FONT, DosisB).deriveFont(30f);
 		Font Dosis_Regular = Font.createFont(Font.TRUETYPE_FONT, Dosis).deriveFont(21f);
 
 		menu_pnl = new JPanel();
@@ -532,6 +534,12 @@ public class GUI_Man_hinh_chinh extends JFrame{
 		gioChieu.setBounds(392, 44, 46, 22);
 		header_pnl.add(gioChieu);
 		
+		help_title = new JLabel("");
+		help_title.setBounds(30, 15, 262, 44);
+		help_title.setForeground(new Color(255,66,68));
+		help_title.setFont(Dosis_Bold_30);
+		header_pnl.add(help_title);
+		
 		inform_pnl = new JPanel();
 		inform_pnl.setBackground(new Color(36, 34, 34));
 		inform_pnl.setBounds(0, 76, 1128, 705);
@@ -574,6 +582,7 @@ public class GUI_Man_hinh_chinh extends JFrame{
             public void mouseClicked(MouseEvent e) {
                 cardLayout.show(inform_pnl, "homePanel");
                 home_pnl.setColor(new Color(171, 27, 27));
+                help_title.setText("");
                 sale_pnl.setColor(black);
                 bookTicket_pnl.setColor(black);
                 staff_pnl.setColor(black);
@@ -597,6 +606,7 @@ public class GUI_Man_hinh_chinh extends JFrame{
             public void mouseClicked(MouseEvent e) {
                 cardLayout.show(inform_pnl, "bookTicketPanel");
                 bookTicket_pnl.setColor(new Color(171, 27, 27));
+                help_title.setText("");
                 home_pnl.setColor(black);
                 staff_pnl.setColor(black);
                 sale_pnl.setColor(black);
@@ -635,6 +645,7 @@ public class GUI_Man_hinh_chinh extends JFrame{
             @Override
             public void mouseClicked(MouseEvent e) {
                 cardLayout.show(inform_pnl, "promotionPanel");
+                help_title.setText("");
                 sale_pnl.setColor(new Color(171, 27, 27));
                 home_pnl.setColor(black);
                 bookTicket_pnl.setColor(black);
@@ -659,6 +670,7 @@ public class GUI_Man_hinh_chinh extends JFrame{
             public void mouseClicked(MouseEvent e) {
             	if(loginFrame.getChucVu().equalsIgnoreCase("Quản lí")) {
                     cardLayout.show(inform_pnl, "staffPanel");
+                    help_title.setText("");
                     staff_pnl.setColor(new Color(171, 27, 27));
                     home_pnl.setColor(black);
                     bookTicket_pnl.setColor(black);
@@ -735,31 +747,31 @@ public class GUI_Man_hinh_chinh extends JFrame{
             }
         });
 		
-		
-		
-		help_pnl.addMouseListener(new MouseAdapter() {
-            @Override
-            public void mouseClicked(MouseEvent e) {
-            	showHoaDon();
+//		
+//		
+//		help_pnl.addMouseListener(new MouseAdapter() {
+//            @Override
+//            public void mouseClicked(MouseEvent e) {
 //                cardLayout.show(inform_pnl, "troGiupPanel");
-                help_pnl.setColor(new Color(171, 27, 27));
-                home_pnl.setColor(black);
-                staff_pnl.setColor(black);
-                sale_pnl.setColor(black);
-                customer_pnl.setColor(black);
-                statistic_pnl.setColor(black);
-                bookTicket_pnl.setColor(black);
-                logOut_pnl.setColor(black);
-                add_pnl.setVisible(false);
-                remove_pnl.setVisible(false);
-                update_pnl.setVisible(false);
-                back_pnl.setVisible(false);
-                back2_pnl.setVisible(false);
-                clear_pnl.setVisible(false);
-                staffFind_pnl.setVisible(false);
-                filmFind_pnl.setVisible(false);
-            }
-        });
+//                help_title.setText("HƯỚNG DẪN SỬ DỤNG");
+//                help_pnl.setColor(new Color(171, 27, 27));
+//                home_pnl.setColor(black);
+//                staff_pnl.setColor(black);
+//                sale_pnl.setColor(black);
+//                customer_pnl.setColor(black);
+//                statistic_pnl.setColor(black);
+//                bookTicket_pnl.setColor(black);
+//                logOut_pnl.setColor(black);
+//                add_pnl.setVisible(false);
+//                remove_pnl.setVisible(false);
+//                update_pnl.setVisible(false);
+//                back_pnl.setVisible(false);
+//                back2_pnl.setVisible(false);
+//                clear_pnl.setVisible(false);
+//                staffFind_pnl.setVisible(false);
+//                filmFind_pnl.setVisible(false);
+//            }
+//        });
 		
 		logOut_pnl.addMouseListener(new MouseAdapter() {
 		    @Override
@@ -912,7 +924,7 @@ public class GUI_Man_hinh_chinh extends JFrame{
         back2_pnl.setVisible(true);
 	}
 	
-public void showHoaDon() {
+	public void showHoaDon() {
 		try {
 			hoaDonPanel = new GUI_HoaDon(this,chonGhePanel,loginFrame);
 		} catch (FontFormatException | IOException e) {
@@ -931,12 +943,12 @@ public void showHoaDon() {
 	}
 
 	public static void main(String[] args) throws FontFormatException, IOException {
-		loginFrame = new GUI_DangNhap();
-		loginFrame.setVisible(true);
-		loginFrame.setResizable(false);
+//		loginFrame = new GUI_DangNhap();
+//		loginFrame.setVisible(true);
+//		loginFrame.setResizable(false);
 		
-//		GUI_Man_hinh_chinh lg  = new GUI_Man_hinh_chinh();
-//		lg.setVisible(true);
-//		lg.setResizable(false);
+		GUI_Man_hinh_chinh lg  = new GUI_Man_hinh_chinh();
+		lg.setVisible(true);
+		lg.setResizable(false);
 	}
 }

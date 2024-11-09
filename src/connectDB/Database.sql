@@ -280,7 +280,7 @@ INSERT INTO Phong (maPhong,tenPhong) VALUES
 
 INSERT INTO MaGiamGia (maGiamGia, tieuDe,soTienGiam, ngayBatDau,ngayKetThuc,dieuKienApDung,hinhAnh) VALUES 
 (N'MGG01',N'C’STUDENT - 45K CHO HỌC SINH SINH VIÊN',N'10000',N'2024-10-07', N'2029-10-07',N'- Điều kiện\n\n+ Mỗi vé chỉ nhận được duy nhất một phần quà.\n\n- Lưu ý\n\n+ Chương trình sẽ kết thúc khi hết phần quà hoặc \n\nvào hạn cuối của chương trình, tùy vào điều kiện nào đến trước nhất.',N'src\\resources\\Image\\promotion1.png'),
-(N'MGG02',N'RA MẮT LY MỚI MÙA HALLOWEEN!',N'20000',N'2024-10-07', N'2024-11-20',N'- Điều kiện\n\n+ HSSV xuất trình thẻ SV hoặc CCCD từ dưới 22 tuổi.\n\n+ Giảng viên/ giáo viên xuất trình thẻ giảng viên.\n\n- Lưu ý\n\n+ Mỗi thẻ mua được một vé.\n\n+ Không áp dụng cho các ngày Lễ, Tết, hoặc suất chiếu có phụ thu từ nhà làm phim.',N'src\\resources\\Image\\promotion2.png'),
+(N'MGG02',N'RA MẮT LY MỚI MÙA HALLOWEEN!',N'20',N'2024-10-07', N'2024-11-20',N'- Điều kiện\n\n+ HSSV xuất trình thẻ SV hoặc CCCD từ dưới 22 tuổi.\n\n+ Giảng viên/ giáo viên xuất trình thẻ giảng viên.\n\n- Lưu ý\n\n+ Mỗi thẻ mua được một vé.\n\n+ Không áp dụng cho các ngày Lễ, Tết, hoặc suất chiếu có phụ thu từ nhà làm phim.',N'src\\resources\\Image\\promotion2.png'),
 (N'MGG03',N'RA MẮT LY MỚI MÙA HALLOWEEN!',N'45000',N'2024-10-07', N'2024-10-12','Hang thanh vien > Bach Kim\nA',N'src');
 
 

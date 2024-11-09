@@ -376,7 +376,7 @@ BEGIN
 	maGiamGia = @maGiamGia;
 
 	INSERT INTO ChiTietHoaDon (thanhTien ,IDHD )
-    VALUES (@IHHD,@ThanhToan);
+    VALUES (@ThanhToan,@IHHD);
 END;
 
 go
