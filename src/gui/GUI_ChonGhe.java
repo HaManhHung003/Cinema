@@ -25,6 +25,7 @@ import javax.print.attribute.AttributeSet;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JSeparator;
 import javax.swing.JTextField;
@@ -46,12 +47,12 @@ public class GUI_ChonGhe extends JPanel{
 	B10, B11,C1, C2, C3, C4, C5, C6, C7, C8, C9, C10, C11,D1, D2, D3, D4, D5, D6, D7, D8, D9, D10, D11,
 	E1, E2, E3, E4, E5, E6, E7, E8, E9, E10, E11,F1, F2, F3, F4, F5, F6, F7, F8, F9, F10, F11,
 	G1, G2, G3, G4, G5, G6, G7, G8, G9, G10, G11,H1, H2, H3, H4, H5, H6, H7, H8, H9, H10, H11,
-	I1, I2, I3, I4, I5, I6,GheDat,gioChieu = "",ngayChieu= "",maPhim= "",tenPhim= "",tenKH,maPhong,maLichChieu;
+	I1, I2, I3, I4, I5, I6,GheDat,gioChieu,ngayChieu,maPhim,tenPhim,tenKH,maPhong,maLichChieu,tenGheRieng;
 	private int TTA1, TTA2, TTA3, TTA4, TTA5, TTA6, TTA7, TTA8, TTA9, TTA10, TTA11,TTB1, TTB2, TTB3, TTB4, TTB5, TTB6, TTB7, TTB8, TTB9, 
 	TTB10, TTB11,TTC1, TTC2, TTC3, TTC4, TTC5, TTC6, TTC7, TTC8, TTC9, TTC10, TTC11,TTD1, TTD2, TTD3, TTD4, TTD5, TTD6, TTD7, TTD8, TTD9, TTD10, TTD11,
 	TTE1, TTE2, TTE3, TTE4, TTE5, TTE6, TTE7, TTE8, TTE9, TTE10, TTE11,TTF1, TTF2, TTF3, TTF4, TTF5, TTF6, TTF7, TTF8, TTF9, TTF10, TTF11,
 	TTG1, TTG2, TTG3, TTG4, TTG5, TTG6, TTG7, TTG8, TTG9, TTG10, TTG11,TTH1, TTH2, TTH3, TTH4, TTH5, TTH6, TTH7, TTH8, TTH9, TTH10, TTH11,
-	TTI1, TTI2, TTI3, TTI4, TTI5, TTI6;
+	TTI1, TTI2, TTI3, TTI4, TTI5, TTI6,out = 0;
 	private int giaGheA01, giaGheA02, giaGheA03, giaGheA04, giaGheA05, giaGheA06, giaGheA07, giaGheA08, giaGheA09, giaGheA10, giaGheA11,
 	giaGheB01, giaGheB02, giaGheB03, giaGheB04, giaGheB05, giaGheB06, giaGheB07, giaGheB08, giaGheB09, giaGheB10, giaGheB11,
 	giaGheC01, giaGheC02, giaGheC03, giaGheC04, giaGheC05, giaGheC06, giaGheC07, giaGheC08, giaGheC09, giaGheC10, giaGheC11,
@@ -60,14 +61,13 @@ public class GUI_ChonGhe extends JPanel{
 	giaGheF01, giaGheF02, giaGheF03, giaGheF04, giaGheF05, giaGheF06, giaGheF07, giaGheF08, giaGheF09, giaGheF10, giaGheF11,
 	giaGheG01, giaGheG02, giaGheG03, giaGheG04, giaGheG05, giaGheG06, giaGheG07, giaGheG08, giaGheG09, giaGheG10, giaGheG11,
 	giaGheH01, giaGheH02, giaGheH03, giaGheH04, giaGheH05, giaGheH06, giaGheH07, giaGheH08, giaGheH09, giaGheH10, giaGheH11,
-	giaGheI01,giaGheI02,giaGheI03,giaGheI04,giaGheI05,giaGheI06,giaPhim,giaGheDoi;
-	private double out = 0,tongTien,giaVe,KM;
+	giaGheI01,giaGheI02,giaGheI03,giaGheI04,giaGheI05,giaGheI06,giaPhim,giaGheDoi,tongTien = 0,giaVe,KM,getGiaFilm;
 	private GradientPaint mau_Trong,mau_DaDat,mau_DangChon,mau_gradient;
 	private MyPanel  promotion_in,customer_in;
 	private JTextField promotion_out,customer_out,dateTime,sum;
 	private Connection conn = JDBCUtil.getConnection();
-	protected String codeKM;
-	public GUI_ChonGhe(GUI_Man_hinh_chinh man_hinh,GUI_ChonGio chon_gio) throws FontFormatException, IOException {
+	protected String codeKM,maNV;
+	public GUI_ChonGhe(GUI_Man_hinh_chinh man_hinh,GUI_ChonGio chon_gio,GUI_DangNhap logIn) throws FontFormatException, IOException {
 		setSize(1128,705);
 		setBackground(new Color(36, 34, 34));
 		setLayout(null);
@@ -76,6 +76,7 @@ public class GUI_ChonGhe extends JPanel{
 		maPhim = man_hinh.getMaPhim().getText();
 		ngayChieu = man_hinh.getNgayChieu().getText();
 		gioChieu = man_hinh.getGioChieu().getText();
+		maNV = logIn.getMaNV();
 		connect(maPhim,ngayChieu,gioChieu);
 		GheUI(man_hinh);
 		kiemtraGhe();
@@ -93,7 +94,9 @@ public class GUI_ChonGhe extends JPanel{
 				switch (i) {
                 case 1:
                 	maLichChieu = rs.getString("maLichChieu");
+                	getGiaFilm = rs.getInt("giave");
                 	maPhong = rs.getString("maPhong");
+                	
                 	TTA1 = Integer.parseInt(rs.getString("trangThaiStatus"));
                     break;
                 case 2:
@@ -1870,11 +1873,7 @@ public class GUI_ChonGhe extends JPanel{
         giaGheG01 = 0; giaGheG02 = 0; giaGheG03 = 0; giaGheG04 = 0; giaGheG05 = 0; giaGheG06 = 0; giaGheG07 = 0; giaGheG08 = 0; giaGheG09 = 0; giaGheG10 = 0; giaGheG11 = 0;
         giaGheH01 = 0; giaGheH02 = 0; giaGheH03 = 0; giaGheH04 = 0; giaGheH05 = 0; giaGheH06 = 0; giaGheH07 = 0; giaGheH08 = 0; giaGheH09 = 0; giaGheH10 = 0; giaGheH11 = 0;
         giaGheI01 = 0; giaGheI02 = 0; giaGheI03 = 0; giaGheI04 = 0; giaGheI05 = 0; giaGheI06 = 0;
-        
-         giaGheDoi = 100000;
-         giaPhim = 78000;
-         
-         
+        giaGheDoi = 100000;
         
         A01.addActionListener(new ActionListener() {
 			@Override
@@ -3771,13 +3770,15 @@ public class GUI_ChonGhe extends JPanel{
 	                    		promotion_in.setBorderColor(new Color(171,27,27));
 	                    		promotion_in.repaint();
 	                    		promotion_out.setText("Không tồn tại mã");
-	                    	}else {
+	                    	}else{
 	                    		promotion_in.setBorderColor(new Color(255,255,255));
 	                    		promotion_in.repaint();
 	                    		if(out < 100) {
 	                    			promotion_out.setText("Giảm "+out+"%" );
-	                    		}else {
+	                    		}else if(out > 100 && out != 45000) {
 	                    			promotion_out.setText("Giảm "+out+" vnđ" );
+	                    		}else {
+	                    			promotion_out.setText("Ghế đơn còn "+out+" vnđ" );
 	                    		}
 		    	                TinhTien();
 	                    	}
@@ -3822,19 +3823,77 @@ public class GUI_ChonGhe extends JPanel{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
-				try (CallableStatement stmt = conn.prepareCall("{CALL themHD(?,?,?,?,?,?)}")) {
-	                stmt.setString(1, ngayChieu);
-	                stmt.setString(2, gioChieu);
-	                stmt.setString(3, String.valueOf(tongTien)); 
-	                stmt.setString(4, maPhong);
-	                stmt.setString(5, maPhim);
-	                stmt.setString(6, codeKM);
-	                stmt.execute();
-	                updateTTGhe();
-	                man_hinh.showHoaDon();
-	            } catch (SQLException e2) {
-	                e2.printStackTrace();
-	            } 
+				int ct = 0;
+				int vitri = 0;
+				int[] TTGhe = {
+					    TTA1, TTA2, TTA3, TTA4, TTA5, TTA6, TTA7, TTA8, TTA9, TTA10, TTA11,
+					    TTB1, TTB2, TTB3, TTB4, TTB5, TTB6, TTB7, TTB8, TTB9, TTB10, TTB11,
+					    TTC1, TTC2, TTC3, TTC4, TTC5, TTC6, TTC7, TTC8, TTC9, TTC10, TTC11,
+					    TTD1, TTD2, TTD3, TTD4, TTD5, TTD6, TTD7, TTD8, TTD9, TTD10, TTD11,
+					    TTE1, TTE2, TTE3, TTE4, TTE5, TTE6, TTE7, TTE8, TTE9, TTE10, TTE11,
+					    TTF1, TTF2, TTF3, TTF4, TTF5, TTF6, TTF7, TTF8, TTF9, TTF10, TTF11,
+					    TTG1, TTG2, TTG3, TTG4, TTG5, TTG6, TTG7, TTG8, TTG9, TTG10, TTG11,
+					    TTH1, TTH2, TTH3, TTH4, TTH5, TTH6, TTH7, TTH8, TTH9, TTH10, TTH11,
+					    TTI1, TTI2, TTI3, TTI4, TTI5, TTI6
+				};
+				String[] array = {
+	            	    A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11,
+	            	    B1, B2, B3, B4, B5, B6, B7, B8, B9, B10, B11,
+	            	    C1, C2, C3, C4, C5, C6, C7, C8, C9, C10, C11,
+	            	    D1, D2, D3, D4, D5, D6, D7, D8, D9, D10, D11,
+	            	    E1, E2, E3, E4, E5, E6, E7, E8, E9, E10, E11,
+	            	    F1, F2, F3, F4, F5, F6, F7, F8, F9, F10, F11,
+	            	    G1, G2, G3, G4, G5, G6, G7, G8, G9, G10, G11,
+	            	    H1, H2, H3, H4, H5, H6, H7, H8, H9, H10, H11,
+	            	    I1, I2, I3, I4, I5, I6
+	            };
+    			for (int i = 0; i < TTGhe.length; i++) {
+    			        if (TTGhe[i] == 1) {
+    			            ct++; 
+    			            vitri = i;
+    			            try (CallableStatement stmt = conn.prepareCall("{CALL themChiTietHD(?,?,?,?,?,?,?,?)}")) {
+    	    	                stmt.setString(1, ngayChieu);
+    	    	                stmt.setString(2, gioChieu);
+    	    	                stmt.setString(3, String.valueOf(tongTien)); 
+    	    	                stmt.setString(4, maPhong);
+    	    	                stmt.setString(5, maPhim);
+    	    	                stmt.setString(6, codeKM);
+    	    	                stmt.setString(7, maNV);
+    	    	                stmt.setString(8, String.valueOf(giaPhim));
+    	    	                stmt.execute();
+    	    	            } catch (SQLException e2) {
+    	    	                e2.printStackTrace();
+    	    	            } 
+    			        }
+    			}
+    			tenGheRieng = array[vitri];
+    			System.out.println(ct);
+    			if(ct !=0) {
+    				try (CallableStatement stmt = conn.prepareCall("{CALL themHD(?,?,?,?,?,?,?)}")) {
+    	                stmt.setString(1, ngayChieu);
+    	                stmt.setString(2, gioChieu);
+    	                stmt.setString(3, String.valueOf(tongTien)); 
+    	                stmt.setString(4, maPhong);
+    	                stmt.setString(5, maPhim);
+    	                stmt.setString(6, codeKM);
+    	                stmt.setString(7, maNV);
+    	                stmt.execute();
+    	                if(out < 100) {
+    	                	KM = giaVe / 100 * out; 
+                		}else if(out > 100 && out != 45000) {
+                			KM = out;
+                		}else {
+                			
+                			KM = out*ct;
+                		}
+    	                updateTTGhe();
+    	                man_hinh.showHoaDon();
+    	            } catch (SQLException e2) {
+    	                e2.printStackTrace();
+    	            } 
+    			}else {
+    				JOptionPane.showMessageDialog(null, "Vui lòng chọn ghế", "Cảnh báo", JOptionPane.WARNING_MESSAGE);
+    			}
 			}
 		});
         
@@ -3869,6 +3928,11 @@ public class GUI_ChonGhe extends JPanel{
 	
 	protected void TinhTien() {
 		// TODO Auto-generated method stub
+		if( out == 45000) {
+			giaPhim = out;
+		}else {
+			giaPhim = getGiaFilm;
+		}
 		//hang_A
 		if(TTA1 == 1) {
 			giaGheA01 = giaPhim;
@@ -4443,6 +4507,16 @@ public class GUI_ChonGhe extends JPanel{
 	             + 	giaGheG01 + giaGheG02 + giaGheG03 + giaGheG04 + giaGheG05 + giaGheG06 + giaGheG07 + giaGheG08 + giaGheG09 + giaGheG10 + giaGheG11
 	             + 	giaGheH01 + giaGheH02 + giaGheH03 + giaGheH04 + giaGheH05 + giaGheH06 + giaGheH07 + giaGheH08 + giaGheH09 + giaGheH10 + giaGheH11
 	             +	giaGheI01 + giaGheI02 + giaGheI03 + giaGheI04 + giaGheI05 + giaGheI06;
+		if( out <100) {
+			tongTien = giaVe / 100 * (100-out);
+		}else if(out > 100 && out != 45000) {
+			tongTien = giaVe - out;
+		}else {
+			tongTien = giaVe;
+		}
+		if(tongTien < 0) {
+			tongTien = 0;
+		}
 		
 		DecimalFormat formatter = new DecimalFormat("#,###");
         String tongTienGhePhim = formatter.format(tongTien).replace(",", ".");
@@ -4457,7 +4531,7 @@ public class GUI_ChonGhe extends JPanel{
 	public String getNgayChieu() {
 		return ngayChieu;
 	}
-	public int getTongTien() {
+	public int  getTongTien() {
 		return tongTien;
 	}
 	
@@ -4481,5 +4555,15 @@ public class GUI_ChonGhe extends JPanel{
 		return GheDat;
 	}
 	
+	public int getGiaVe() {
+		return giaVe;
+	}
 	
+	public int getKM() {
+		return KM; 
+	}
+	
+	public String getTenGheRieng() {
+		return tenGheRieng;
+	}
 }

@@ -10,16 +10,20 @@ BEGIN
         WHERE taiKhoan = @TaiKhoan AND matKhau = @MatKhau
     )
     BEGIN
-        SELECT 'khop' AS Result,
-				tenNhanVien,
+        SELECT tenNhanVien,
 				chucVu,
-				maNhanVien
+				maNhanVien, 
+		'khop' AS Result
+				
 		FROM NhanVien
 		WHERE taiKhoan = @TaiKhoan AND matKhau = @MatKhau
     END
     ELSE
     BEGIN
-        SELECT 'khongKhop' AS Result;
+        SELECT 'khongKhop' AS Result,
+				'NULL' AS tenNhanVien,
+				'NULL' AS chucVu,
+				'NULL' AS maNhanVien
     END
 END;
 GO
@@ -226,8 +230,9 @@ CREATE PROCEDURE getTTGhe
 AS
 BEGIN
     DECLARE @maLichChieu NVARCHAR(50);
-
-    SELECT  @maLichChieu = maLichChieu
+	DECLARE @giaPhim INT;
+    SELECT  @maLichChieu = maLichChieu,
+			@giaPhim = giaVe
     FROM LichChieuPhim
     WHERE maPhim = @movieCode
       AND FORMAT(ngayChieu, 'dd/MM') = @dateFilm
@@ -242,7 +247,8 @@ BEGIN
 			END AS trangThaiStatus, 
 			maPhong, 
 			giaGhe,
-			maLichChieu
+			maLichChieu,
+			@giaPhim as giave
         FROM Ghe
         WHERE maLichChieu = @maLichChieu;
     END
@@ -253,6 +259,7 @@ BEGIN
 		SELECT 'NULL' AS maPhong;
 		SELECT 'NULL' AS giaGhe;
 		SELECT 'NULL' AS maLichChieu;
+		SELECT 0 AS giave;
 	END
 END;
 
@@ -333,7 +340,46 @@ END;
 
 
 GO
-EXEC UpdateTTGhe @position = 'B09', @maLich = 'LC16';
+CREATE PROCEDURE themChiTietHD
+	@dateBook NVARCHAR(50),         
+    @timeBook NVARCHAR(50),        
+    @sumCost NVARCHAR(50),        
+    @maPhong NVARCHAR(50),        
+    @maPhim NVARCHAR(50),       
+    @maGiamGia NVARCHAR(50),
+	@maNhanVien NVARCHAR(50),
+    @thanhTien NVARCHAR(50)
+AS
+BEGIN
+    DECLARE @ngayLapHD DATE;
+    DECLARE @thoiGianLapHD TIME;
+    DECLARE @tongTien FLOAT;
+	DECLARE @IHHD INT;
+	DECLARE @ThanhToan FLOAT;
+
+    SET @ngayLapHD = CONVERT(DATE, CONCAT(YEAR(GETDATE()), '-', LEFT(@dateBook, 2), '-', RIGHT(@dateBook, 2)), 120);
+
+    SET @thoiGianLapHD = CONVERT(TIME, @timeBook, 114);
+
+    SET @tongTien = CONVERT(FLOAT, @sumCost);
+
+	SET @ThanhToan = CONVERT(FLOAT, @thanhTien);
+
+    SELECT @IHHD = IDHD
+	FROM HoaDon
+	WHERE ngayLapHD = @ngayLapHD AND
+	thoiGianLapHD = @thoiGianLapHD AND
+    tongTien = @tongTien AND
+	maNhanVien = @maNhanVien AND
+	maPhong = @maPhong AND
+	maPhim = @maPhim AND
+	maGiamGia = @maGiamGia;
+
+	INSERT INTO ChiTietHoaDon (thanhTien ,IDHD )
+    VALUES (@IHHD,@ThanhToan);
+END;
+
+go
 
 
 

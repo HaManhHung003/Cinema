@@ -116,15 +116,13 @@ CREATE TABLE HoaDon (
 
 
 CREATE TABLE ChiTietHoaDon (
-    maChiTiet NVARCHAR(50) PRIMARY KEY,
-    soLuong INT,
-    donGia FLOAT,
+	IDCTHD INT IDENTITY(1,1) NOT NULL PRIMARY KEY CLUSTERED,
+	maChiTiet AS 'MCTHD' + RIGHT('0' + CAST(IDCTHD AS VARCHAR(1)), 1) PERSISTED,
     thanhTien FLOAT,
-    thue FLOAT,
-    donViTinh NVARCHAR(50),
     IDHD INT, 
     FOREIGN KEY (IDHD) REFERENCES HoaDon(IDHD)
 );
+
 
 --add data
 INSERT INTO NhanVien (tenNhanVien, soDienThoai,chucVu,gioiTinh,ngaySinh,cCCD,email, caLamViec) VALUES 
@@ -283,7 +281,7 @@ INSERT INTO Phong (maPhong,tenPhong) VALUES
 INSERT INTO MaGiamGia (maGiamGia, tieuDe,soTienGiam, ngayBatDau,ngayKetThuc,dieuKienApDung,hinhAnh) VALUES 
 (N'MGG01',N'C’STUDENT - 45K CHO HỌC SINH SINH VIÊN',N'10000',N'2024-10-07', N'2029-10-07',N'- Điều kiện\n\n+ Mỗi vé chỉ nhận được duy nhất một phần quà.\n\n- Lưu ý\n\n+ Chương trình sẽ kết thúc khi hết phần quà hoặc \n\nvào hạn cuối của chương trình, tùy vào điều kiện nào đến trước nhất.',N'src\\resources\\Image\\promotion1.png'),
 (N'MGG02',N'RA MẮT LY MỚI MÙA HALLOWEEN!',N'20000',N'2024-10-07', N'2024-11-20',N'- Điều kiện\n\n+ HSSV xuất trình thẻ SV hoặc CCCD từ dưới 22 tuổi.\n\n+ Giảng viên/ giáo viên xuất trình thẻ giảng viên.\n\n- Lưu ý\n\n+ Mỗi thẻ mua được một vé.\n\n+ Không áp dụng cho các ngày Lễ, Tết, hoặc suất chiếu có phụ thu từ nhà làm phim.',N'src\\resources\\Image\\promotion2.png'),
-(N'MGG03',N'RA MẮT LY MỚI MÙA HALLOWEEN!',N'500000',N'2024-10-07', N'2024-10-12','Hang thanh vien > Bach Kim\nA',N'src');
+(N'MGG03',N'RA MẮT LY MỚI MÙA HALLOWEEN!',N'45000',N'2024-10-07', N'2024-10-12','Hang thanh vien > Bach Kim\nA',N'src');
 
 
 INSERT INTO Ghe (loaiGhe,viTri, giaGhe, maPhong, trangThai,maLichChieu) VALUES 

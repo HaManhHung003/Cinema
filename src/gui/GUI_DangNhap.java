@@ -1,6 +1,7 @@
 package gui;
 
 import java.awt.Color;
+import java.awt.Component;
 import java.awt.Font;
 import java.awt.FontFormatException;
 import java.awt.GradientPaint;
@@ -19,6 +20,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
@@ -31,12 +33,13 @@ import component.nut_gradient;
 
 public class GUI_DangNhap extends JFrame{
 	private MyPanel account_pnl,pass_pnl,panel;
-	private JLabel logo,hiddenPass,background;
+	private JLabel logo,hiddenPass,background,pass_lbl,acc_lbl,error_lbl;
 	private nut_gradient logIn;
 	private GradientPaint mau_gradient;
 	private JTextField account;
 	private JPasswordField pass_txtf;
 	private Connection conn = JDBCUtil.getConnection();
+	private String tenNV,chucVu,maNV;
 	public GUI_DangNhap() throws FontFormatException, IOException{
 		setResizable(false);
 		setSize(1457,820);
@@ -50,6 +53,7 @@ public class GUI_DangNhap extends JFrame{
 		Font Dosis_Bold_15 = Font.createFont(Font.TRUETYPE_FONT, DosisB).deriveFont(15f);
 		Font Dosis_Bold_10 = Font.createFont(Font.TRUETYPE_FONT, DosisB).deriveFont(10f);
 		Font Dosis_Regular = Font.createFont(Font.TRUETYPE_FONT, Dosis).deriveFont(20f);
+		Font Dosis_Regular_15 = Font.createFont(Font.TRUETYPE_FONT, Dosis).deriveFont(12f);
 		
 		Point2D.Double p1 = new Point2D.Double(100, 100); 
 		Point2D.Double p2 = new Point2D.Double(200, 100); 
@@ -67,7 +71,7 @@ public class GUI_DangNhap extends JFrame{
 		
 		logo = new JLabel("New label");
 		logo.setIcon(new ImageIcon("src\\resources\\Image\\logo.png"));
-		logo.setBounds(73, 24, 213, 103);
+		logo.setBounds(73, 4, 213, 103);
 		panel.add(logo);
 		
 		account_pnl = new MyPanel();
@@ -159,8 +163,26 @@ public class GUI_DangNhap extends JFrame{
 		logIn.setRadius(15);
 		logIn.setBackground(new Color(255, 78, 67));
 		logIn.setFont(Dosis_Bold_20);
-		logIn.setBounds(34, 336, 299, 45);
+		logIn.setBounds(34, 341, 299, 45);
 		panel.add(logIn);
+		
+		acc_lbl = new JLabel("Tài khoản");
+		acc_lbl.setBounds(36, 127, 88, 13);
+		acc_lbl.setFont(Dosis_Bold_15);
+		acc_lbl.setForeground(new Color(217,217,217));
+		panel.add(acc_lbl);
+		
+		pass_lbl = new JLabel("Mật khẩu");
+		pass_lbl.setBounds(36, 226, 88, 13);
+		pass_lbl.setFont(Dosis_Bold_15);
+		pass_lbl.setForeground(new Color(217,217,217));
+		panel.add(pass_lbl);
+		
+		error_lbl = new JLabel("");
+		error_lbl.setBounds(36, 314, 201, 24);
+		error_lbl.setFont(Dosis_Regular_15);
+		error_lbl.setForeground(new Color(225,55,18));
+		panel.add(error_lbl);
 
 		
 		logIn.addMouseListener(new MouseAdapter() {
@@ -170,24 +192,41 @@ public class GUI_DangNhap extends JFrame{
 		        	String Acc = account.getText();
 		        	char[] matkhau = pass_txtf.getPassword();
 		        	String Pass = new String(matkhau);
-		        	try (CallableStatement stmt = conn.prepareCall("{CALL CheckLogin(?,?)}")) {
-		                stmt.setString(1, Acc);
-		                stmt.setString(2, Pass);
-		                ResultSet rs = stmt.executeQuery();
+		        	if(Acc.length() < 0) {
+		        		account.requestFocus();
+		        		account_pnl.setBorderColor(new Color(171,27,27));
+		        	}else {
+		        		account_pnl.setBorderColor(new Color(215,215,215));
+		        		if(Pass.length() < 0) {
+		        			pass_txtf.requestFocus();
+			        		pass_pnl.setBorderColor(new Color(171,27,27));
+		        		}else {
+		        			pass_pnl.setBorderColor(new Color(215,215,215));
+		        			try (CallableStatement stmt = conn.prepareCall("{CALL CheckLogin(?,?)}")) {
+				                stmt.setString(1, Acc);
+				                stmt.setString(2, Pass);
+				                ResultSet rs = stmt.executeQuery();
 
-		                if (rs.next()) {
-		                    String result = rs.getString("Result");
-		                    if ("khop".equals(result)) {
-		                    	GUI_Man_hinh_chinh main_screen = new GUI_Man_hinh_chinh(); 
-		    					main_screen.setVisible(true);
-		    					dispose();
-		                    } else {
-		                        System.out.println("khongKhop");
-		                    }
-		                }
-		            } catch (SQLException e2) {
-		                e2.printStackTrace();
-		            } 
+				                if (rs.next()) {
+				                    String result = rs.getString("Result");
+				                    tenNV = rs.getString("tenNhanVien");
+				                    chucVu = rs.getString("chucVu");
+				                    maNV = rs.getString("maNhanVien");
+				                    if ("khop".equals(result)) {
+				                    	GUI_Man_hinh_chinh main_screen = new GUI_Man_hinh_chinh(); 
+				    					main_screen.setVisible(true);
+				    					dispose();
+				                    } else {
+				                        error_lbl.setText("Tài khoản hoặc mật khẩu sai");
+				                    }
+				                }
+				            } catch (SQLException e2) {
+				                e2.printStackTrace();
+				            } 
+		        		}
+		        	}
+
+		        	
 				} catch (FontFormatException | IOException e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
@@ -218,5 +257,17 @@ public class GUI_DangNhap extends JFrame{
 		background.setIcon(new ImageIcon("src\\resources\\Image\\logInBackground2.png"));
 		getContentPane().add(background);
 		
+	}
+	
+	public String getTenNV() {
+		return tenNV;
+	}
+	
+	public String getMaNV() {
+		return maNV;
+	}
+	
+	public String getChucVu() {
+		return chucVu;
 	}
 }

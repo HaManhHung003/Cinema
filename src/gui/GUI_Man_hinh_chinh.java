@@ -13,6 +13,7 @@ import java.io.IOException;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
@@ -42,6 +43,7 @@ public class GUI_Man_hinh_chinh extends JFrame{
 	private GUI_TroGiup troGiupPanel;
 	private GUI_ChonGhe chonGhePanel;
 	private GUI_HoaDon hoaDonPanel;
+	private static GUI_DangNhap loginFrame;
 	
 	public GUI_Man_hinh_chinh() throws FontFormatException, IOException {
 		setSize(1425,820);
@@ -655,77 +657,81 @@ public class GUI_Man_hinh_chinh extends JFrame{
 		staff_pnl.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                cardLayout.show(inform_pnl, "staffPanel");
-                staff_pnl.setColor(new Color(171, 27, 27));
-                home_pnl.setColor(black);
-                bookTicket_pnl.setColor(black);
-                sale_pnl.setColor(black);
-                customer_pnl.setColor(black);
-                statistic_pnl.setColor(black);
-                help_pnl.setColor(black);
-                logOut_pnl.setColor(black);
-                add_pnl.setVisible(true);
-                remove_pnl.setVisible(false);
-                update_pnl.setVisible(false);
-                back_pnl.setVisible(false);
-                back2_pnl.setVisible(false);
-                clear_pnl.setVisible(true);
-                staffFind_pnl.setVisible(true);
-                filmFind_pnl.setVisible(false);
-                find_container.addFocusListener(new FocusAdapter() {
-        			@Override
-        			public void focusGained(FocusEvent e) {
-        				if(find_container.getText().toString().equals("Tìm kiếm nhân viên")) {
-        					find_container.setText("");
-        					find_container.setForeground(new Color(178, 176, 176));
-        				}
-        			}
-        			@Override
-        			public void focusLost(FocusEvent e) {
-        				if(find_container.getText().toString().equals("")) {
-        					find_container.setText("Tìm kiếm nhân viên");
-        					find_container.setForeground(new Color(178, 176, 176));
-        				}
-        			}
-        		});
-                update_label.addMouseListener(new MouseAdapter() {
+            	if(loginFrame.getChucVu().equalsIgnoreCase("Quản lí")) {
+                    cardLayout.show(inform_pnl, "staffPanel");
+                    staff_pnl.setColor(new Color(171, 27, 27));
+                    home_pnl.setColor(black);
+                    bookTicket_pnl.setColor(black);
+                    sale_pnl.setColor(black);
+                    customer_pnl.setColor(black);
+                    statistic_pnl.setColor(black);
+                    help_pnl.setColor(black);
+                    logOut_pnl.setColor(black);
+                    add_pnl.setVisible(true);
+                    remove_pnl.setVisible(false);
+                    update_pnl.setVisible(false);
+                    back_pnl.setVisible(false);
+                    back2_pnl.setVisible(false);
+                    clear_pnl.setVisible(true);
+                    staffFind_pnl.setVisible(true);
+                    filmFind_pnl.setVisible(false);
+                    find_container.addFocusListener(new FocusAdapter() {
+            			@Override
+            			public void focusGained(FocusEvent e) {
+            				if(find_container.getText().toString().equals("Tìm kiếm nhân viên")) {
+            					find_container.setText("");
+            					find_container.setForeground(new Color(178, 176, 176));
+            				}
+            			}
+            			@Override
+            			public void focusLost(FocusEvent e) {
+            				if(find_container.getText().toString().equals("")) {
+            					find_container.setText("Tìm kiếm nhân viên");
+            					find_container.setForeground(new Color(178, 176, 176));
+            				}
+            			}
+            		});
+                    update_label.addMouseListener(new MouseAdapter() {
 
-        			@Override
-        			public void mouseClicked(MouseEvent e) {
-        				update_pnl.setVisible(false);
-        				add_pnl.setVisible(false);
-        				back_pnl.setVisible(false);
-        				back2_pnl.setVisible(false);
-        				remove_pnl.setVisible(true);
-        			}
-        			
-        		});
-                
-                remove_label.addMouseListener(new MouseAdapter() {
+            			@Override
+            			public void mouseClicked(MouseEvent e) {
+            				update_pnl.setVisible(false);
+            				add_pnl.setVisible(false);
+            				back_pnl.setVisible(false);
+            				back2_pnl.setVisible(false);
+            				remove_pnl.setVisible(true);
+            			}
+            			
+            		});
+                    
+                    remove_label.addMouseListener(new MouseAdapter() {
 
-        			@Override
-        			public void mouseClicked(MouseEvent e) {
-        				update_pnl.setVisible(false);
-        				add_pnl.setVisible(true);
-        				back2_pnl.setVisible(false);
-        				back_pnl.setVisible(false);
-        				remove_pnl.setVisible(false);
-        			}
-        			
-        		});
-                
-                add_label.addMouseListener(new MouseAdapter() {
+            			@Override
+            			public void mouseClicked(MouseEvent e) {
+            				update_pnl.setVisible(false);
+            				add_pnl.setVisible(true);
+            				back2_pnl.setVisible(false);
+            				back_pnl.setVisible(false);
+            				remove_pnl.setVisible(false);
+            			}
+            			
+            		});
+                    
+                    add_label.addMouseListener(new MouseAdapter() {
 
-        			@Override
-        			public void mouseClicked(MouseEvent e) {
-        				update_pnl.setVisible(true);
-        				add_pnl.setVisible(false);
-        				back_pnl.setVisible(false);
-        				back2_pnl.setVisible(false);
-        				remove_pnl.setVisible(false);
-        			}
-        			
-        		});
+            			@Override
+            			public void mouseClicked(MouseEvent e) {
+            				update_pnl.setVisible(true);
+            				add_pnl.setVisible(false);
+            				back_pnl.setVisible(false);
+            				back2_pnl.setVisible(false);
+            				remove_pnl.setVisible(false);
+            			}
+            			
+            		});
+            	}else {
+            		JOptionPane.showMessageDialog(null, "Chỉ có quản lí mới truy cập được", "Cảnh báo", JOptionPane.WARNING_MESSAGE);
+            	}
             }
         });
 		
@@ -759,7 +765,7 @@ public class GUI_Man_hinh_chinh extends JFrame{
 		    @Override
 		    public void mouseClicked(MouseEvent e) {
 		        dispose();
-		        GUI_DangNhap loginFrame = null;
+		        loginFrame = null;
 				try {
 					loginFrame = new GUI_DangNhap();
 				} catch (FontFormatException e1) {
@@ -890,7 +896,7 @@ public class GUI_Man_hinh_chinh extends JFrame{
 	public void showChonGhePanel() {
 		
 		try {
-			chonGhePanel = new GUI_ChonGhe(this,chonGioPanel);
+			chonGhePanel = new GUI_ChonGhe(this,chonGioPanel,loginFrame);
 		} catch (FontFormatException | IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -907,9 +913,8 @@ public class GUI_Man_hinh_chinh extends JFrame{
 	}
 	
 public void showHoaDon() {
-		System.out.println(1);
 		try {
-			hoaDonPanel = new GUI_HoaDon(this,chonGhePanel);
+			hoaDonPanel = new GUI_HoaDon(this,chonGhePanel,loginFrame);
 		} catch (FontFormatException | IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -926,9 +931,12 @@ public void showHoaDon() {
 	}
 
 	public static void main(String[] args) throws FontFormatException, IOException {
+		loginFrame = new GUI_DangNhap();
+		loginFrame.setVisible(true);
+		loginFrame.setResizable(false);
 		
-		GUI_Man_hinh_chinh lg = new GUI_Man_hinh_chinh();
-		lg.setVisible(true);
-		lg.setResizable(false);
+//		GUI_Man_hinh_chinh lg  = new GUI_Man_hinh_chinh();
+//		lg.setVisible(true);
+//		lg.setResizable(false);
 	}
 }
