@@ -747,31 +747,31 @@ public class GUI_Man_hinh_chinh extends JFrame{
             }
         });
 		
-//		
-//		
-//		help_pnl.addMouseListener(new MouseAdapter() {
-//            @Override
-//            public void mouseClicked(MouseEvent e) {
-//                cardLayout.show(inform_pnl, "troGiupPanel");
-//                help_title.setText("HƯỚNG DẪN SỬ DỤNG");
-//                help_pnl.setColor(new Color(171, 27, 27));
-//                home_pnl.setColor(black);
-//                staff_pnl.setColor(black);
-//                sale_pnl.setColor(black);
-//                customer_pnl.setColor(black);
-//                statistic_pnl.setColor(black);
-//                bookTicket_pnl.setColor(black);
-//                logOut_pnl.setColor(black);
-//                add_pnl.setVisible(false);
-//                remove_pnl.setVisible(false);
-//                update_pnl.setVisible(false);
-//                back_pnl.setVisible(false);
-//                back2_pnl.setVisible(false);
-//                clear_pnl.setVisible(false);
-//                staffFind_pnl.setVisible(false);
-//                filmFind_pnl.setVisible(false);
-//            }
-//        });
+		
+		
+		help_pnl.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                cardLayout.show(inform_pnl, "troGiupPanel");
+                help_title.setText("HƯỚNG DẪN SỬ DỤNG");
+                help_pnl.setColor(new Color(171, 27, 27));
+                home_pnl.setColor(black);
+                staff_pnl.setColor(black);
+                sale_pnl.setColor(black);
+                customer_pnl.setColor(black);
+                statistic_pnl.setColor(black);
+                bookTicket_pnl.setColor(black);
+                logOut_pnl.setColor(black);
+                add_pnl.setVisible(false);
+                remove_pnl.setVisible(false);
+                update_pnl.setVisible(false);
+                back_pnl.setVisible(false);
+                back2_pnl.setVisible(false);
+                clear_pnl.setVisible(false);
+                staffFind_pnl.setVisible(false);
+                filmFind_pnl.setVisible(false);
+            }
+        });
 		
 		logOut_pnl.addMouseListener(new MouseAdapter() {
 		    @Override
@@ -943,12 +943,12 @@ public class GUI_Man_hinh_chinh extends JFrame{
 	}
 
 	public static void main(String[] args) throws FontFormatException, IOException {
-//		loginFrame = new GUI_DangNhap();
-//		loginFrame.setVisible(true);
-//		loginFrame.setResizable(false);
+		loginFrame = new GUI_DangNhap();
+		loginFrame.setVisible(true);
+		loginFrame.setResizable(false);
 		
-		GUI_Man_hinh_chinh lg  = new GUI_Man_hinh_chinh();
-		lg.setVisible(true);
-		lg.setResizable(false);
+//		GUI_Man_hinh_chinh lg  = new GUI_Man_hinh_chinh();
+//		lg.setVisible(true);
+//		lg.setResizable(false);
 	}
 }

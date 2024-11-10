@@ -3796,6 +3796,9 @@ public class GUI_ChonGhe extends JPanel{
 			public void mouseClicked(MouseEvent e) {
 				// TODO Auto-generated method stub
 				String code = txtKhachHang.getText();
+				if(code.equals("CCCD Khách Hàng")) {
+					code = "";
+				}
 				try (CallableStatement stmt = conn.prepareCall("{CALL getKhachHang(?)}")) {
 	                stmt.setString(1, code);
 	                try (ResultSet rs = stmt.executeQuery()) {
@@ -4583,7 +4586,11 @@ public class GUI_ChonGhe extends JPanel{
 	}
 	
 	public String getKH() {
-		return tenKH;
+		if(this.tenKH == null) {
+			return "";
+		}else {
+			return tenKH;
+		}
 	}
 	
 	public String getGheDat() {
