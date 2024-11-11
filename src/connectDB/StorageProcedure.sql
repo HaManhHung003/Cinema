@@ -315,7 +315,7 @@ BEGIN
     DECLARE @thoiGianLapHD TIME;
     DECLARE @tongTien FLOAT;
 
-    SET @ngayLapHD = CONVERT(DATE, CONCAT(YEAR(GETDATE()), '-', LEFT(@dateBook, 2), '-', RIGHT(@dateBook, 2)), 120);
+    SET @ngayLapHD = CONVERT(DATE, CONCAT(YEAR(GETDATE()), '-', RIGHT(@dateBook, 2), '-', LEFT(@dateBook, 2)), 120);
 
     SET @thoiGianLapHD = CONVERT(TIME, @timeBook, 114);
 
@@ -357,7 +357,7 @@ BEGIN
 	DECLARE @IHHD INT;
 	DECLARE @ThanhToan FLOAT;
 
-    SET @ngayLapHD = CONVERT(DATE, CONCAT(YEAR(GETDATE()), '-', LEFT(@dateBook, 2), '-', RIGHT(@dateBook, 2)), 120);
+    SET @ngayLapHD = CONVERT(DATE, CONCAT(YEAR(GETDATE()), '-', RIGHT(@dateBook, 2), '-', LEFT(@dateBook, 2)), 120);
 
     SET @thoiGianLapHD = CONVERT(TIME, @timeBook, 114);
 
