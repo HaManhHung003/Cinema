@@ -7,7 +7,7 @@ import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.ArrayList;
 
-import connectDB.ConnectDB;
+import connectDB.JDBCUtil;
 import entity.ChiTietHoaDon;
 import entity.Ghe;
 import entity.HoaDon;
@@ -16,7 +16,7 @@ import entity.MaGiamGia;
 import entity.NhanVien;
 import entity.Phim;
 import entity.Phong;
-import entity.Ve;
+import entity.LoaiVe;
 
 public class ChiTietHoaDonDao {
 	private String maHD;
@@ -137,7 +137,7 @@ public class ChiTietHoaDonDao {
 		// TODO Auto-generated constructor stub
 	}
 	public ChiTietHoaDon getCTHDTheoMaChiTiet(String maChiTiet) { 
-		Connection con = ConnectDB.getInstance().getConnection(); 
+		Connection con = JDBCUtil.getConnection(); 
 		PreparedStatement stmt =null; 
 		ChiTietHoaDon cthd = null;
 		try {       

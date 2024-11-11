@@ -45,7 +45,6 @@ public class HoaDonDao {
 
 	public ArrayList<HoaDon> docTuBang() {
 		try {
-			JDBCUtil.getInstance();
 			Connection con = JDBCUtil.getConnection();
 			String sql = "Select * from HoaDon";
 			Statement statement = con.createStatement();

@@ -9,9 +9,7 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
-import connectDB.ConnectDB;
 import connectDB.JDBCUtil;
-import connectDB.JDBCUtil2;
 import entity.KhachHang;
 //import util.JDBCUtil;
 
@@ -61,7 +59,7 @@ public class KhachHangStoredProcedure {
 		PreparedStatement stmt = null;
 
 		try {
-			con = JDBCUtil2.getConnection();
+			con = JDBCUtil.getConnection();
 			String sql = "SELECT * FROM KhachHang WHERE [maKH] = ?";
 			stmt = con.prepareStatement(sql);
 			stmt.setString(1, maKhachHang);

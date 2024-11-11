@@ -2,8 +2,13 @@ package gui;
 
 import java.awt.Color;
 import java.awt.Component;
+import java.awt.Cursor;
 import java.awt.Font;
 import java.awt.FontFormatException;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.io.File;
 import java.io.IOException;
 import java.sql.CallableStatement;
@@ -31,14 +36,14 @@ public class GUI_TrangChu extends JPanel{
 	private String theLoai1, theLoai2, theLoai3;
 	private Connection conn = JDBCUtil.getConnection();
 
-	public GUI_TrangChu() throws FontFormatException, IOException {
+	public GUI_TrangChu(GUI_Man_hinh_chinh man_hinh) throws FontFormatException, IOException {
 		setLayout(null);
-		setSize(1128, 1024);
+		setSize(1128, 705);
 		setBackground(new Color(35,33,33));
 		poster = new JLabel();
-		poster.setLocation(110, 0);
-		poster.setIcon(new ImageIcon("src\\resources\\Image\\logInBackground.png"));
-		poster.setSize(900, 350);
+		poster.setLocation(5, 0);
+		poster.setIcon(new ImageIcon("src\\resources\\Image\\banner\\poster2.png"));
+		poster.setSize(1118, 378);
 		add(poster);
 		
 		File DosisB = new File("src\\resources\\fonts\\Dosis-Bold.ttf");
@@ -55,7 +60,7 @@ public class GUI_TrangChu extends JPanel{
 
             while (rs.next()) {
                 switch (i) {
-                    case 1:
+                    case 4:
                         tenPhim1 = rs.getString("tenPhim");
                         thoiLuong1 = rs.getInt("thoiLuong");
                         theLoai1 = rs.getString("theLoai");
@@ -67,7 +72,7 @@ public class GUI_TrangChu extends JPanel{
                         theLoai2 = rs.getString("theLoai");
                         link2 = rs.getString("hinhAnh");
                         break;
-                    case 3:
+                    case 5:
                         tenPhim3 = rs.getString("tenPhim");
                         thoiLuong3 = rs.getInt("thoiLuong");
                         theLoai3 = rs.getString("theLoai");
@@ -83,26 +88,29 @@ public class GUI_TrangChu extends JPanel{
 		//phim1
 		phim1 = new JPanel();
 		phim1.setOpaque(false);
-		phim1.setBounds(52, 400, 262, 322);
+		phim1.setBackground(new Color(0, 100, 0));
+		phim1.setBounds(52, 415, 262, 284);
 		add(phim1);
 		phim1.setLayout(null);
 		
 		hinh_phim1 = new JLabel("New label");
 		hinh_phim1.setBorder(null);
+		hinh_phim1.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		hinh_phim1.setIcon(new ImageIcon(link1));
 		hinh_phim1.setBackground(new Color(0, 0, 0));
 		hinh_phim1.setBounds(0, 0, 262, 195);
 		phim1.add(hinh_phim1);
 		theloai_phim1 = new JTextArea();
+		theloai_phim1.setOpaque(false);
+		theloai_phim1.setBackground(new Color(0, 255, 255));
 		theloai_phim1.setTabSize(2);
 		
 		theloai_phim1.setText("Thể loại : "+theLoai1+"\nThời lượng :  "+thoiLuong1+" phút");
 		theloai_phim1.setDisabledTextColor(new Color(255, 238, 231));
 		theloai_phim1.setFont(Dosis_Bold_14);
-		theloai_phim1.setOpaque(false);
 		theloai_phim1.setEnabled(false);
 		theloai_phim1.setEditable(false);
-		theloai_phim1.setBounds(0, 236, 262, 64);
+		theloai_phim1.setBounds(0, 236, 262, 48);
 		phim1.add(theloai_phim1);
 		
 		tieude_phim1 = new JTextArea();
@@ -113,17 +121,18 @@ public class GUI_TrangChu extends JPanel{
 		tieude_phim1.setFont(Dosis_Bold_20);
 		tieude_phim1.setEnabled(false);
 		tieude_phim1.setEditable(false);
-		tieude_phim1.setBounds(0, 207, 262, 39);
+		tieude_phim1.setBounds(0, 207, 262, 28);
 		phim1.add(tieude_phim1);
 		
 		//phim2
 		phim2 = new JPanel();
 		phim2.setOpaque(false);
-		phim2.setBounds(418, 400, 262, 322);
+		phim2.setBounds(418, 415, 262, 284);
 		add(phim2);
 		phim2.setLayout(null);
 		
 		hinh_phim2 = new JLabel("New label");
+		hinh_phim2.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		hinh_phim2.setBounds(0, 0, 262, 195);
 		hinh_phim2.setIcon(new ImageIcon(link2));
 		phim2.add(hinh_phim2);
@@ -135,7 +144,7 @@ public class GUI_TrangChu extends JPanel{
 		theloai_phim2.setEnabled(false);
 		theloai_phim2.setEditable(false);
 		theloai_phim2.setDisabledTextColor(new Color(255, 238, 231));
-		theloai_phim2.setBounds(0, 236, 262, 64);
+		theloai_phim2.setBounds(0, 236, 262, 48);
 		theloai_phim2.setFont(Dosis_Bold_14);
 		phim2.add(theloai_phim2);
 		
@@ -154,12 +163,13 @@ public class GUI_TrangChu extends JPanel{
 		//phim3
 		phim3 = new JPanel();
 		phim3.setOpaque(false);
-		phim3.setBounds(784, 400, 262, 322);
+		phim3.setBounds(784, 415, 262, 284);
 		add(phim3);
 		phim3.setLayout(null);
 		
 		hinh_phim3 = new JLabel("New label");
 		hinh_phim3.setBounds(0, 0, 262, 195);
+		hinh_phim3.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		hinh_phim3.setIcon(new ImageIcon(link3));
 		phim3.add(hinh_phim3);
 		
@@ -170,7 +180,7 @@ public class GUI_TrangChu extends JPanel{
 		theloai_phim3.setEnabled(false);
 		theloai_phim3.setEditable(false);
 		theloai_phim3.setDisabledTextColor(new Color(255, 238, 231));
-		theloai_phim3.setBounds(0, 236, 262, 64);
+		theloai_phim3.setBounds(0, 236, 262, 48);
 		theloai_phim3.setFont(Dosis_Bold_14);
 		phim3.add(theloai_phim3);
 		
@@ -185,5 +195,45 @@ public class GUI_TrangChu extends JPanel{
 		tieude_phim3.setBounds(0, 207, 262, 39);
 		tieude_phim3.setFont(Dosis_Bold_20);
 		phim3.add(tieude_phim3);
+		
+		hinh_phim1.addMouseListener(new MouseAdapter() {
+		    @Override
+		    public void mouseClicked(MouseEvent e) {
+		    	man_hinh.showChonGioPanel();
+		    }
+		});
+		
+		hinh_phim2.addMouseListener(new MouseAdapter() {
+		    @Override
+		    public void mouseClicked(MouseEvent e) {
+		    	man_hinh.showChonGioPanel();
+		    }
+		});
+		
+		hinh_phim3.addMouseListener(new MouseAdapter() {
+		    @Override
+		    public void mouseClicked(MouseEvent e) {
+		    	man_hinh.showChonGioPanel();
+		    }
+		});
+	}
+	
+	public JLabel getPhim1() {
+		return hinh_phim1;
+	}
+	public JLabel getPhim2() {
+		return hinh_phim2;
+	}
+	public JLabel getPhim3() {
+		return hinh_phim3;
+	}
+	public JTextArea getTenPhim1() {
+		return tieude_phim1;
+	}
+	public JTextArea getTenPhim2() {
+		return tieude_phim2;
+	}
+	public JTextArea getTenPhim3() {
+		return tieude_phim3;
 	}
 }
