@@ -1,4 +1,4 @@
-﻿--Lấy tài khoản nhân viên cho đăng nhập
+﻿--Kiểm tra tài khoản đăng nhập, xuất thông tin tài khoản
 CREATE PROCEDURE CheckLogin
     @TaiKhoan NVARCHAR(50),
     @MatKhau NVARCHAR(50)
@@ -28,14 +28,15 @@ BEGIN
 END;
 GO
 
+-- Xuất thông tin khuyến mãi
 CREATE PROCEDURE GetKhuyenMai
 AS
 BEGIN
 	SELECT 
-		CONCAT('tieude', ROW_NUMBER() OVER (ORDER BY maGiamGia)) AS tieudeLabel,tieude,
-		CONCAT('soTienGiam', ROW_NUMBER() OVER (ORDER BY maGiamGia)) AS soTienGiamLabel,soTienGiam,
-		CONCAT('dieuKienApDung', ROW_NUMBER() OVER (ORDER BY maGiamGia)) AS dieuKienApDungLabel,dieuKienApDung,
-		CONCAT('hinhAnh', ROW_NUMBER() OVER (ORDER BY maGiamGia)) AS hinhAnhLabel,hinhAnh
+		tieude,
+		soTienGiam,
+		dieuKienApDung,
+		hinhAnh
 	FROM MaGiamGia
 	ORDER BY maGiamGia
 	OFFSET 0 ROWS FETCH NEXT 2 ROWS ONLY;
@@ -43,6 +44,7 @@ END;
 
 GO
 
+-- Xuất phim
 CREATE PROCEDURE GetFilm
 AS
 BEGIN
@@ -62,6 +64,7 @@ END;
 
 GO
 
+--Thêm nhân viên
 CREATE PROCEDURE AddNhanVien
 	@tenNhanVien NVARCHAR(255),
     @soDienThoai NVARCHAR(50),
@@ -79,6 +82,8 @@ END;
 
 GO
 
+
+--Cập nhật nhân viên
 CREATE PROCEDURE UpdateNhanVien
 	@tenNhanVien NVARCHAR(255),
     @soDienThoai NVARCHAR(50),
@@ -105,6 +110,7 @@ END;
 
 GO
 
+--Xóa nhân viên
 CREATE PROCEDURE removeNhanVien
 	@cCCD NVARCHAR(50)
 AS
@@ -130,6 +136,8 @@ BEGIN
 END;
 
 go
+
+--Xuất thông tin cụ thể của phim
 CREATE PROCEDURE getThongTinPhim
     @filmName NVARCHAR(255) 
 AS
@@ -182,6 +190,7 @@ END;
 
 go
 
+--Xuất giờ chiếu của phim
 CREATE PROCEDURE getGioChieu
     @filmName NVARCHAR(50),
     @dateFilm NVARCHAR(50)
@@ -223,10 +232,11 @@ END;
 
 go
 
+--Xuất trạng thái ghế, mã phòng, giá ghế, mã lịch chiếu
 CREATE PROCEDURE getTTGhe
-    @movieCode NVARCHAR(50),
-    @dateFilm NVARCHAR(50),
-    @timeFilm NVARCHAR(50)
+    @MAPHIM NVARCHAR(50),
+    @NGAYCHIEU NVARCHAR(50),
+    @GIOCHIEU NVARCHAR(50)
 AS
 BEGIN
     DECLARE @maLichChieu NVARCHAR(50);
@@ -234,9 +244,9 @@ BEGIN
     SELECT  @maLichChieu = maLichChieu,
 			@giaPhim = giaVe
     FROM LichChieuPhim
-    WHERE maPhim = @movieCode
-      AND FORMAT(ngayChieu, 'dd/MM') = @dateFilm
-      AND LEFT(CAST(gioChieu AS VARCHAR(8)), 5) = @timeFilm;
+    WHERE maPhim = @MAPHIM
+      AND FORMAT(ngayChieu, 'dd/MM') = @NGAYCHIEU
+      AND LEFT(CAST(gioChieu AS VARCHAR(8)), 5) = @GIOCHIEU;
 
     IF @maLichChieu IS NOT NULL
     BEGIN
@@ -265,6 +275,13 @@ END;
 
 go
 
+EXEC getTTGhe @MAPHIM ='P04',
+    @NGAYCHIEU = '15/11',
+    @GIOCHIEU = '18:48'
+
+go
+
+--Kiểm tra mã giảm giá trong GUI_ChonGhe
 CREATE PROCEDURE getMaGiamGia
     @code NVARCHAR(50) 
 AS
@@ -284,6 +301,7 @@ END;
 
 go
 
+--Kiểm tra mã khách hàng trong GUI_ChonGhe
 CREATE PROCEDURE getKhachHang
     @code NVARCHAR(50) 
 AS
@@ -301,6 +319,7 @@ END;
 
 go
 
+--Thêm hóa đơn vào cơ sở dữ liệu
 CREATE PROCEDURE themHD
     @dateBook NVARCHAR(50),         
     @timeBook NVARCHAR(50),        
@@ -328,6 +347,7 @@ END;
 
 go
 
+--Cập nhật trạng thái ( trống / đã đặt ) cho ghế
 CREATE PROCEDURE UpdateTTGhe
     @position NVARCHAR(50),
     @maLich NVARCHAR(50)
@@ -340,6 +360,8 @@ END;
 
 
 GO
+
+--Thêm chi tiết hóa đơn 
 CREATE PROCEDURE themChiTietHD
 	@dateBook NVARCHAR(50),         
     @timeBook NVARCHAR(50),        

@@ -72,11 +72,14 @@ public class GUI_ChonGhe extends JPanel{
 		setBackground(new Color(36, 34, 34));
 		setLayout(null);
 	
-		tenPhim = man_hinh.getTenPhim().getText();
-		maPhim = man_hinh.getMaPhim().getText();
-		ngayChieu = man_hinh.getNgayChieu().getText();
-		gioChieu = man_hinh.getGioChieu().getText();
+		tenPhim = chon_gio.getTenPhim();
+		maPhim = chon_gio.getMaPhim();
+		ngayChieu = chon_gio.getngayCHIEU();
+		gioChieu = chon_gio.getgioCHIEU();
 		maNV = logIn.getMaNV();
+		System.out.println(maPhim);
+		System.out.println(ngayChieu);
+		System.out.println(gioChieu);
 		connect(maPhim,ngayChieu,gioChieu);
 		GheUI(man_hinh);
 		kiemtraGhe();
